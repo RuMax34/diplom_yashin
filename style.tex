@@ -1,0 +1,135 @@
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\renewcommand{\familydefault}{\rmdefault}
+\usepackage{mathtext}
+\usepackage{geometry}
+\geometry{verbose,lmargin=25mm,rmargin=15mm,tmargin=15mm,bmargin=20mm}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{setspace}
+\setstretch{1.5}
+
+% Картинки (можно встявлять даже pdf)
+\usepackage{graphicx}
+
+% Таблицы
+\usepackage{tabularx}
+% \setlength{\extrarowheight}{0.3cm}
+\renewcommand{\arraystretch}{1.5}
+\renewcommand{\tabularxcolumn}[1]{>{\centering\arraybackslash\small}m{#1}}
+\newcolumntype{B}{>{\bfseries\small}c}
+\newcolumntype{R}{>{\small}c}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{equation}{section}
+\makeatother
+
+% Абзацный отступ = 1.25см
+\usepackage{indentfirst}
+\setlength\parindent{12.5mm}
+
+% Пакет для содержания
+\usepackage{tocloft}
+
+% Команда для специальных разделов (введение, обзор литературы, etc)
+% Не нумеруются в содержании, по уровню вложенности: 
+\newcommand{\specialsection}[1]{
+    \phantomsection
+    \bigskip\smallskip\hspace{-13.8mm}
+    \normalfont\fontsize{18}{18}\textbf{#1}
+    \par\bigskip\normalfont\normalsize
+    \addcontentsline{toc}{section}{#1}
+}
+
+% Размеры заголовков разделов и подразделов
+\usepackage{titlesec}
+% Раздел: 18pt, добавляем слово "Глава"
+\titleformat{\section}
+{\fontsize{18}{18}\bfseries}{
+\hspace{-1.5mm}Глава \thesection. \hskip-1em}{1em}{}
+% Подраздел: 16pt
+\titleformat{\subsection}
+{\fontsize{16}{16}\bfseries}{\hspace{-0.2mm}\thesubsection}{1em}{}
+
+% Содержание
+% Выравнивание заголовка по центру (да, да, с отступом слева)
+% т.к. окружение center и \centering не работают
+\renewcommand{\cfttoctitlefont}{\hspace{0.35\textwidth} \bfseries\Large}
+% \renewcommand{\cftbeforetoctitleskip}{3em}
+% Слово "Глава" в содержании
+\renewcommand{\cftsecpresnum}{Глава\space}
+\newlength\mylength
+\settowidth\mylength{\cftsecpresnum}
+\addtolength\cftsecnumwidth{1.5\mylength}
+% Строки с точками
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% Точки после цифр в в содержании
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+% Подровнять subsection под точку главы
+% (если глав будет больше десяти, будет чуть хуже)
+\setlength{\cftsubsecindent}{2em}
+% Интервал глав
+\setlength{\cftbeforesecskip}{3pt}
+
+\renewcommand{\cftsecpagefont}{\normalfont}
+
+\usepackage[russian]{babel}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmathfont{TeX Gyre Termes Math}
+\usepackage{csquotes}
+
+% Пакет, реализующий гиперссылки. Никакого расскрашивания
+\usepackage[colorlinks=false,unicode=true,hidelinks]{hyperref}
+
+\newcommand{\ITEM}{\vspace{-0.2cm}\item}
+\newcommand{\MList}[1]{\par\begin{itemize}#1\end{itemize}}
+\newcommand{\NList}[1]{\par\begin{enumerate}#1\end{enumerate}}
+
+% Шрифт подписи (caption) = 12pt
+% (Повезло, что small как раз равен 12pt)
+\usepackage[font=small,labelfont=bf]{caption}
+
+% Пакет, который позволяет собирать один документ TeX из нескольких
+\usepackage{import}
+
+%Библиография
+\usepackage[
+    backend=biber,
+    %citestyle = alphabetic, 
+    %bibstyle = ieee-alphabetic,  
+    %sortlocale=en_US,
+    sorting=none,
+    backref=true,
+    hyperref=true,
+    style=numeric,%style=alphabetic,
+    defernumbers=true,
+    isbn=false,
+    autolang=none,
+    %eid=true,
+    doi=false,
+    %series=true,
+    eprint=false,
+    bibencoding = utf8
+]{biblatex} %Imports biblatex package
+
+\renewbibmacro{volume+number+eid}{%
+    \printfield{volume}%
+    \setunit{\addcomma\space}%
+    \printfield{number}%
+    \printfield{eid}}
+
+\renewbibmacro{in:}{\space}
+
+\DeclareFieldFormat[article]{volume}{{том}\space#1}
+\DeclareFieldFormat[article]{number}{{номер}\space#1\addcomma}
+
+\DefineBibliographyStrings{russian}{%
+    phdthesis = {диссертация}%
+}
