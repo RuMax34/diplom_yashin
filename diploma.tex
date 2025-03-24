@@ -1,0 +1,287 @@
+\documentclass[14pt,oneside]{extarticle}
+
+\input{style.tex}
+
+\addbibresource{literature.bib} %Import the bibliography file
+
+% Подсветка кода (все стили в файле)
+\input{code_highlight.tex}
+
+\begin{document}
+
+\input{titlepage.tex}
+
+% Содержание
+\tableofcontents
+\pagebreak
+
+% ============================================
+% ВВЕДЕНИЕ
+% ============================================
+\specialsection{Введение}
+
+Здесь необходимо рассказать, о чём работа. Объём 1-2 страницы. Нужно охарактеризовать область исследования, практическую значимость (для разработки каких приборов могут быть использованы ваши результаты), какую проблему решает ваша работа (кратко, подробнее будет в обзоре), какие методы использованы (тоже кратко, подробнее в главе Методы).
+
+Здесь необходимо рассказать, о чём работа. Объём 1-2 страницы. Нужно охарактеризовать область исследования, практическую значимость (для разработки каких приборов могут быть использованы ваши результаты), какую проблему решает ваша работа (кратко, подробнее будет в обзоре), какие методы использованы (тоже кратко, подробнее в главе Методы).
+
+Здесь необходимо рассказать, о чём работа. Объём 1-2 страницы. Нужно охарактеризовать область исследования, практическую значимость (для разработки каких приборов могут быть использованы ваши результаты), какую проблему решает ваша работа (кратко, подробнее будет в обзоре), какие методы использованы (тоже кратко, подробнее в главе Методы).
+
+\specialsection{Цель и задачи}
+\label{Tasks}
+
+\textbf{Цель:} Цель не должна совпадать с темой работы. Цель должна быть достижима (должен быть конечный результат) и проверяема. Исследование --- это процесс, и целью быть не может.
+
+\textbf{Задачи}
+\begin{enumerate}
+    \item Задача 1
+    \item Задача 2
+    \item Задача 3
+    \item Задача 4
+\end{enumerate}
+
+Достаточно задач. Обзор литературы наверное в задачи включать не будем. Лучше написать конкретно, что мы делаем (разработка алгоритма, программная реализация, расчёт конкретных параметров при определённых условиях и т.д.)
+
+% ============================================
+% ГЛАВА 1
+% ============================================
+\pagebreak
+\section{Обзор литературы}
+
+\subsection{Раздел 1}
+
+В обзоре не нужно рассказывать теорию и методы, нужно просто провести обобщение и анализ исследований, которые были проведены до вас по данной теме.
+
+Если вы будете пользоваться какими-то терминами и понятиями, которые требуют разъяснения, их нужно объяснить в следующих двух главах, а отсюда можно сослаться на эти определения.
+
+Ссылка на книгу: \cite{datta1}.
+Ссылка на книгу на русском: \cite{fedotkin1}.
+
+\begin{figure}[ht]
+\begin{center}
+    \includegraphics[width=11cm]{images/Miller2-Figure2.png}
+    \caption{\label{fig:miller2-2}
+        Схема измерений спектров поглощения в поперечном поле из работы \cite{miller1}.}
+\end {center}
+\end {figure}
+    
+Если рисунок взят из какой-то статьи, книги или из интернета (из интернета нежелательно), то нужно обязательно в подписи сделать ссылку на соответствующий пункт в списке литературы.
+
+Ссылаемся на рисунок \ref{fig:miller2-2}.
+
+Рисунки в формате pdf:
+
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics{images/iv-curve.pdf}
+        \caption{\label{fig:iv-curve-1}
+            Результаты моделирования траекторий электронов с помощью квантовых гидродинамических уравнений.}
+    \end {center}
+\end {figure}
+
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics{images/qd_qr_potential.pdf}
+        \caption{\label{fig:qr-potential-1}
+            Потенциалы для моделирования КТ и КК.}
+    \end {center}
+\end {figure}
+    
+Ссылки на статьи: \cite{miller1}, \cite{miller2}, \cite{mohseni1}.
+
+Ссылка на российскую статью: \cite{skubachevskii1}.
+
+Ссылка на диссертацию:  \cite{pavlichenko1}
+
+% ============================================
+% ГЛАВА 2
+% ============================================
+\pagebreak
+\section{Теория и основные уравнения}
+
+\subsection{Раздел 1}
+
+Ненумерованная формула:
+
+\begin{equation}
+    \begin{pmatrix} \dot{\varphi}\\ \dot{\theta} \\ \dot{\psi} \end{pmatrix}
+    = \begin{pmatrix}
+        \cos(\theta)\cos(\psi) & -\sin(\psi) & 0 \\
+        \cos(\theta)\sin(\psi) & \cos(\psi)  & 0 \\
+        -\sin(\theta)         & 0         &  1
+    \end{pmatrix}^{-1}
+    \begin{pmatrix} \omega_x\\ \omega_y \\ \omega_z \end{pmatrix}. \nonumber
+\end{equation}
+
+
+\begin{equation}
+    E_{y}\left(z\geq L\right)=A_{12}e^{i\beta z}\cdot\begin{cases}
+        e^{sw}\cos\left(kw\right)e^{s\left(x-a\right)}, & x<a-w\\
+        \cos\left(k\left(x-a\right)\right), & a-w\leq x\le a+w\\
+        e^{sw}\cos\left(kw\right)e^{-s\left(x-a\right)}, & x>a+w
+        \end{cases}    
+\end{equation}
+
+
+\subsection{Раздел 2}
+
+Нумерованные формулы:
+
+\begin{equation}
+\label{eq:1}
+    \dot{\theta}=\frac{P-p_{1}\cos\left(\varphi_{1}-\theta\right)-p_{2}\cos\left(\varphi_{2}-\theta\right)}{\mu+\sin^{2}\left(\varphi_{1}-\theta\right)+\sin^{2}\left(\varphi_{2}-\theta\right)}
+\end{equation}
+
+\begin{equation}
+    \dot{\varphi}_{1}=p_{1}-\dot{\theta}\cos(\phi_{1}-\theta)
+\end{equation}
+
+\begin{equation}
+    \dot{\varphi}_{2}=p_{2}-\dot{\theta}\cos(\phi_{2}-\theta)
+\end{equation}
+
+Тест ссылки на формулу (\ref{eq:1}).
+
+% ============================================
+% ГЛАВА 3
+% ============================================
+\pagebreak
+\section{Численные методы и алгоритмы}
+
+\subsection{Раздел 1}
+
+\subsection{Раздел 2}
+
+% ============================================
+% ГЛАВА 4
+% ============================================
+\pagebreak
+\section{Программная реализация}
+
+\begin{lstlisting}[language=rust,caption={Программная реализация метода Рунге-Кутты},label={listing-1}]
+    // From the pendulum program
+    fn runge_kutta(
+        vars: &MyVec,
+        pars: &Vec<f64>,
+        rhs: &dyn Fn(&MyVec, &Vec<f64>) -> MyVec,
+        dt: f64,
+    ) -> MyVec {
+        let rk_1 = rhs(vars, pars);
+        let rk_2 = rhs(&vars.add(&rk_1.scale(dt / 2.0)), pars);
+        let rk_3 = rhs(&vars.add(&rk_2.scale(dt / 2.0)), pars);
+        let rk_4 = rhs(&vars.add(&rk_3.scale(dt)), pars);
+    
+        let vars_new = vars
+            .add(&rk_1.scale(dt / 6.0))
+            .add(&rk_2.scale(dt / 3.0))
+            .add(&rk_3.scale(dt / 3.0))
+            .add(&rk_4.scale(dt / 6.0));
+        vars_new
+    }
+    \end{lstlisting}
+    
+    \begin{lstlisting}[language=C++,caption={Подпрограмма случайного блуждания на плоскости},label={listing-2}]
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<long> dist(1, 4);
+    std::vector<long> xn(n0, 0);
+    std::vector<long> yn(n0, 0);
+    for (long jt = 0; jt < M; jt++)
+    {
+        for (long jn = 0; jn < n0; jn++)
+        {
+            switch (dist(mt))
+            {
+            case 1:
+                xn[jn] ++;
+                break;
+            case 2:
+                xn[jn] --;
+                break;
+            case 3:
+                yn[jn] ++;
+                break;
+            case 4:
+                yn[jn] --;
+                break;
+            }
+        }
+    }
+    \end{lstlisting}
+
+% ============================================
+% ГЛАВА 5
+% ============================================
+\pagebreak
+\section{Результаты и обсуждение}
+
+Таблицы в \LaTeX ~делать очень неудобно. Лучше воспользоваться сторонним редактором таблиц, которые умеет их экспортировать в \LaTeX, сделать там всю структуру, а потом вставить готовый код, и в нём уже добавлять содержимое ячеек.
+
+Тем не менее, простые таблицы делать можно, наподобие \ref{table-1}. Но лучше таблицами вообще не злоупотреблять, а где можно заменять их графиками и диаграммами.
+
+\begin{center}
+\begin{table}[h]
+\centering{}%
+\caption{Условия роста образцов с квантовыми кольцами\label{table-1}}
+\begin{tabularx}{0.9\textwidth}{|B|R|R|R|R|R|X|X|}
+\hline 
+№ & $X_{\text{In}}$, \% & $T_1$, °C & $T_2$, °C & $P_{\text{As}_4}$, $10^{-5}$ Торр & Тип КК & \multicolumn{2}{R|}{Диаметры, нм} \tabularnewline
+\hline
+А1 & 0 & 220 & 220 & 1,3 & Одиночное & \multicolumn{2}{R|}{51} \tabularnewline
+\hline
+А2 & 0 & 280 & 280 & 0,55 & Двойное & 120 & 42 \tabularnewline
+\hline
+Б1 & 5 & 250 & 250 & 5,0 & Одиночное & \multicolumn{2}{R|}{75}  \tabularnewline
+\hline 
+Б2 & 10 & 250 & 250 & 5,0 & Одиночное & \multicolumn{2}{R|}{76}  \tabularnewline
+\hline 
+Б3 & 20 & 250 & 250 & 5,0 & Одиночное & \multicolumn{2}{R|}{78}  \tabularnewline
+\hline 
+Б4 & 20 & 200 & 200 & 5,0 & Одиночное & \multicolumn{2}{R|}{63}  \tabularnewline
+\hline 
+В1 & 0 & 325 & 325 & 0,2 & Одиночное & \multicolumn{2}{R|}{22}  \tabularnewline
+\hline 
+В2 & 0 & 325 & 220 & 0,2 & Двойное & 79 & 31 \tabularnewline
+\hline 
+В3 & 0 & 325 & 325 & 1,0 & Двойное & 69 & 27 \tabularnewline
+\hline
+\end{tabularx}
+\end{table}
+\end{center}
+
+Ссылаемся на Листинг \ref{listing-1} здесь.
+
+% ============================================
+%  ВЫВОДЫ И ЗАКЛЮЧЕНИЕ
+% ============================================
+\pagebreak
+\specialsection{Выводы}
+Структура файлов, которые можно редактировать:
+
+\begin{itemize}
+    \item \verb|diploma.tex| --- содержит основной текст;
+    \item \verb|titlepage.tex| --- содержит титульный лист;
+    \item \verb|literature.bib| --- содержит источники для списка литературы;
+    \item \verb|code_highlight.tex| --- форматирование листингов (фрагментов кода).
+\end{itemize}
+
+Файл \verb|style.tex| очень важный, его трогать и особенно удалять не надо, там задаются различные стили документа. Редактировать в случае, если знаете, что делать.
+
+\specialsection{Заключение}
+
+Нужны ли отдельно и выводы, и заключение --- я не знаю. Разберёмся.
+
+Список литературы ниже оформлен не совсем по ГОСТу, но это легко исправить. Главное, что он организован, и можно ссылаться на каждый пункт по фамилии первого автора.
+
+\textbf{Внимание!} 
+
+Список литературы находится в отдельном файле \verb|literature.bib|, в который можно добавлять новые источники в любом порядке. Они будут сами располагаться как нужно, в порядке упоминания в тексте.
+
+Если какой-то источник не процитирован в тексте, он в список литературы добавлен не будет.
+
+Поэтому один и тот же файл с источниками можно использовать для нескольких документов.
+
+
+\pagebreak
+\printbibliography
+
+\end{document}
