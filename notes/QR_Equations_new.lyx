@@ -1,0 +1,2522 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation landscape
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\rightmargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Quantum ring growth simulation algorithm
+\end_layout
+
+\begin_layout Section
+Main equations
+\end_layout
+
+\begin_layout Standard
+Diffusion equations for Ga and As.
+ 
+\begin_inset Formula $R_{d}\left(t\right)$
+\end_inset
+
+ is the droplet radius.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial C_{Ga}}{\partial t}=D_{Ga}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)+F_{Ga}\left(r,t\right)-k_{r}C_{Ga}C_{As}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial C_{As}}{\partial t}=D_{As}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{As}}{\partial r}\right)+F_{As}-k_{r}C_{Ga}C_{As}-\frac{C_{As}}{\tau_{As}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Parameters in detail
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+D_{Ga}=a^{2}\nu\exp\left(-\frac{E_{Ga}}{kT}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+D_{As}=a^{2}\nu\exp\left(-\frac{E_{As}}{kT}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Arsenic desorption time:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tau_{As}=\frac{1}{\nu}\exp\left(\frac{E_{a}}{kT}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\nu=\frac{kT}{\pi\hbar}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Boundary and initial conditions
+\end_layout
+
+\begin_layout Standard
+Boundary conditions for 
+\begin_inset Formula $r\in\left[0,R_{\infty}\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}\left(R_{\infty},t\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{As}\left(R_{\infty},t\right)=F_{As}\tau_{As}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Initial conditions for 
+\begin_inset Formula $r\in\left[0,R_{\infty}\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}\left(r,0\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{As}\left(r,0\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Finding the Ga flux
+\end_layout
+
+\begin_layout Standard
+We require an additional concentration of Ga atoms at the droplet boundary according to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tilde{C}_{Ga}\left(r,t\right)=C_{0}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This leads to an additional flux:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{C_{0}}{\tau_{Ga}\left(t\right)}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which is our only source of Ga atoms!
+ To find the parameter 
+\begin_inset Formula $\tau_{Ga}$
+\end_inset
+
+ (
+\begin_inset Formula $w$
+\end_inset
+
+ is a free constant value),
+ we need to account for the loss of Ga atoms.
+\end_layout
+
+\begin_layout Standard
+To do that,
+ we consider a more simple model,
+ where the calculation takes place for 
+\begin_inset Formula $r\in\left[R_{d},R_{\infty}\right]$
+\end_inset
+
+ and only Ga is present.
+ This leads to the following equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial C_{Ga}}{\partial t}=D_{Ga}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+C_{Ga}\left(R_{d},t\right)=C_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+C_{Ga}\left(R_{\infty},t\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can solve it through separation of variables,
+ or simply consider a stationary state:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial C_{Ga}}{\partial t}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then we need to solve:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We obtain the general solution:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{Ga}=A\ln\frac{r}{R_{0}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $A,R_{0}$
+\end_inset
+
+ are unknown constants.
+ Substitution of the boundary conditions leads to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\ln\frac{R_{d}}{R_{0}}=C_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\ln\frac{R_{\infty}}{R_{0}}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{0}=R_{\infty}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+A=\frac{C_{0}}{\ln\frac{R_{d}}{R_{\infty}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{Ga}=\frac{C_{0}}{\ln\frac{R_{d}}{R_{\infty}}}\ln\frac{r}{R_{\infty}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we need to find the flux from the droplet boundary:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J_{Ga}=-D_{Ga}\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)=\frac{C_{0}}{R_{d}\ln\frac{R_{d}}{R_{\infty}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J_{Ga}=-\frac{D_{Ga}C_{0}}{R_{d}\ln\frac{R_{d}}{R_{\infty}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The flux is positive (because it should move from the droplet in the direction 
+\begin_inset Formula $r\to R_{\infty}$
+\end_inset
+
+),
+ so we rewrite it as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J_{Ga}=\frac{D_{Ga}C_{0}}{R_{d}\ln\frac{R_{\infty}}{R_{d}}}>0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Change of Ga atom number then will be:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dN_{Ga}}{dt}=-2\pi R_{d}J_{Ga}=-2\pi\frac{D_{Ga}C_{0}}{\ln\frac{R_{\infty}}{R_{d}}}\label{eq:GaDepRate}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the other hand,
+ in our original problem we need to have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dN_{Ga}}{dt}=-2\pi\int_{0}^{R_{\infty}}F_{Ga}rdr
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\frac{dN_{Ga}}{dt}=2\pi\frac{C_{0}}{\tau_{Ga}}\int_{0}^{R_{\infty}}\exp\left(-\frac{\left(r-R_{d}\right)^{2}}{w^{2}}\right)rdr=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u=r-R_{d},\qquad r=u+R_{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=2\pi\frac{C_{0}}{\tau_{Ga}}\int_{-R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu+2\pi\frac{C_{0}R_{d}}{\tau_{Ga}}\int_{-R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Due to symmetry we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{-R_{d}}^{R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{-R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu=\int_{R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\frac{dN_{Ga}}{dt}=\pi\frac{C_{0}w^{2}}{\tau_{Ga}}\int_{\frac{R_{d}^{2}}{w^{2}}}^{\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}}\exp\left(-v\right)dv+2\pi\frac{C_{0}wR_{d}}{\tau_{Ga}}\int_{-\frac{R_{d}}{w}}^{\frac{R_{\infty}-R_{d}}{w}}\exp\left(-v^{2}\right)dv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+-\frac{dN_{Ga}}{dt}=\pi\frac{C_{0}w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)-\exp\left(-\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ \text{erf}\left(\frac{R_{\infty}-R_{d}}{w}\right)+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comparing the two fluxes gives us the following equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{D_{Ga}}{\ln\frac{R_{\infty}}{R_{d}}}=\frac{1}{2}\frac{w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)-\exp\left(-\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ \text{erf}\left(\frac{R_{\infty}-R_{d}}{w}\right)+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tau_{Ga}=\frac{w^{2}}{2D_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)-\exp\left(-\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ \text{erf}\left(\frac{R_{\infty}-R_{d}}{w}\right)+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $R_{\infty}\gg R_{d}$
+\end_inset
+
+,
+ then this equation simplifies:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tau_{Ga}=\frac{w^{2}}{2D_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $R_{d}\to0$
+\end_inset
+
+,
+ then naturally 
+\begin_inset Formula $\tau_{Ga}\to+\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $F_{Ga}\to0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+So we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{2D_{Ga}C_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)-\exp\left(-\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ \text{erf}\left(\frac{R_{\infty}-R_{d}}{w}\right)+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that if we define the variables:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x=\frac{R_{d}}{w},\qquad p=\frac{R_{\infty}}{w}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then the function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+q\left(x,p\right)=\exp\left(-x^{2}\right)-\exp\left(-\left(p-x\right)^{2}\right)+\sqrt{\pi}x\left\{ \text{erf}\left(p-x\right)+\text{erf}\left(x\right)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Can be approximated by a straight line:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+q\left(x,p\right)\approx a\left(p\right)x+b\left(p\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+b\left(p\right)\approx\frac{0.187}{p-3.156}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a\left(p\right)\approx3.545
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{2D_{Ga}C_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Droplet geometry
+\end_layout
+
+\begin_layout Standard
+Droplet height 
+\begin_inset Formula $H$
+\end_inset
+
+,
+ droplet contact angle 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Where 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is the contact angle,
+ which could be between 
+\begin_inset Formula $30^{\circ}$
+\end_inset
+
+ and 
+\begin_inset Formula $80^{\circ}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For Ga depletion rate we pick the easiest expression 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:GaDepRate"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dN_{Ga}}{dt}=-2\pi\frac{D_{Ga}C_{0}}{\ln\frac{R_{\infty}}{R_{d}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Form-factor:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+B\left(\theta\right)=\left(\frac{1}{\sin\theta}-\cot\theta\right)^{2}\left(\frac{2}{\sin\theta}+\cot\theta\right)=\frac{\left(1-\cos\theta\right)^{2}\left(2+\cos\theta\right)}{\sin^{3}\theta}=\frac{\left(1-2\cos\theta+\cos^{2}\theta\right)\left(2+\cos\theta\right)}{\sin^{3}\theta}=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{2-4\cos\theta+2\cos^{2}\theta+\cos\theta-2\cos^{2}\theta+\cos^{3}\theta}{\sin^{3}\theta}=\frac{2-3\cos\theta+\cos^{3}\theta}{\sin^{3}\theta}=\frac{2-3\cos\theta+\frac{3}{4}\cos\theta+\frac{1}{4}\cos3\theta}{\frac{3}{4}\sin\theta-\frac{1}{4}\sin3\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+B\left(\theta\right)=\frac{8-9\cos\theta+\cos3\theta}{3\sin\theta-\sin3\theta}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dR_{d}}{dt}=\frac{\Omega_{Ga}}{\pi B\left(\theta\right)R_{d}^{2}}\frac{dN_{Ga}}{dt}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\frac{R_{d}}{R_{\infty}}=-\frac{2\Omega_{Ga}D_{Ga}C_{0}}{B\left(\theta\right)R_{\infty}^{3}}\frac{R_{\infty}^{2}}{R_{d}^{2}\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{R_{d}}{R_{\infty}}=\rho<1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{2\Omega_{Ga}D_{Ga}C_{0}}{B\left(\theta\right)R_{\infty}^{3}}=\sigma
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d\rho}{dt}=\frac{\sigma}{\rho^{2}\ln\rho}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+But this ODE can be easily solved:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho^{2}\ln\rho d\rho=\sigma dt
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\rho^{3}}{9}\left(\ln\rho^{3}-1\right)=\sigma t+C
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The initial state is a known value:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho\left(0\right)=\rho_{0}<1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C=\frac{\rho_{0}^{3}}{9}\left(\ln\rho_{0}^{3}-1\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We obtain the following equation for droplet radius:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho^{3}\left(\ln\rho^{3}-1\right)=\rho_{0}^{3}\left(\ln\rho_{0}^{3}-1\right)+9\sigma t
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now this can be solved by Newton's method for each time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p\left(\rho\right)=\rho^{3}\left(3\ln\rho-1\right)-\rho_{0}^{3}\left(3\ln\rho_{0}-1\right)-9\sigma t
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p^{\prime}\left(\rho\right)=3\rho^{2}\left(\ln\rho^{3}-1\right)-3\rho^{2}=3\rho^{2}\left(3\ln\rho-2\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We take the first guess for 
+\begin_inset Formula $t_{i+1}$
+\end_inset
+
+ as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho_{i+1}^{(0)}=\rho_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then perform Newton iterations until the value stops changing:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho_{i+1}^{(k+1)}=\rho_{i+1}^{(k)}-\frac{\left(\rho_{i+1}^{(k)}\right)^{3}\left(3\ln\rho_{i+1}^{(k)}-1\right)-\rho_{0}^{3}\left(3\ln\rho_{0}-1\right)-9\sigma t_{i}}{3\left(\rho_{i+1}^{(k)}\right)^{2}\left(3\ln\rho_{i+1}^{(k)}-2\right)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that we should always have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+0<\rho<1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Finite difference scheme
+\end_layout
+
+\begin_layout Standard
+We introduce grid in the following form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+r_{j}=j\Delta r,\quad j=0,1,\ldots,N_{r},\quad N_{r}\Delta r=R_{\infty}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t_{i}=i\Delta t,\quad i=0,1,\ldots,N_{t},\quad N_{t}\Delta t=T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Time limit 
+\begin_inset Formula $T$
+\end_inset
+
+ should be chosen from the condition of total droplet depletion 
+\begin_inset Formula $R_{d}\left(T\right)\leq a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\color red
+We can use Euler's method:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dx}{dt}=f\longrightarrow\frac{x_{i+1}-x_{i}}{\Delta t}=f_{i}\longrightarrow x_{i+1}=x_{i}+\Delta tf_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will use trapezoidal rule:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dx}{dt}=f\longrightarrow\frac{x_{i+1}-x_{i}}{\Delta t}=\frac{f_{i}+f_{i+1}}{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the nonlinear term 
+\begin_inset Formula $C_{Ga}^{i+1,j}C_{As}^{i+1,j}$
+\end_inset
+
+ we approximate it through:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}^{i+1,j}C_{As}^{i+1,j}=C_{Ga}^{i,j}C_{As}^{i,j}+\Delta t\cdot\delta\left(C_{Ga}C_{As}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}^{i+1,j}C_{As}^{i+1,j}=\left(C_{Ga}^{i,j}+\Delta t\cdot\delta C_{Ga}\right)\left(C_{As}^{i,j}+\Delta t\cdot\delta C_{As}\right)=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=C_{Ga}^{i,j}C_{As}^{i,j}+\Delta t\left(C_{Ga}^{i,j}\delta C_{As}+C_{As}^{i,j}\delta C_{Ga}\right)+\Delta t^{2}\delta C_{Ga}\delta C_{As}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\left(C_{Ga}C_{As}\right)=C_{Ga}^{i,j}\delta C_{As}+C_{As}^{i,j}\delta C_{Ga}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}^{i+1,j}C_{As}^{i+1,j}=C_{Ga}^{i,j}C_{As}^{i,j}+\Delta t\left(C_{Ga}^{i,j}\delta C_{As}+C_{As}^{i,j}\delta C_{Ga}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{2}C_{Ga}^{i,j}C_{As}^{i+1,j}+\frac{1}{2}C_{Ga}^{i+1,j}C_{As}^{i,j}=C_{Ga}^{i,j}C_{As}^{i,j}+\frac{\Delta t}{2}\left(C_{Ga}^{i,j}\delta C_{As}+C_{As}^{i,j}\delta C_{Ga}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However,
+ in this case we remember that 
+\begin_inset Formula $\delta C_{As}=\frac{1}{\Delta t}\left(C_{As}^{i+1,j}-C_{As}^{i,j}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{As}=\frac{1}{\Delta t}\left(C_{As}^{i+1,j}-C_{As}^{i,j}\right)$
+\end_inset
+
+,
+ so we rearrange as follows:
+\end_layout
+
+\begin_layout Standard
+So we need to take:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}^{i+1,j}C_{As}^{i+1,j}\approx\frac{1}{2}C_{Ga}^{i,j}C_{As}^{i+1,j}+\frac{1}{2}C_{Ga}^{i+1,j}C_{As}^{i,j}+\frac{1}{2}\left(C_{Ga}^{i,j}C_{As}^{i+1,j}+C_{As}^{i,j}C_{Ga}^{i+1,j}\right)-C_{Ga}^{i,j}C_{As}^{i,j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So the correct approximation up to second order in 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ will be:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{equation}
+C_{Ga}^{i+1,j}C_{As}^{i+1,j}\approx C_{Ga}^{i,j}C_{As}^{i+1,j}+C_{Ga}^{i+1,j}C_{As}^{i,j}-C_{Ga}^{i,j}C_{As}^{i,j}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Note that the full term according to our scheme should be:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\frac{1}{2}\left(C_{Ga}^{i+1,j}C_{As}^{i+1,j}+C_{Ga}^{i,j}C_{As}^{i,j}\right)=\frac{1}{2}\left(C_{Ga}^{i,j}C_{As}^{i+1,j}+C_{Ga}^{i+1,j}C_{As}^{i,j}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finite difference equations should look like:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{for }j=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}^{i+1,0}-\frac{\Delta t}{2}\left(\frac{D_{Ga}}{\Delta r^{2}}\left[4C_{Ga}^{i+1,1}-4C_{Ga}^{i+1,0}\right]-k_{r}C_{Ga}^{i+1,0}C_{As}^{i,0}-k_{r}C_{Ga}^{i,0}C_{As}^{i+1,0}\right)=C_{Ga}^{i,0}+\frac{\Delta t}{2}\left(\frac{D_{Ga}}{\Delta r^{2}}\left[4C_{Ga}^{i,1}-4C_{Ga}^{i,0}\right]+F_{Ga}^{i+1,0}+F_{Ga}^{i,0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{As}^{i+1,0}-\frac{\Delta t}{2}\left(\frac{D_{As}}{\Delta r^{2}}\left[4C_{As}^{i+1,1}-4C_{As}^{i+1,0}\right]-\frac{C_{As}^{i+1,0}}{\tau_{As}}-k_{r}C_{Ga}^{i+1,0}C_{As}^{i,0}-k_{r}C_{Ga}^{i,0}C_{As}^{i+1,0}\right)=C_{As}^{i,0}+\frac{\Delta t}{2}\left(\frac{D_{As}}{\Delta r^{2}}\left[4C_{As}^{i,1}-4C_{As}^{i,0}\right]-\frac{C_{As}^{i,0}}{\tau_{As}}+2F_{As}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{for }j>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{multline*}
+C_{Ga}^{i+1,j}-\frac{\Delta t}{2}\left(\frac{D_{Ga}}{\Delta r^{2}}\left[\left(1+\frac{1}{2j}\right)C_{Ga}^{i+1,j+1}-2C_{Ga}^{i+1,j}+\left(1-\frac{1}{2j}\right)C_{Ga}^{i+1,j-1}\right]-k_{r}\left(C_{Ga}^{i,j}C_{As}^{i+1,j}+C_{Ga}^{i+1,j}C_{As}^{i,j}\right)\right)=\\
+=C_{Ga}^{i,j}+\frac{\Delta t}{2}\left(\frac{D_{Ga}}{\Delta r^{2}}\left[\left(1+\frac{1}{2j}\right)C_{Ga}^{i,j+1}-2C_{Ga}^{i,j}+\left(1-\frac{1}{2j}\right)C_{Ga}^{i,j-1}\right]+F_{Ga}^{i+1,j}+F_{Ga}^{i,j}\right)
+\end{multline*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{multline*}
+C_{As}^{i+1,j}-\frac{\Delta t}{2}\left(\frac{D_{As}}{\Delta r^{2}}\left[\left(1+\frac{1}{2j}\right)C_{As}^{i+1,j+1}-2C_{As}^{i+1,j}+\left(1-\frac{1}{2j}\right)C_{As}^{i+1,j-1}\right]-\frac{C_{As}^{i+1,j}}{\tau_{As}}-k_{r}\left(C_{Ga}^{i,j}C_{As}^{i+1,j}+C_{Ga}^{i+1,j}C_{As}^{i,j}\right)\right)=\\
+=C_{As}^{i,j}+\frac{\Delta t}{2}\left(\frac{D_{As}}{\Delta r^{2}}\left[\left(1+\frac{1}{2j}\right)C_{As}^{i,j+1}-2C_{As}^{i,j}+\left(1-\frac{1}{2j}\right)C_{As}^{i,j-1}\right]-\frac{C_{As}^{i,j}}{\tau_{As}}+2F_{As}\right)
+\end{multline*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Introducing parameters:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{D_{Ga}\Delta t}{\Delta r^{2}}=\alpha
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{D_{As}\Delta t}{\Delta r^{2}}=\beta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{k_{r}\Delta t}{2}=\omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{C_{0}\Delta r^{2}}{w^{2}}=\eta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\Delta t}{2}F_{Ga}^{i,j}=\frac{D_{Ga}\Delta tC_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(j\Delta r-R_{d}^{i}\right)^{2}}{w^{2}}\right)}{\left[\exp\left(-\frac{R_{d}^{i2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}^{i}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}^{i}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}^{i}}}=\alpha\eta f_{i,j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\Delta t}{2}F_{As}=g
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\Delta t}{2\tau_{As}}=\gamma
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rewrite equations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{for }j=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}^{i+1,0}-2\alpha\left[C_{Ga}^{i+1,1}-C_{Ga}^{i+1,0}\right]+\omega\left(C_{Ga}^{i+1,0}C_{As}^{i,0}+C_{Ga}^{i,0}C_{As}^{i+1,0}\right)=C_{Ga}^{i,0}+\alpha\left(2\left[C_{Ga}^{i,1}-C_{Ga}^{i,0}\right]+\eta f_{i,0}+\eta f_{i+1,0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{As}^{i+1,0}-2\beta\left[C_{As}^{i+1,1}-C_{As}^{i+1,0}\right]+\gamma C_{As}^{i+1,0}+\omega\left(C_{Ga}^{i+1,0}C_{As}^{i,0}+C_{Ga}^{i,0}C_{As}^{i+1,0}\right)=C_{As}^{i,0}+\left(2\beta\left[C_{As}^{i,1}-C_{As}^{i,0}\right]-\gamma C_{As}^{i,0}+2g\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{for }j>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{multline*}
+C_{Ga}^{i+1,j}-\alpha\left[\frac{1}{2}\left(1+\frac{1}{2j}\right)C_{Ga}^{i+1,j+1}-C_{Ga}^{i+1,j}+\frac{1}{2}\left(1-\frac{1}{2j}\right)C_{Ga}^{i+1,j-1}\right]+\omega\left(C_{Ga}^{i,j}C_{As}^{i+1,j}+C_{Ga}^{i+1,j}C_{As}^{i,j}\right)=\\
+=C_{Ga}^{i,j}+\alpha\left(\left[\frac{1}{2}\left(1+\frac{1}{2j}\right)C_{Ga}^{i,j+1}-C_{Ga}^{i,j}+\frac{1}{2}\left(1-\frac{1}{2j}\right)C_{Ga}^{i,j-1}\right]+\eta f_{i+1,j}+\eta f_{i,j}\right)
+\end{multline*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{multline*}
+C_{As}^{i+1,j}-\beta\left[\frac{1}{2}\left(1+\frac{1}{2j}\right)C_{As}^{i+1,j+1}-C_{As}^{i+1,j}+\frac{1}{2}\left(1-\frac{1}{2j}\right)C_{As}^{i+1,j-1}\right]+\gamma C_{As}^{i+1,j}+\omega\left(C_{Ga}^{i,j}C_{As}^{i+1,j}+C_{Ga}^{i+1,j}C_{As}^{i,j}\right)=\\
+=C_{As}^{i,j}+\left(\beta\left[\frac{1}{2}\left(1+\frac{1}{2j}\right)C_{As}^{i,j+1}-C_{As}^{i,j}+\frac{1}{2}\left(1-\frac{1}{2j}\right)C_{As}^{i,j-1}\right]-\gamma C_{As}^{i,j}+2g\right)
+\end{multline*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{for }j=N_{r}-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{multline*}
+C_{Ga}^{i+1,j}-\alpha\left[-C_{Ga}^{i+1,j}+\frac{1}{2}\left(1-\frac{1}{2j}\right)C_{Ga}^{i+1,j-1}\right]+\omega\left(C_{Ga}^{i,j}C_{As}^{i+1,j}+C_{Ga}^{i+1,j}C_{As}^{i,j}\right)=\\
+=C_{Ga}^{i,j}+\alpha\left(\left[-C_{Ga}^{i,j}+\frac{1}{2}\left(1-\frac{1}{2j}\right)C_{Ga}^{i,j-1}\right]+\eta f_{i+1,j}+\eta f_{i,j}\right)
+\end{multline*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{multline*}
+C_{As}^{i+1,j}-\beta\left[-C_{As}^{i+1,j}+\frac{1}{2}\left(1-\frac{1}{2j}\right)C_{As}^{i+1,j-1}\right]+\gamma C_{As}^{i+1,j}+\omega\left(C_{Ga}^{i,j}C_{As}^{i+1,j}+C_{Ga}^{i+1,j}C_{As}^{i,j}\right)=\\
+=C_{As}^{i,j}+\left(\beta\left[\frac{1}{2}\left(1+\frac{1}{2j}\right)\frac{\beta g}{\gamma}-C_{As}^{i,j}+\frac{1}{2}\left(1-\frac{1}{2j}\right)C_{As}^{i,j-1}\right]-\gamma C_{As}^{i,j}+2g\right)
+\end{multline*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Introducing an unknown vector and the matrix of the system:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{ccccccccccc}
+1+2\alpha+\omega C_{As}^{i,0} & \omega C_{Ga}^{i,0} & -2\alpha & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & 0\\
+\omega C_{As}^{i,0} & 1+2\beta+\gamma+\omega C_{Ga}^{i,0} & 0 & -2\beta & 0 & 0 & \cdots & 0 & 0 & 0 & 0\\
+-\frac{1}{4}\alpha & 0 & 1+\alpha+\omega C_{As}^{i,1} & \omega C_{Ga}^{i,1} & -\frac{3}{4}\alpha & 0 & \cdots & 0 & 0 & 0 & 0\\
+0 & -\frac{1}{4}\beta & \omega C_{As}^{i,1} & 1+\beta+\gamma+\omega C_{Ga}^{i,1} & 0 & -\frac{3}{4}\beta & \cdots & 0 & 0 & 0 & 0\\
+0\\
+0\\
+\vdots\\
+0\\
+0\\
+0\\
+0
+\end{array}\right]\left[\begin{array}{c}
+C_{Ga}^{i+1,0}\\
+C_{As}^{i+1,0}\\
+C_{Ga}^{i+1,1}\\
+C_{As}^{i+1,1}\\
+C_{Ga}^{i+1,2}\\
+C_{As}^{i+1,2}\\
+\vdots\\
+C_{Ga}^{i+1,N_{r}-2}\\
+C_{As}^{i+1,N_{r}-2}\\
+C_{Ga}^{i+1,N_{r}-1}\\
+C_{As}^{i+1,N_{r}-1}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Explanation for 
+\begin_inset Formula $j=0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Delta F=\frac{\partial^{2}F}{\partial x^{2}}+\frac{\partial^{2}F}{\partial y^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\Delta F\right)_{j_{x}j_{y}}=\frac{F_{j_{x}-1,j_{y}}-2F_{j_{x}j_{y}}+F_{j_{x}+1,j_{y}}}{\Delta x^{2}}+\frac{F_{j_{x},j_{y}-1}-2F_{j_{x}j_{y}}+F_{j_{x},j_{y}+1}}{\Delta y^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Delta x=\Delta y$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\Delta F\right)_{j_{x}j_{y}}=\frac{F_{j_{x}-1,j_{y}}+F_{j_{x},j_{y}-1}+F_{j_{x}+1,j_{y}}+F_{j_{x},j_{y}+1}-4F_{j_{x}j_{y}}}{\Delta x^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Boundary conditions for 
+\begin_inset Formula $r=R_{\infty}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}^{i,N_{r}}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{As}^{i,N_{r}}=F_{As}\tau_{As}=\frac{\beta g}{2\gamma}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\beta}{2}F_{As}\tau_{As}=\frac{\beta}{2}\Delta tF_{As}\frac{\tau_{As}}{\Delta t}=\frac{\beta g}{2\gamma}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Initial conditions for 
+\begin_inset Formula $r\in\left[0,R_{\infty}\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}\left(r,0\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{As}\left(r,0\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Numerical values
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Units
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k_{r}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cm
+\begin_inset Formula $^{2}$
+\end_inset
+
+/s
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+0.565
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Omega_{GaAs}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+\begin_inset Formula $a^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Omega_{Ga}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.26\cdot10^{14}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cm
+\begin_inset Formula $^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{Ga}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eV
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{As}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eV
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{a}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eV
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Numerical values of the parameters
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Scaling the variables
+\end_layout
+
+\begin_layout Standard
+Let's set the distance variable in such a way that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Omega_{GaAs}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then concentrations are per lattice cell.
+ Droplet radius is measured in cells.
+ Flux is per cell per unit time.
+\end_layout
+
+\begin_layout Standard
+Time units we set in such a way that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\nu\exp\left(-\frac{E_{Ga}}{kT}\right)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D_{Ga}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D_{As}=\exp\left(-\frac{E_{As}-E_{Ga}}{kT}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau_{As}=\exp\left(\frac{E_{a}-E_{Ga}}{kT}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Numerical values
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Units
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k_{r}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cell
+\begin_inset Formula $^{2}$
+\end_inset
+
+/time
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cell
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Omega_{GaAs}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cell
+\begin_inset Formula $^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Omega_{Ga}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cell
+\begin_inset Formula $^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cell
+\begin_inset Formula $^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{Ga}-E_{As}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eV
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{a}-E_{Ga}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eV
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Numerical values of the parameters
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Z.
+ Y.
+ Zhou,
+ C.
+ X.
+ Zheng,
+ W.
+ X.
+ Tang.
+ Origin of Quantum Ring Formation During Droplet Epitaxy.
+ PRL 111,
+ 036102 (2013)
+\end_layout
+
+\end_body
+\end_document
