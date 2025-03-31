@@ -87,8 +87,6 @@
 \begin_body
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Formula 
 \begin{equation}
 \frac{C_{Ga}^{i+1,j}-C_{Ga}^{i,j}}{\Delta t}=D_{Ga}\frac{C_{Ga}^{i,j+1}-2C_{Ga}^{i,j}+C_{Ga}^{i,j-1}}{\Delta r^{2}}+F_{Ga}^{i,j}-k_{r}C_{Ga}^{i,j}C_{As}^{i,j}
@@ -156,7 +154,7 @@ C_{As}^{1,j}=F_{As}\Delta t
 \lang english
 \begin_inset Formula 
 \[
-\text{then i=1 for j in (0, N) and by analogy:  }
+\text{then i=1 for j in (0, N) and by analogy: }
 \]
 
 \end_inset
