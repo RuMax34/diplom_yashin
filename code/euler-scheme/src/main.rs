@@ -90,7 +90,6 @@ struct Newton {
     max_iterations: usize,
     tolerance: f64,
     current_value: f64,
-    next_value: f64,
     answer: f64,
     actual_iterations: usize,
     actual_error: f64,
@@ -102,7 +101,6 @@ impl Newton {
             max_iterations,
             tolerance,
             current_value: 0.0,
-            next_value: 0.0,
             answer: 0.0,
             actual_iterations: 0,
             actual_error: 0.0,
@@ -112,7 +110,7 @@ impl Newton {
         self.current_value = initial_guess;
         for it in 0..self.max_iterations {
             self.actual_error = function_ratio(self.current_value);
-            self.next_value = self.current_value - self.actual_error;
+            self.current_value = self.current_value - self.actual_error;
             self.actual_error = self.actual_error.abs();
             self.actual_iterations = it+1;
             self.answer = self.current_value;
@@ -134,11 +132,12 @@ struct ExtraParameters {
     upsilon: f64,
 }
 
-struct Grid {
+struct Scheme {
     distance_step_dr: f64,
     time_step_dt: f64,
     number_of_points_r: usize,
     number_of_time_steps: usize,
+    number_of_snapshots: usize,
     r_points: Vec<f64>,
     t_moments: Vec<f64>,
 }
