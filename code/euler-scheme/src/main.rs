@@ -1,22 +1,76 @@
 mod file;
 mod plot;
 
-struct Variables {
+struct GrowthConditions {
     temperature_celsius: f64,
     temperature_ev: f64, // kT, eV
     arsenic_flux: f64, // per nm^2 ?
-    initial_radius: f64, // in nm ?
 }
 
-struct InitialParameters {
+impl GrowthConditions {
+    
+}
+
+struct Crystal {
     lattice_parameter_a0: f64,
     lattice_parameter_h0: f64,
-    gallium_molecular_volume: f64,
+    max_concentration_c0: f64,
     arsenic_diffusion_energy: f64, // EAs-EGa, eV
     arsenic_desorption_energy: f64, // Ea-EGa, eV
     reaction_coefficient_kr: f64, // for k1*CGa*CAs
-    ga_flux_width_w: f64,
 }
+
+struct SurfaceAtoms {
+    previous_concentration: Vec<f64>, // distance dependence
+    current_concentration: Vec<f64>, // distance dependence
+    diffusion_coefficient: f64,
+    current_source_flux: Vec<f64>,
+    desorption_time: f64,
+    infinity_concentration: f64,
+}
+
+struct Droplet {
+    gallium_molecular_volume: f64,
+    contact_angle_theta: f64,
+    form_factor_b: f64,
+    initial_radius: f64, // in nm ?
+    ga_flux_width_w: f64,
+    radius_infinity: f64,
+    current_radius: Vec<f64>, // time dependence
+    scaled_current_radius: Vec<f64>,
+    number_of_iterations: Vec<f64>, // time dependence
+    sigma_parameter: f64,
+    radius_equation_parameter: f64,
+    final_time: f64, // time need for total droplet depletion
+}
+
+struct Newton {
+    max_iterations: usize,
+    tolerance: f64,
+    actual_iterations: usize,
+}
+
+struct ExtraParameters {
+    alpha: f64,
+    beta: f64,
+    gamma: f64,
+    epsilon: f64,
+    eta: f64,
+    kappa: f64,
+    omega: f64,
+    upsilon: f64,
+}
+
+struct Grid {
+    distance_step_dr: f64,
+    time_step_dt: f64,
+    number_of_points_r: usize,
+    number_of_time_steps: usize,
+    r_points: Vec<f64>,
+    t_moments: Vec<f64>,
+}
+
+
 
 fn main() {
     println!("Hello, world!");

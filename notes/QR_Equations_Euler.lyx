@@ -1392,7 +1392,18 @@ C_{0}k_{r}\Delta t=\omega
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\frac{\Delta tF_{Ga}^{i,j}}{C_{0}}=\frac{2\Delta tD_{Ga}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}^{i}\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}^{i}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}^{i}}}=2\alpha\eta f_{i,j}
+\frac{\Delta tF_{Ga}^{i,j}}{C_{0}}=\frac{2\Delta tD_{Ga}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}^{i}\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}^{i}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}^{i}}}=2\alpha\eta f_{i,j}=\upsilon f_{i,j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+2\alpha\eta=\upsilon
 \]
 
 \end_inset
@@ -1414,7 +1425,7 @@ f_{i,j}=\frac{\exp\left(-\frac{\left(r-R_{d}^{i}\right)^{2}}{w^{2}}\right)}{\lef
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\frac{\Delta tF_{As}}{C_{0}}=g
+\frac{\Delta tF_{As}}{C_{0}}=\kappa
 \]
 
 \end_inset
