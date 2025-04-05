@@ -1,0 +1,509 @@
+%% LyX 2.4.0~RC3 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[landscape]{geometry}
+\geometry{verbose,lmargin=2cm,rmargin=2cm}
+\usepackage{color}
+\usepackage{amstext}
+\usepackage{amssymb}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{Quantum ring growth simulation algorithm}
+\maketitle
+
+\section{Main equations}
+
+Diffusion equations for Ga and As. $R_{d}\left(t\right)$ is the droplet
+radius.
+
+\begin{equation}
+\frac{\partial C_{Ga}}{\partial t}=D_{Ga}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)+F_{Ga}\left(r,t\right)-k_{r}C_{Ga}C_{As}
+\end{equation}
+
+\begin{equation}
+\frac{\partial C_{As}}{\partial t}=D_{As}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{As}}{\partial r}\right)+F_{As}-k_{r}C_{Ga}C_{As}-\frac{C_{As}}{\tau_{As}}
+\end{equation}
+
+Parameters in detail
+
+\begin{equation}
+D_{Ga}=a_{0}^{2}\nu\exp\left(-\frac{E_{Ga}}{kT}\right)
+\end{equation}
+
+\begin{equation}
+D_{As}=a_{0}^{2}\nu\exp\left(-\frac{E_{As}}{kT}\right)
+\end{equation}
+
+Arsenic desorption time:
+
+\begin{equation}
+\tau_{As}=\frac{1}{\nu}\exp\left(\frac{E_{a}}{kT}\right)
+\end{equation}
+
+\begin{equation}
+\nu=\frac{kT}{\pi\hbar}
+\end{equation}
+
+
+\subsection{Numerical values}
+
+Let's set the distance variable in such a way that:
+
+\[
+a_{0}=1
+\]
+
+\[
+\Omega_{GaAs}=1
+\]
+
+Then concentrations are per lattice cell. Droplet radius is measured
+in cells. Flux is per cell per unit time.
+
+Time units we set in such a way that:
+
+\[
+\nu\exp\left(-\frac{E_{Ga}}{kT}\right)=1
+\]
+
+\[
+D_{Ga}=1
+\]
+
+\[
+D_{As}=\exp\left(-\frac{E_{As}-E_{Ga}}{kT}\right)
+\]
+
+\[
+\tau_{As}=\exp\left(\frac{E_{a}-E_{Ga}}{kT}\right)
+\]
+
+\begin{table}
+\begin{centering}
+\begin{tabular}{|c|c|c|}
+\hline 
+Parameter & Value & Units\tabularnewline
+\hline 
+\hline 
+$k_{r}$ & 0.1 & cell$^{2}$/time\tabularnewline
+\hline 
+$a_{0}$ & 1 & cell\tabularnewline
+\hline 
+$h_{0}$ & 1 & cell\tabularnewline
+\hline 
+$\Omega_{GaAs}$ & 1 & cell$^{3}$\tabularnewline
+\hline 
+$\Omega_{Ga}$ & 0.1 & cell$^{3}$\tabularnewline
+\hline 
+$C_{0}$ & 2 & cell$^{-2}$\tabularnewline
+\hline 
+$E_{Ga}-E_{As}$ & 0 & eV\tabularnewline
+\hline 
+$E_{a}-E_{Ga}$ & 0.1 & eV\tabularnewline
+\hline 
+\end{tabular}
+\par\end{centering}
+\caption{Numerical values of the parameters}
+\end{table}
+
+
+\subsection{Boundary and initial conditions}
+
+Boundary conditions for $r\in\left[0,R_{\infty}\right]$:
+
+\[
+C_{Ga}\left(R_{\infty},t\right)=0
+\]
+
+\[
+C_{As}\left(R_{\infty},t\right)=F_{As}\tau_{As}
+\]
+
+Initial conditions for $r\in\left[0,R_{\infty}\right]$:
+
+\[
+C_{Ga}\left(r,0\right)=0
+\]
+
+\[
+C_{As}\left(r,0\right)=0
+\]
+
+
+\section{Finding the Ga flux}
+
+We require an additional concentration of Ga atoms at the droplet
+boundary according to:
+
+\begin{equation}
+\tilde{C}_{Ga}\left(r,t\right)=C_{0}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
+\end{equation}
+
+This leads to an additional flux:
+
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{C_{0}}{\tau_{Ga}\left(t\right)}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
+\end{equation}
+
+Which is our only source of Ga atoms! To find the parameter $\tau_{Ga}$
+($w$ is a free constant value), we need to account for the loss of
+Ga atoms. In a lengthy derivation, which we omit here, we obtained:
+
+\begin{equation}
+\tau_{Ga}=\frac{w^{2}}{2D_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)-\exp\left(-\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ \text{erf}\left(\frac{R_{\infty}-R_{d}}{w}\right)+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}
+\end{equation}
+
+If $R_{\infty}\gg R_{d}$, then this equation simplifies:
+
+\begin{equation}
+\tau_{Ga}=\frac{w^{2}}{2D_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}
+\end{equation}
+
+When $R_{d}\to0$, then naturally $\tau_{Ga}\to+\infty$ and $F_{Ga}\to0$.
+
+So we obtain:
+
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{2D_{Ga}C_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)-\exp\left(-\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ \text{erf}\left(\frac{R_{\infty}-R_{d}}{w}\right)+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+Note that if we define the variables:
+
+\[
+x=\frac{R_{d}}{w},\qquad p=\frac{R_{\infty}}{w}
+\]
+
+Then the function:
+
+\[
+q\left(x,p\right)=\exp\left(-x^{2}\right)-\exp\left(-\left(p-x\right)^{2}\right)+\sqrt{\pi}x\left\{ \text{erf}\left(p-x\right)+\text{erf}\left(x\right)\right\} 
+\]
+
+Can be approximated by a straight line:
+
+\[
+q\left(x,p\right)\approx a\left(p\right)x+b\left(p\right)
+\]
+
+Where:
+
+\[
+b\left(p\right)\approx\frac{0.187}{p-3.156}
+\]
+
+\[
+a\left(p\right)\approx3.545
+\]
+
+So we obtain:
+
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{2D_{Ga}C_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+
+\section{Droplet geometry}
+
+Droplet height $H$, droplet contact angle $\theta$. Where $\theta$
+is the contact angle, which could be between $30^{\circ}$ and $80^{\circ}$.
+
+Form-factor:
+
+\begin{equation}
+B\left(\theta\right)=\frac{8-9\cos\theta+\cos3\theta}{3\sin\theta-\sin3\theta}
+\end{equation}
+
+\begin{equation}
+\frac{dR_{d}}{dt}=\frac{\Omega_{Ga}}{\pi B\left(\theta\right)R_{d}^{2}}\frac{dN_{Ga}}{dt}
+\end{equation}
+
+\begin{equation}
+\frac{d}{dt}\frac{R_{d}}{R_{\infty}}=-\frac{2\Omega_{Ga}D_{Ga}C_{0}}{B\left(\theta\right)R_{\infty}^{3}}\frac{R_{\infty}^{2}}{R_{d}^{2}\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+\[
+\frac{R_{d}}{R_{\infty}}=\rho<1
+\]
+
+\begin{equation}
+\frac{2\Omega_{Ga}D_{Ga}C_{0}}{B\left(\theta\right)R_{\infty}^{3}}=\sigma
+\end{equation}
+
+\begin{equation}
+\frac{d\rho}{dt}=\frac{\sigma}{\rho^{2}\ln\rho}
+\end{equation}
+
+But this ODE can be easily solved:
+
+\begin{equation}
+\rho^{2}\ln\rho d\rho=\sigma dt
+\end{equation}
+
+\begin{equation}
+\frac{\rho^{3}}{9}\left(\ln\rho^{3}-1\right)=\sigma t+C
+\end{equation}
+
+The initial state is a known value:
+
+\begin{equation}
+\rho\left(0\right)=\rho_{0}<1
+\end{equation}
+
+\begin{equation}
+C=\frac{\rho_{0}^{3}}{9}\left(\ln\rho_{0}^{3}-1\right)
+\end{equation}
+
+We obtain the following equation for droplet radius:
+
+\begin{equation}
+\rho^{3}\left(\ln\rho^{3}-1\right)=\rho_{0}^{3}\left(\ln\rho_{0}^{3}-1\right)+9\sigma t
+\end{equation}
+
+Now this can be solved by Newton's method for each time.
+
+\begin{equation}
+p\left(\rho\right)=\rho^{3}\left(3\ln\rho-1\right)-\rho_{0}^{3}\left(3\ln\rho_{0}-1\right)-9\sigma t
+\end{equation}
+
+\begin{equation}
+p^{\prime}\left(\rho\right)=3\rho^{2}\left(\ln\rho^{3}-1\right)-3\rho^{2}=3\rho^{2}\left(3\ln\rho-2\right)
+\end{equation}
+
+We take the first guess for $t_{i+1}$ as:
+
+\[
+\rho_{i+1}^{(0)}=\rho_{i}
+\]
+
+Then perform Newton iterations until the value stops changing:
+
+\begin{equation}
+\rho_{i+1}^{(k+1)}=\rho_{i+1}^{(k)}-\frac{\left(\rho_{i+1}^{(k)}\right)^{3}\left(3\ln\rho_{i+1}^{(k)}-1\right)-\rho_{0}^{3}\left(3\ln\rho_{0}-1\right)-9\sigma t_{i}}{3\left(\rho_{i+1}^{(k)}\right)^{2}\left(3\ln\rho_{i+1}^{(k)}-2\right)}
+\end{equation}
+
+Note that we should always have:
+
+\begin{equation}
+0<\rho<1
+\end{equation}
+
+
+\section{Finite difference scheme}
+
+We introduce grid in the following form:
+
+\[
+r_{j}=j\Delta r,\quad j=0,1,\ldots,N_{r},\quad N_{r}\Delta r=R_{\infty}
+\]
+
+\[
+t_{i}=i\Delta t,\quad i=0,1,\ldots,N_{t},\quad N_{t}\Delta t=T
+\]
+
+Time limit $T$ should be chosen from the condition of total droplet
+depletion $R_{d}\left(T\right)\leq a$.
+
+\subsection{Euler scheme}
+
+\textcolor{red}{We can use Euler's method:}
+
+\[
+\frac{dx}{dt}=f\longrightarrow\frac{x_{i+1}-x_{i}}{\Delta t}=f_{i}\longrightarrow x_{i+1}=x_{i}+\Delta tf_{i}
+\]
+
+The equations become:
+
+\[
+\text{for }j=0
+\]
+
+\[
+C_{Ga}^{i+1,0}=C_{Ga}^{i,0}+\Delta t\left(\frac{D_{Ga}}{\Delta r^{2}}\left[4C_{Ga}^{i,1}-4C_{Ga}^{i,0}\right]+F_{Ga}^{i,0}-k_{r}C_{Ga}^{i,0}C_{As}^{i,0}\right)
+\]
+
+\[
+C_{As}^{i+1,0}=C_{As}^{i,0}+\Delta t\left(\frac{D_{As}}{\Delta r^{2}}\left[4C_{As}^{i,1}-4C_{As}^{i,0}\right]-\frac{C_{As}^{i,0}}{\tau_{As}}+F_{As}-k_{r}C_{Ga}^{i,0}C_{As}^{i,0}\right)
+\]
+
+\[
+\text{for }j\in\left[1,N_{r}\right]
+\]
+
+\[
+C_{Ga}^{i+1,j}=C_{Ga}^{i,j}+\Delta t\left(\frac{D_{Ga}}{\Delta r^{2}}\left[\left(1+\frac{1}{2j}\right)C_{Ga}^{i,j+1}-2C_{Ga}^{i,j}+\left(1-\frac{1}{2j}\right)C_{Ga}^{i,j-1}\right]+F_{Ga}^{i,j}-k_{r}C_{Ga}^{i,j}C_{As}^{i,j}\right)
+\]
+
+\[
+C_{As}^{i+1,j}=C_{As}^{i,j}+\Delta t\left(\frac{D_{As}}{\Delta r^{2}}\left[\left(1+\frac{1}{2j}\right)C_{As}^{i,j+1}-2C_{As}^{i,j}+\left(1-\frac{1}{2j}\right)C_{As}^{i,j-1}\right]-\frac{C_{As}^{i,j}}{\tau_{As}}+F_{As}-k_{r}C_{Ga}^{i,j}C_{As}^{i,j}\right)
+\]
+
+\[
+\text{for }j=N_{r}-1
+\]
+
+\[
+C_{Ga}^{i,N_{r}}=0,\qquad C_{As}^{i,N_{r}}=F_{As}\tau_{As}
+\]
+
+We can divide all the equations by $C_{0}$ and further assume that
+we are measuring all concentrations in units of $C_{0}$.
+
+\[
+C_{Ga}^{i+1,j}=C_{Ga}^{i,j}+\Delta t\left(\frac{D_{Ga}}{\Delta r^{2}}\left[\left(1+\frac{1}{2j}\right)C_{Ga}^{i,j+1}-2C_{Ga}^{i,j}+\left(1-\frac{1}{2j}\right)C_{Ga}^{i,j-1}\right]+\frac{F_{Ga}^{i,j}}{C_{0}}-C_{0}k_{r}C_{Ga}^{i,j}C_{As}^{i,j}\right)
+\]
+
+\[
+C_{As}^{i+1,j}=C_{As}^{i,j}+\Delta t\left(\frac{D_{As}}{\Delta r^{2}}\left[\left(1+\frac{1}{2j}\right)C_{As}^{i,j+1}-2C_{As}^{i,j}+\left(1-\frac{1}{2j}\right)C_{As}^{i,j-1}\right]-\frac{C_{As}^{i,j}}{\tau_{As}}+\frac{F_{As}}{C_{0}}-C_{0}k_{r}C_{Ga}^{i,j}C_{As}^{i,j}\right)
+\]
+
+Introducing parameters:
+
+\[
+\frac{D_{Ga}\Delta t}{\Delta r^{2}}=\alpha
+\]
+\[
+\frac{D_{As}\Delta t}{\Delta r^{2}}=\beta
+\]
+
+\[
+C_{0}k_{r}\Delta t=\omega
+\]
+
+\[
+\frac{\Delta r^{2}}{w^{2}}=\eta
+\]
+
+\[
+\frac{\Delta tF_{Ga}^{i,j}}{C_{0}}=\frac{2\Delta tD_{Ga}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}^{i}\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}^{i}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}^{i}}}=2\alpha\eta f_{i,j}=\upsilon f_{i,j}
+\]
+
+\[
+2\alpha\eta=\upsilon
+\]
+
+\[
+f_{i,j}=\frac{\exp\left(-\frac{\left(r-R_{d}^{i}\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}^{i}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}^{i}}}
+\]
+
+\[
+\frac{\Delta tF_{As}}{C_{0}}=\kappa
+\]
+
+\[
+\frac{\Delta t}{\tau_{As}}=\gamma
+\]
+
+\[
+\frac{F_{As}\tau_{As}}{C_{0}}=\epsilon
+\]
+
+The equations become:
+
+\[
+\text{for }j=0
+\]
+
+\[
+C_{Ga}^{i+1,0}=C_{Ga}^{i,0}+4\alpha\left[C_{Ga}^{i,1}-C_{Ga}^{i,0}\right]+2\alpha\eta f_{i,j}-\omega C_{Ga}^{i,0}C_{As}^{i,0}
+\]
+
+\[
+C_{As}^{i+1,0}=C_{As}^{i,0}+4\beta\left[C_{As}^{i,1}-C_{As}^{i,0}\right]-\frac{C_{As}^{i,0}}{\tau_{As}}+g-\omega C_{Ga}^{i,0}C_{As}^{i,0}
+\]
+
+\[
+\text{for }j\in\left[1,N_{r}\right]
+\]
+
+\[
+C_{Ga}^{i+1,j}=C_{Ga}^{i,j}+\alpha\left[\left(1+\frac{1}{2j}\right)C_{Ga}^{i,j+1}-2C_{Ga}^{i,j}+\left(1-\frac{1}{2j}\right)C_{Ga}^{i,j-1}\right]+2\alpha\eta f_{i,j}-\omega C_{Ga}^{i,j}C_{As}^{i,j}
+\]
+
+\[
+C_{As}^{i+1,j}=C_{As}^{i,j}+\beta\left[\left(1+\frac{1}{2j}\right)C_{As}^{i,j+1}-2C_{As}^{i,j}+\left(1-\frac{1}{2j}\right)C_{As}^{i,j-1}\right]-\frac{C_{As}^{i,j}}{\tau_{As}}+g-\omega C_{Ga}^{i,j}C_{As}^{i,j}
+\]
+
+\[
+\text{for }j=N_{r}-1
+\]
+
+\[
+C_{Ga}^{i,N_{r}}=0,\qquad C_{As}^{i,N_{r}}=\epsilon
+\]
+
+
+\section{Ring growth speed}
+
+Let's derive the expression for the QR height $h\left(r,t\right)$,
+which defines the QR profile at each moment in time and at each distance
+from the droplet center.
+
+Concentration of both types of atoms bound together and contributing
+to the crystal growth changes according to:
+
+\[
+\frac{dC_{\text{bound}}}{dt}=k_{r}C_{Ga}C_{As}
+\]
+
+The number of GaAs vertical crystal cells at each distance increases
+according to:
+
+\[
+C_{\text{bound}}=N_{\text{cells}}C_{0}
+\]
+
+\[
+\frac{dN_{\text{cells}}}{dt}=\frac{k_{r}}{C_{0}}C_{Ga}C_{As}
+\]
+
+The height of the layer is connected to this number of cells:
+
+\[
+h=h_{0}N_{\text{cells}}
+\]
+
+\[
+\frac{dh\left(r,t\right)}{dt}=\frac{h_{0}k_{r}}{C_{0}}C_{Ga}C_{As}
+\]
+
+Considering the scaling of the concentrations by $C_{0}$ and the
+introduced parameters, we write:
+
+\[
+\frac{dh\left(r,t\right)}{dt}=h_{0}C_{0}k_{r}C_{Ga}C_{As}
+\]
+
+\[
+h_{i+1,j}=h_{i,j}+\Delta th_{0}C_{0}k_{r}C_{Ga}^{i,j}C_{As}^{i,j}
+\]
+
+Finally, we obtain:
+
+\begin{equation}
+h_{i+1,j}=h_{i,j}+\omega h_{0}C_{Ga}^{i,j}C_{As}^{i,j}
+\end{equation}
+
+The initial condition is clearly:
+
+\begin{equation}
+h_{0,j}=0
+\end{equation}
+
+\begin{thebibliography}{1}
+\bibitem{key-1}Z. Y. Zhou, C. X. Zheng, W. X. Tang. Origin of Quantum
+Ring Formation During Droplet Epitaxy. PRL 111, 036102 (2013)
+
+\end{thebibliography}
+
+\end{document}
