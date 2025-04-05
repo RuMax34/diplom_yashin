@@ -1,42 +1,55 @@
 mod file;
+mod erf;
+
+use erf::erf_approx as erf;
 
 fn main() {
-    // User-defined parameters
-    let kt = 0.05;          // Temperature in eV
-    let f_as = 0.1;         // As flux
-
     // Fixed parameters
-    let omega_ga = 1.0;     // cell^3
-    let c0 = 1.0;           // cell^-2
-    let kr = 0.1;           // cell^2 / time
-    let d_ga = 1.0;         // diffusion coefficient Ga
-    let e_as_minus_e_ga: f64 = 0.0; // eV
-    let e_a_minus_e_ga: f64 = 0.05;  // eV
-    let w: f64 = 2.0;            // width of Gaussian flux
-    let r_inf = 400.0;      // domain size (cells)
+    let a0: f64 = 0.565/2.0; // nm
+    let omega_ga = a0.powi(3);     // nm^3
+    let c0 = 1.0/a0.powi(2);           // nm^-2
+    let e_ga = 0.5;  // eV
+    let e_as: f64 = 0.5; // eV
+    let e_a: f64 = 1.0;  // eV
+
+    // User-defined parameters
+    let kt = 0.055;          // Temperature in eV
+    let nu0 = 2e6*kt/4.136; // GHz or ns^-1
+
+    let flux_relative = 1e-9/2.0; // relative flux, correct order, do not change the order
+    let f_as = c0*nu0*flux_relative;         // As flux, nm^(-2)/ns
+
+    let d_ga = nu0/c0*(-e_ga/kt).exp(); // diffusion coefficient
+    let d_as = nu0/c0*(-e_as/kt).exp(); // nm^2 / ns
+    let tau_as = (e_a / kt).exp()/nu0;
+    let diff_length_as = (d_as*tau_as).sqrt(); // nm
+    println!("As diffusion length is {} nm", diff_length_as);
+    let kr = d_ga;           // nm^2 / ns ! just a guess, may need to change
+    let w: f64 = 0.5;            // width of Gaussian flux, nm
+    let r_inf = 200.0;      // domain size, nm
     let theta = 60.0;       // contact angle in degrees
-    let rho0_initial: f64 = 100.0 / r_inf; // initial rho
-    let h0 = 1.0;           // cell height per layer
+    let rd0: f64 = 30.0; // nm
+    let rho0_initial: f64 = rd0 / r_inf; // initial rho
+    let h0 = a0;           // cell height per layer
 
     // Derived parameters
-    let theta_rad: f64 = theta / 180.0 * 3.14;
+    let theta_rad: f64 = theta / 180.0 * std::f64::consts::PI;
     let numerator_b = 8.0 - 9.0 * theta_rad.cos() + (3.0 * theta_rad).cos();
     let denominator_b = 3.0 * theta_rad.sin() - (3.0 * theta_rad).sin();
     let b_theta = numerator_b / denominator_b;
-    let tau_as = (e_a_minus_e_ga / kt).exp();
     let sigma = (2.0 * omega_ga * d_ga * c0) / (b_theta * r_inf.powi(3));
 
     // Simulation time calculation
-    let rho_end: f64 = 0.01;
+    let rho_end: f64 = 0.001;
     let term_initial = rho0_initial.powi(3) * (3.0 * rho0_initial.ln() - 1.0);
     let term_final = rho_end.powi(3) * (3.0 * rho_end.ln() - 1.0);
-    let t_total = ((term_final - term_initial) / (9.0 * sigma)) - 1e-6;
+    let t_total = (term_final - term_initial) / (9.0 * sigma);
 
     // Grid setup
     let nr = 400;
     let dr = r_inf / nr as f64;
     let r: Vec<f64> = (0..=nr).map(|i| i as f64 * dr).collect();
-    let dt = dr.powi(2) / 10.0;
+    let dt = dr.powi(2) / d_ga / 10.0;
     let nt = (t_total / dt) as usize;
 
     // Number of snapshots
@@ -49,36 +62,35 @@ fn main() {
     let mut h_history = vec![vec![0.0; nr + 1]; ns+1];
     let mut ga_history = vec![vec![0.0; nr + 1]; ns+1];
     let mut as_history = vec![vec![0.0; nr + 1]; ns+1];
+    let mut time_history = vec![0.0; nt];
+    let mut rd_history = vec![0.0; nt];
+    let mut tau_ga_history = vec![0.0; nt];
     let mut rho = rho0_initial;
     let mut time = 0.0;
 
     // Precompute coefficients
     let alpha = d_ga * dt / dr.powi(2);
-    let beta = (-e_as_minus_e_ga / kt).exp() * dt / dr.powi(2);
+    let beta =  d_as * dt / dr.powi(2);
     let omega = c0 * kr * dt;
     let kappa = dt * f_as / c0;
     let gamma = dt / tau_as;
     let epsilon = (f_as * tau_as) / c0;
     let upsilon = 2.0 * alpha * dr.powi(2) / w.powi(2);
 
-    // Simulation loop
-    let mut rd_history = Vec::new();
-    let mut time_history = Vec::new();
-
     let mut js = 0;
 
     for jt in 0..nt {
         // Compute flux term
         let rd = rho * r_inf;
+        time_history[jt] = jt as f64 * dt;
+        rd_history[jt] = rd / rd0;
         let x = rd / w;
         let p_val = r_inf / w;
-        let a_p = 3.545;
-        let b_p = 0.187 / (p_val - 3.156);
-        let denominator = (a_p * x + b_p) * (r_inf / rd).ln();
+        let denominator = ((-x*x).exp()-(-(p_val-x).powi(2)).exp() + 2.0/std::f64::consts::FRAC_2_SQRT_PI*x*(erf(x)+erf(p_val-x))) * (r_inf / rd).ln();
         let flux_term: Vec<f64> = r.iter()
             .map(|ri| (-(ri / w - x).powi(2)).exp() / denominator)
             .collect();
-
+        tau_ga_history[jt] = denominator;
         // Update concentrations
         let (new_c_ga, new_c_as) = update_concentrations(
             &c_ga,
@@ -98,9 +110,7 @@ fn main() {
 
         // Update droplet radius
         time += dt;
-        rho = update_rho(rho, time, sigma, rho0_initial);
-        rd_history.push(rho * r_inf);
-        time_history.push(time);
+        rho = update_rho(time, sigma, rho, term_initial);
 
         // Update height profile
         for j in 0..=nr {
@@ -119,6 +129,7 @@ fn main() {
     ga_history.push(r.clone());
     as_history.push(r);
 
+    file::save_columns_to_file(&vec![time_history, rd_history, tau_ga_history], "results", "droplet.dat");
     file::save_columns_to_file(&h_history, "results", "height.dat");
     file::save_columns_to_file(&ga_history, "results", "c_ga.dat");
     file::save_columns_to_file(&as_history, "results", "c_as.dat");
@@ -182,9 +193,9 @@ fn update_concentrations(
     (c_ga_next, c_as_next)
 }
 
-fn update_rho(mut rho: f64, time: f64, sigma: f64, rho0: f64) -> f64 {
-    let rhs = rho0.powi(3) * (3.0 * rho0.ln() - 1.0) + 9.0 * sigma * time;
-    
+fn update_rho(time: f64, sigma: f64, rho0: f64, term_initial: f64) -> f64 {
+    let rhs = term_initial + 9.0 * sigma * time;
+    let mut rho = rho0;
     for _ in 0..100 {
         let p = rho.powi(3) * (3.0 * rho.ln() - 1.0) - rhs;
         if p.abs() < 1e-6 {
@@ -196,8 +207,8 @@ fn update_rho(mut rho: f64, time: f64, sigma: f64, rho0: f64) -> f64 {
             break;
         }
         
-        rho = (rho - p / p_prime).clamp(1e-6, 0.99);
+        rho = rho - p / p_prime;
     }
-    
+
     rho
 }

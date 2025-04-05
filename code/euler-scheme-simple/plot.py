@@ -59,6 +59,70 @@ def col(i):
     return tuple(rgb / 255 for rgb in c[i])
 
 # Read the file
+data = np.loadtxt('results/droplet.dat')
+x = data[:, 0]
+y1 = data[:, 1]
+y2 = data[:, 2]
+
+y2 = y2 / np.max(y2)
+
+# Desired figure size in centimeters
+def inch(width, height):
+    return (width / 2.54, height / 2.54)
+
+# =========================
+# Rectangular (full page) plot
+# =========================
+
+width = 15
+height = 10
+lwd = 1.5
+bwd = 0.75
+msz = 2
+fsz = 12
+scale = 1.5
+
+# Create a figure with custom size and layout
+fig, ax = plt.subplots(figsize=inch(width, height))  # Figure size in inches (width, height)
+
+# Plot the data
+ax.plot(x, y1, label=r'$R_d(t)/R_d(0)$', color=col(0), linestyle=d[0], linewidth=lwd, markersize=msz)
+ax.plot(x, y2, label=r'$\tau_{Ga}(t)$', color=col(1), linestyle=d[1], linewidth=lwd, markersize=msz)
+
+# Customize the axes
+ax.set_xlabel(r'$t$, наносекунды', fontsize=fsz, fontweight='normal', labelpad=5*scale)
+ax.set_ylabel(r'Функции, отн.ед.', fontsize=fsz, fontweight='normal', labelpad=5*scale)
+ax.set_title('Зависимость радиуса капли и потока Ga от времени', fontsize=fsz, fontweight='normal', pad=5*scale)
+ax.tick_params(axis='both', which='major', labelsize=fsz-2, length=2*scale, width=bwd, direction='out')
+ax.grid(True, which='both', linestyle='dotted', linewidth=bwd, alpha=1)
+
+# Change the box (spines) line width
+for spine in ax.spines.values():
+    spine.set_linewidth(bwd)
+plt.tick_params(axis='y', labelrotation=90)
+
+# Add a legend
+ax.legend(
+    fontsize=fsz,
+    loc='lower left',
+    frameon=True,
+    framealpha=1,
+    fancybox=True,
+    edgecolor='black',
+    borderaxespad=0.5*scale,
+    handleheight=0.25*scale,
+    labelspacing=0.25*scale,
+).get_frame().set_linewidth(bwd)
+
+# Adjust subplot parameters for better spacing
+plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1, hspace=0.3, wspace=0.3)
+
+# Save the plot to a PDF file
+plt.savefig("droplet.pdf", format="pdf", bbox_inches="tight")
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# Read the file
 data = np.loadtxt('results/height.dat')
 num_columns = data.shape[1]
 x = data[:, num_columns-1]
@@ -105,8 +169,8 @@ ax.plot(x, y9, label=r't=9', color=col(8), linestyle=d[8], linewidth=lwd, marker
 ax.plot(x, y10, label=r't=10', color=col(9), linestyle=d[9], linewidth=lwd, markersize=msz)
 
 # Customize the axes
-ax.set_xlabel(r'$r$, ячейки', fontsize=fsz, fontweight='normal', labelpad=5*scale)
-ax.set_ylabel(r'$h(r)$, ячейки', fontsize=fsz, fontweight='normal', labelpad=5*scale)
+ax.set_xlabel(r'$r$, нм', fontsize=fsz, fontweight='normal', labelpad=5*scale)
+ax.set_ylabel(r'$h(r)$, нм', fontsize=fsz, fontweight='normal', labelpad=5*scale)
 ax.set_title('Профиль КК в разные моменты времени', fontsize=fsz, fontweight='normal', pad=5*scale)
 ax.tick_params(axis='both', which='major', labelsize=fsz-2, length=2*scale, width=bwd, direction='out')
 ax.grid(True, which='both', linestyle='dotted', linewidth=bwd, alpha=1)
@@ -187,7 +251,7 @@ ax.plot(x, y9, label=r't=9', color=col(8), linestyle=d[8], linewidth=lwd, marker
 ax.plot(x, y10, label=r't=10', color=col(9), linestyle=d[9], linewidth=lwd, markersize=msz)
 
 # Customize the axes
-ax.set_xlabel(r'$r$, ячейки', fontsize=fsz, fontweight='normal', labelpad=5*scale)
+ax.set_xlabel(r'$r$, нм', fontsize=fsz, fontweight='normal', labelpad=5*scale)
 ax.set_ylabel(r'$С(r)$, усл.ед.', fontsize=fsz, fontweight='normal', labelpad=5*scale)
 ax.set_title('Концентрация Ga в разные моменты времени', fontsize=fsz, fontweight='normal', pad=5*scale)
 ax.tick_params(axis='both', which='major', labelsize=fsz-2, length=2*scale, width=bwd, direction='out')
@@ -269,7 +333,7 @@ ax.plot(x, y9, label=r't=9', color=col(8), linestyle=d[8], linewidth=lwd, marker
 ax.plot(x, y10, label=r't=10', color=col(9), linestyle=d[9], linewidth=lwd, markersize=msz)
 
 # Customize the axes
-ax.set_xlabel(r'$r$, ячейки', fontsize=fsz, fontweight='normal', labelpad=5*scale)
+ax.set_xlabel(r'$r$, нм', fontsize=fsz, fontweight='normal', labelpad=5*scale)
 ax.set_ylabel(r'$С(r)$, усл.ед.', fontsize=fsz, fontweight='normal', labelpad=5*scale)
 ax.set_title('Концентрация As в разные моменты времени', fontsize=fsz, fontweight='normal', pad=5*scale)
 ax.tick_params(axis='both', which='major', labelsize=fsz-2, length=2*scale, width=bwd, direction='out')
