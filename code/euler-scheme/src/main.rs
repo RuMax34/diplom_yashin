@@ -247,6 +247,10 @@ impl System {
             extra_parameters: ExtraParameters::new_zero(),
         }
     }
+
+    fn set_droplet_depletion() {
+
+    }
 }
 
 fn main() {
