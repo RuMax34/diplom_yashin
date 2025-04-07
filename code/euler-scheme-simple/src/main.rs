@@ -1,8 +1,6 @@
 mod file;
 mod erf;
 
-use erf::erf_approx as erf;
-
 fn main() {
     // Fixed parameters
     let a0: f64 = 0.565/2.0; // nm
@@ -16,7 +14,7 @@ fn main() {
     let kt = 0.055;          // Temperature in eV
     let nu0 = 2e6*kt/4.136; // GHz or ns^-1
 
-    let flux_relative = 1e-9/2.0; // relative flux, correct order, do not change the order
+    let flux_relative = 1e-9; // relative flux, correct order, do not change the order
     let f_as = c0*nu0*flux_relative;         // As flux, nm^(-2)/ns
 
     let d_ga = nu0/c0*(-e_ga/kt).exp(); // diffusion coefficient
@@ -25,7 +23,7 @@ fn main() {
     let diff_length_as = (d_as*tau_as).sqrt(); // nm
     println!("As diffusion length is {} nm", diff_length_as);
     let kr = d_ga;           // nm^2 / ns ! just a guess, may need to change
-    let w: f64 = 0.5;            // width of Gaussian flux, nm
+    let w: f64 = 3.0;            // width of Gaussian flux, nm
     let r_inf = 200.0;      // domain size, nm
     let theta = 60.0;       // contact angle in degrees
     let rd0: f64 = 30.0; // nm
@@ -56,8 +54,8 @@ fn main() {
     let ns: usize = 10;
 
     // Initialize arrays
-    let mut c_ga = vec![0.0; nr + 1];
-    let mut c_as = vec![0.0; nr + 1];
+    let mut c_ga: Vec<f64> = r.iter().map(|ri| (-(ri / w - rd0 / w).powi(2)).exp()).collect();
+    let mut c_as = vec![(f_as * tau_as) / c0; nr + 1];
     let mut h = vec![0.0; nr + 1];
     let mut h_history = vec![vec![0.0; nr + 1]; ns+1];
     let mut ga_history = vec![vec![0.0; nr + 1]; ns+1];
@@ -75,7 +73,7 @@ fn main() {
     let kappa = dt * f_as / c0;
     let gamma = dt / tau_as;
     let epsilon = (f_as * tau_as) / c0;
-    let upsilon = 2.0 * alpha * dr.powi(2) / w.powi(2);
+    let upsilon = 2.0 * d_ga * dt / w.powi(2);
 
     let mut js = 0;
 
@@ -86,13 +84,14 @@ fn main() {
         rd_history[jt] = rd / rd0;
         let x = rd / w;
         let p_val = r_inf / w;
-        let denominator = ((-x*x).exp()-(-(p_val-x).powi(2)).exp() + 2.0/std::f64::consts::FRAC_2_SQRT_PI*x*(erf(x)+erf(p_val-x))) * (r_inf / rd).ln();
-        let flux_term: Vec<f64> = r.iter()
-            .map(|ri| (-(ri / w - x).powi(2)).exp() / denominator)
-            .collect();
+        let a_p = 3.545;
+        let b_p = 0.187 / (p_val - 3.156);
+        let denominator = (a_p * x + b_p) * (r_inf / rd).ln();
+        // let denominator = ((-x*x).exp()-(-(p_val-x).powi(2)).exp() + 2.0/std::f64::consts::FRAC_2_SQRT_PI*x*(erf(x)+erf(p_val-x))) * (r_inf / rd).ln();
+        let flux_term: Vec<f64> = r.iter().map(|ri| (-(ri / w - x).powi(2)).exp() / denominator).collect();
         tau_ga_history[jt] = denominator;
         // Update concentrations
-        let (new_c_ga, new_c_as) = update_concentrations(
+        (c_ga, c_as) = update_concentrations(
             &c_ga,
             &c_as,
             &flux_term,
@@ -105,8 +104,6 @@ fn main() {
             upsilon,
             nr,
         );
-        c_ga = new_c_ga;
-        c_as = new_c_as;
 
         // Update droplet radius
         time += dt;
@@ -156,6 +153,8 @@ fn update_concentrations(
     c_ga_next[0] = c_ga[0] + 4.0 * alpha * (c_ga[1] - c_ga[0]) 
         + upsilon * flux_term[0] 
         - omega * c_ga[0] * c_as[0];
+
+    //c_ga_next[0] = f64::max(ga_droplet_edge[0], c_ga_next[0]);
     
     c_as_next[0] = c_as[0] + 4.0 * beta * (c_as[1] - c_as[0]) 
         - gamma * c_as[0] 
@@ -182,6 +181,8 @@ fn update_concentrations(
         c_ga_next[j] = c_ga[j] + term_ga + upsilon * flux_term[j] 
             - omega * c_ga[j] * c_as[j];
         
+        //c_ga_next[j] = f64::max(ga_droplet_edge[j], c_ga_next[j]);
+
         c_as_next[j] = c_as[j] + term_as - gamma * c_as[j] + kappa 
             - omega * c_ga[j] * c_as[j];
     }
