@@ -1751,8 +1751,32 @@ Using the finite difference values:
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 R_{d}^{i+1}=R_{d}^{i}-\frac{2\Omega_{Ga}k_{r}C_{0}^{2}\Delta t\Delta r^{2}}{B\left(\theta\right)R_{d}^{2}}\sum_{j=1}^{N_{r}}jC_{Ga}^{i,j}C_{As}^{i,j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using an already introduced parameter (
+\begin_inset Formula $C_{Ga},C_{As}$
+\end_inset
+
+ are dimensionless,
+ divided by 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+R_{d}^{i+1}=R_{d}^{i}-\frac{2\Omega_{Ga}\omega C_{0}\Delta r^{2}}{B\left(\theta\right)R_{d}^{2}}\sum_{j=1}^{N_{r}}jC_{Ga}^{i,j}C_{As}^{i,j}
 \end{equation}
 
 \end_inset
