@@ -1675,6 +1675,166 @@ h_{0,j}=0
 
 \end_layout
 
+\begin_layout Section
+Droplet radius change dependent on QR growth
+\end_layout
+
+\begin_layout Standard
+We again use the concentration change:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dC_{\text{bound}}}{dt}=k_{r}C_{Ga}C_{As}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This should be the only way for Ga atoms to disappear (except for the ones going beyond the boundary,
+ but we will discard them for now).
+\end_layout
+
+\begin_layout Standard
+Note that this surface concentration is a function of distance,
+ so we should integrate to get the full number of Ga atoms disappearing:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dN_{Ga}}{dt}=-2\pi k_{r}C_{0}^{2}\int_{0}^{R_{\infty}}rC_{Ga}C_{As}dr
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the previous formula:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dR_{d}}{dt}=\frac{\Omega_{Ga}C_{0}^{2}}{\pi B\left(\theta\right)R_{d}^{2}}\frac{dN_{Ga}}{dt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dR_{d}}{dt}=-\frac{2\Omega_{Ga}k_{r}C_{0}^{2}}{B\left(\theta\right)R_{d}^{2}}\int_{0}^{R_{\infty}}rC_{Ga}C_{As}dr
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the finite difference values:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+R_{d}^{i+1}=R_{d}^{i}-\frac{2\Omega_{Ga}k_{r}C_{0}^{2}\Delta t\Delta r^{2}}{B\left(\theta\right)R_{d}^{2}}\sum_{j=1}^{N_{r}}jC_{Ga}^{i,j}C_{As}^{i,j}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To get a crude estimate of Ga source at the droplet boundary,
+ instead of using an additional flux,
+ we can keep 
+\begin_inset Formula $C_{Ga}$
+\end_inset
+
+ near 
+\begin_inset Formula $r=R_{d}$
+\end_inset
+
+ equal to 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+ at all time steps.
+\end_layout
+
+\begin_layout Standard
+For example,
+ introducing 
+\begin_inset Formula $w$
+\end_inset
+
+ again,
+ we use the following scheme (without any Ga flux):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{Ga}^{i+1,j}=\begin{cases}
+C_{Ga}^{i,0}+4\alpha\left[C_{Ga}^{i,1}-C_{Ga}^{i,0}\right]-\omega C_{Ga}^{i,0}C_{As}^{i,0}, & j=0\\
+C_{Ga}^{i+1,j}=C_{Ga}^{i,j}+\alpha\left[\left(1+\frac{1}{2j}\right)C_{Ga}^{i,j+1}-2C_{Ga}^{i,j}+\left(1-\frac{1}{2j}\right)C_{Ga}^{i,j-1}\right]-\omega C_{Ga}^{i,j}C_{As}^{i,j}, & 0<j<j_{a}\text{ or }j_{b}<j\leq N_{r}\\
+1, & j_{a}\leq j\leq j_{b}\\
+0, & j=N_{r}+1
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+j_{a}=\left\lfloor \frac{R_{d}-w}{\Delta r}\right\rfloor ,\qquad j_{b}=\left\lfloor \frac{R_{d}+w}{\Delta r}\right\rfloor 
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Remember that we measure the concentrations in units of 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We end the calculation when 
+\begin_inset Formula $R_{d}\leq w-\Delta r$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
