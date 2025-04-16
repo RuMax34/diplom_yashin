@@ -24,7 +24,7 @@ fn main() {
     println!("As diffusion length is {} nm", diff_length_as);
     let kr = d_ga;           // nm^2 / ns ! just a guess, may need to change
     let w: f64 = 3.0;            // width of Gaussian flux, nm
-    let r_inf = 200.0;      // domain size, nm
+    let r_inf = 300.0;      // domain size, nm
     let theta = 60.0;       // contact angle in degrees
     let rd0: f64 = 30.0; // nm
     let rho0_initial: f64 = rd0 / r_inf; // initial rho
