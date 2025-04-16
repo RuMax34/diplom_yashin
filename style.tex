@@ -1,7 +1,11 @@
-
-\usepackage[russian]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[T2A]{fontenc}
+\usepackage[T1,T2A]{fontenc}
+% Поменял babel на polyglossia из-за проблемы с компиляцией документа на моём компьютере
+\usepackage{polyglossia}
+  \setdefaultlanguage{russian}
+  \setotherlanguage{english}
+  \newfontfamily\cyrillicfont[Script=Cyrillic]{Times New Roman}
+  \newfontfamily\cyrillicfonttt[Script=Cyrillic]{Times New Roman}
 % \usepackage{fontspec}
 % \setmainfont{Times New Roman}
 % \setmathfont{TeX Gyre Termes Math}
@@ -9,7 +13,7 @@
 
 \usepackage{amsmath}
 % \usepackage{unicode-math}
-\renewcommand{\familydefault}{\rmdefault}
+% \renewcommand{\familydefault}{\rmdefault}
 \usepackage{mathtext}
 \usepackage{geometry}
 \geometry{verbose,lmargin=25mm,rmargin=15mm,tmargin=15mm,bmargin=20mm}
