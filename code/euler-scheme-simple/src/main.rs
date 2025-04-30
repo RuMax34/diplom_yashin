@@ -11,10 +11,11 @@ fn main() {
     let e_a: f64 = 1.0;  // eV
 
     // User-defined parameters
-    let kt = 0.055;          // Temperature in eV
+    let temperature = 300.0; // temperature in C
+    let kt = 8.62e-5*(273.0+temperature); // Temperature in eV
     let nu0 = 2e6*kt/4.136; // GHz or ns^-1
 
-    let flux_relative = 1e-9; // relative flux, correct order, do not change the order
+    let flux_relative = 1e-10; // relative flux, correct order, do not change the order
     let f_as = c0*nu0*flux_relative;         // As flux, nm^(-2)/ns
 
     let d_ga = nu0/c0*(-e_ga/kt).exp(); // diffusion coefficient

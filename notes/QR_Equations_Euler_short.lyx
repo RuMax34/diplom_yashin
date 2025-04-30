@@ -1676,7 +1676,8 @@ h_{0,j}=0
 \end_layout
 
 \begin_layout Section
-Droplet radius change dependent on QR growth
+Another method!
+ Droplet radius change dependent on QR growth
 \end_layout
 
 \begin_layout Standard
@@ -1686,7 +1687,7 @@ We again use the concentration change:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\frac{dC_{\text{bound}}}{dt}=k_{r}C_{Ga}C_{As}
+\frac{\partial C_{\text{bound}}}{\partial t}=k_{r}C_{Ga}C_{As}
 \]
 
 \end_inset
@@ -1785,6 +1786,32 @@ R_{d}^{i+1}=R_{d}^{i}-\frac{2\Omega_{Ga}\omega C_{0}\Delta r^{2}}{B\left(\theta\
 \end_layout
 
 \begin_layout Standard
+Let's denote:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{2\Omega_{Ga}\omega C_{0}\Delta r^{2}}{B\left(\theta\right)}=R_{0}^{3}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+R_{d}^{i+1}=R_{d}^{i}-\frac{R_{0}^{3}}{R_{d}^{2}}\sum_{j=1}^{N_{r}}jC_{Ga}^{i,j}C_{As}^{i,j}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 To get a crude estimate of Ga source at the droplet boundary,
  instead of using an additional flux,
  we can keep 
@@ -1853,7 +1880,7 @@ Remember that we measure the concentrations in units of
 
 \begin_layout Standard
 We end the calculation when 
-\begin_inset Formula $R_{d}\leq w-\Delta r$
+\begin_inset Formula $R_{d}\leq w+\Delta r$
 \end_inset
 
 .
