@@ -1886,6 +1886,53 @@ We end the calculation when
 .
 \end_layout
 
+\begin_layout Section
+Important note
+\end_layout
+
+\begin_layout Standard
+The constant concentration doesn't work,
+ so we have switched to the previous method with flux,
+ however we are now using the zero initial condition for Ga:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{Ga}^{0,j}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{2D_{Ga}C_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{Ga}^{i+1,j}=\begin{cases}
+C_{Ga}^{i,0}+4\alpha\left[C_{Ga}^{i,1}-C_{Ga}^{i,0}\right]-\omega C_{Ga}^{i,0}C_{As}^{i,0}+\Delta tF_{Ga}^{i,0}, & j=0\\
+C_{Ga}^{i+1,j}=C_{Ga}^{i,j}+\alpha\left[\left(1+\frac{1}{2j}\right)C_{Ga}^{i,j+1}-2C_{Ga}^{i,j}+\left(1-\frac{1}{2j}\right)C_{Ga}^{i,j-1}\right]-\omega C_{Ga}^{i,j}C_{As}^{i,j}+\Delta tF_{Ga}^{i,j}, & 0<j<N_{r}\\
+0, & j=N_{r}
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
