@@ -1933,6 +1933,627 @@ C_{Ga}^{i+1,j}=C_{Ga}^{i,j}+\alpha\left[\left(1+\frac{1}{2j}\right)C_{Ga}^{i,j+1
 
 \end_layout
 
+\begin_layout Section
+Alternative flux calculation
+\end_layout
+
+\begin_layout Standard
+We can use another model for calculating the flux,
+ which shouldn't depend on 
+\begin_inset Formula $R_{\infty}$
+\end_inset
+
+,
+ but instead depend on the As flux (as it should).
+ Let's go back to the general flux expression:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{C_{0}}{\tau_{Ga}\left(t\right)}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We solve a simplified problem of a Ga droplet emitting atoms in the presence of As surface concentration as well,
+ which we assume to be constant and equal to its stationary value:
+ 
+\begin_inset Formula $C_{As}=F_{As}\tau_{As}$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $F_{As}$
+\end_inset
+
+ —
+ incoming flux,
+ 
+\begin_inset Formula $\tau_{As}$
+\end_inset
+
+ —
+ mean desorption time.
+ Then the diffusion equation for Ga will be:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial C_{Ga}}{\partial t}=D_{Ga}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)-k_{r}F_{As}\tau_{As}C_{Ga}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}\left(R_{d},t\right)=C_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}\left(\infty,t\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the last boundary condition is at infinity.
+\end_layout
+
+\begin_layout Standard
+Let us solve the problem by assuming a stationary state:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial C_{Ga}}{\partial t}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}=\zeta^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)-\zeta^{2}C_{Ga}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is the modified Bessel equation and its solutions will be:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{Ga}=AI_{0}\left(\zeta r\right)+BK_{0}\left(\zeta r\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The second boundary condition enforces 
+\begin_inset Formula $A=0$
+\end_inset
+
+,
+ which means we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{Ga}=C_{0}\frac{K_{0}\left(\zeta r\right)}{K_{0}\left(\zeta R_{d}\right)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we need to find the flux from the droplet boundary:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J_{Ga}=-D_{Ga}\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)=-C_{0}\zeta\frac{K_{1}\left(\zeta R_{d}\right)}{K_{0}\left(\zeta R_{d}\right)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J_{Ga}=D_{Ga}C_{0}\zeta\frac{K_{1}\left(\zeta R_{d}\right)}{K_{0}\left(\zeta R_{d}\right)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or explicitly:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J_{Ga}=C_{0}\sqrt{k_{r}D_{Ga}F_{As}\tau_{As}}\frac{K_{1}\left(\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\right)}{K_{0}\left(\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\right)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is the outgoing flux of Ga atoms at the droplet boundary.
+\end_layout
+
+\begin_layout Standard
+Change of Ga atom number then will be:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dN_{Ga}}{dt}=-2\pi R_{d}J_{Ga}=-2\pi C_{0}D_{Ga}\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\frac{K_{1}\left(\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\right)}{K_{0}\left(\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\right)}\label{eq:GaDepRate}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the other hand,
+ in our original problem we need to have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dN_{Ga}}{dt}=-2\pi\int_{0}^{\infty}F_{Ga}rdr
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\frac{dN_{Ga}}{dt}=2\pi\frac{C_{0}}{\tau_{Ga}}\int_{0}^{\infty}\exp\left(-\frac{\left(r-R_{d}\right)^{2}}{w^{2}}\right)rdr=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u=r-R_{d},\qquad r=u+R_{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=2\pi\frac{C_{0}}{\tau_{Ga}}\int_{-R_{d}}^{\infty}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu+2\pi\frac{C_{0}R_{d}}{\tau_{Ga}}\int_{-R_{d}}^{\infty}\exp\left(-\frac{u^{2}}{w^{2}}\right)du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Due to symmetry we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{-R_{d}}^{R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{-R_{d}}^{\infty}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu=\int_{R_{d}}^{\infty}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\frac{dN_{Ga}}{dt}=\pi\frac{C_{0}w^{2}}{\tau_{Ga}}\int_{\frac{R_{d}^{2}}{w^{2}}}^{\infty}\exp\left(-v\right)dv+2\pi\frac{C_{0}wR_{d}}{\tau_{Ga}}\int_{-\frac{R_{d}}{w}}^{\infty}\exp\left(-v^{2}\right)dv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+-\frac{dN_{Ga}}{dt}=\pi\frac{C_{0}w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comparing the two fluxes gives us the following equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+2\pi C_{0}D_{Ga}\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\frac{K_{1}\left(\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\right)}{K_{0}\left(\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\right)}=\pi\frac{C_{0}w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which simplifies to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+2D_{Ga}\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\frac{K_{1}\left(\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\right)}{K_{0}\left(\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}R_{d}\right)}=\frac{w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\tau_{Ga}=\frac{w^{2}}{2D_{Ga}}\frac{K_{0}\left(\zeta R_{d}\right)}{\zeta R_{d}K_{1}\left(\zeta R_{d}\right)}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Final Ga flux expression will be:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{2C_{0}D_{Ga}}{w^{2}}\frac{\zeta R_{d}K_{1}\left(\zeta R_{d}\right)}{K_{0}\left(\zeta R_{d}\right)}\frac{\exp\left(-\frac{\left(r-R_{d}\right)^{2}}{w^{2}}\right)}{\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left[1+\text{erf}\left(\frac{R_{d}}{w}\right)\right]}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{equation}
+\zeta=\sqrt{\frac{k_{r}F_{As}\tau_{As}}{D_{Ga}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To approximate the Bessel functions,
+ we can use:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+K_{0}\left(x\right)=\int_{0}^{\infty}e^{-x\cosh u}\mathrm{d}u,\qquad K_{1}\left(x\right)=\int_{0}^{\infty}e^{-x\cosh u}\cosh u\mathrm{d}u
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rewrite these integrals as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+K_{0}\left(x\right)=\int_{1}^{\infty}e^{-xt}\frac{\mathrm{d}t}{\sqrt{t^{2}-1}},\qquad K_{1}\left(x\right)=\int_{1}^{\infty}e^{-xt}\frac{t\mathrm{d}t}{\sqrt{t^{2}-1}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+K_{0}\left(x\right)=e^{-x}\int_{0}^{\infty}e^{-xv}\frac{\mathrm{d}v}{\sqrt{v}\sqrt{v+2}},\qquad K_{1}\left(x\right)=e^{-x}\int_{0}^{\infty}e^{-xv}\frac{\left(v+1\right)\mathrm{d}v}{\sqrt{v}\sqrt{v+2}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+K_{0}\left(x\right)=2e^{-x}\int_{0}^{\infty}e^{-xz^{2}}\frac{\mathrm{d}z}{\sqrt{z^{2}+2}},\qquad K_{1}\left(x\right)=2e^{-x}\int_{0}^{\infty}e^{-xz^{2}}\frac{\left(z^{2}+1\right)\mathrm{d}z}{\sqrt{z^{2}+2}}=2e^{-x}\left(\int_{0}^{\infty}e^{-xz^{2}}\sqrt{z^{2}+2}\mathrm{d}z-\int_{0}^{\infty}e^{-xz^{2}}\frac{\mathrm{d}z}{\sqrt{z^{2}+2}}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which means that both of these integrals can be evaluated with Hermite quadratures.
+\end_layout
+
+\begin_layout Standard
+For it we need to remove 
+\begin_inset Formula $x$
+\end_inset
+
+ from the exponential:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{0}^{\infty}e^{-xz^{2}}\frac{\mathrm{d}z}{\sqrt{z^{2}+2}}=\int_{0}^{\infty}e^{-z^{2}}\frac{\mathrm{d}z}{\sqrt{z^{2}+2x}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{0}^{\infty}e^{-xz^{2}}\sqrt{z^{2}+2}\mathrm{d}z=\frac{1}{x}\int_{0}^{\infty}e^{-z^{2}}\sqrt{z^{2}+2x}\mathrm{d}z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then we rewrite the function as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{xK_{1}\left(x\right)}{K_{0}\left(x\right)}=\frac{I_{1}-xI_{0}}{I_{0}}=\frac{I_{1}}{I_{0}}-x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{0}=\int_{0}^{\infty}e^{-z^{2}}\frac{\mathrm{d}z}{\sqrt{z^{2}+2x}},\qquad I_{1}=\int_{0}^{\infty}e^{-z^{2}}\sqrt{z^{2}+2x}\mathrm{d}z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quadratures are suitable for large 
+\begin_inset Formula $x$
+\end_inset
+
+ (asymptotic series could also be derived).
+ For 
+\begin_inset Formula $x\leq0.5$
+\end_inset
+
+ we should use the following approximation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{xK_{1}\left(x\right)}{K_{0}\left(x\right)}=-\frac{1}{\ln x+\gamma}\left(1+\frac{\ln2}{\ln x+\gamma-\ln2}\right)+\sum_{k=0}^{\infty}C_{k}x^{k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\gamma=0.5772156649015329
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{k}=\left[\begin{array}{c}
+4.657125\cdot10^{-6}\\
+-7.136973\cdot10^{-4}\\
+6.389987\cdot10^{-1}\\
+1.260996\\
+-1.788035\\
+9.097378\\
+-2.079507\cdot10^{1}\\
+3.516017\cdot10^{1}\\
+-3.297203\cdot10^{1}\\
+1.510697\cdot10^{1}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The absolute error is less than 
+\begin_inset Formula $5\cdot10^{-8}$
+\end_inset
+
+ for most of the interval 
+\begin_inset Formula $\left[0,0.5\right]$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
