@@ -257,14 +257,12 @@ Shwartz и соавт.~\cite{shwartz2018} разработали модель н
 Уравнения системы имеют следующий вид:
 
 \begin{equation}
-\frac{\partial c_{\text{Ga}}}{\partial t} = D_{\text{Ga}} \left( \frac{\partial^2 c_{\text{Ga}}}{\partial r^2} + \frac{1}{r} \frac{\partial c_{\text{Ga}}}{\partial r} \right)
-- \omega \, c_{\text{Ga}} c_{\text{As}} + F_{\text{Ga}}(r,t),
+\frac{\partial C_{Ga}}{\partial t}=D_{Ga}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)+F_{Ga}\left(r,t\right)-k_{r}C_{Ga}C_{As}
 \label{eq:ga_diff}
 \end{equation}
 
 \begin{equation}
-\frac{\partial c_{\text{As}}}{\partial t} = D_{\text{As}} \left( \frac{\partial^2 c_{\text{As}}}{\partial r^2} + \frac{1}{r} \frac{\partial c_{\text{As}}}{\partial r} \right)
-- \omega \, c_{\text{Ga}} c_{\text{As}} + F_{\text{As}} - \frac{c_{\text{As}}}{\tau_{\text{As}}},
+\frac{\partial C_{As}}{\partial t}=D_{As}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{As}}{\partial r}\right)+F_{As}-k_{r}C_{Ga}C_{As}-\frac{C_{As}}{\tau_{As}},
 \label{eq:as_diff}
 \end{equation}
 
@@ -277,32 +275,291 @@ Shwartz и соавт.~\cite{shwartz2018} разработали модель н
   \item $\tau_{\text{As}}$ — характерное время испарения мышьяка.
 \end{itemize}
 
-Модель использует приближение сплошной среды, что оправдано для масштабов порядка десятков нанометров. Она позволяет изучать влияние параметров роста на морфологию кольца в рамках эффективной численной реализации.
-
-\subsection{Физика потока Ga из капли: гауссов профиль}
-
-В процессе капельной эпитаксии атомы галлия (Ga) формируют жидкие капли на поверхности подложки, из которых происходит диффузионное перераспределение вещества. Однако, в отличие от равномерного потока по всей поверхности, реальное распределение атомов Ga локализовано вблизи капли.
-
-Чтобы учесть этот эффект пространственной локализации, поток галлия $F_{\text{Ga}}(r,t)$ в модели задаётся в виде осесимметричного гауссова профиля:
+\begin{equation}
+D_{Ga}=a_{0}^{2}\nu\exp\left(-\frac{E_{Ga}}{kT}\right)
+\end{equation}
 
 \begin{equation}
-F_{\text{Ga}}(r,t) = A(t) \exp\left( -\frac{(r - r_d(t))^2}{w^2} \right),
-\label{eq:ga_flux}
+D_{As}=a_{0}^{2}\nu\exp\left(-\frac{E_{As}}{kT}\right)
+\end{equation}
+
+Время десорбции мышьяка:
+
+\begin{equation}
+\tau_{As}=\frac{1}{\nu}\exp\left(\frac{E_{a}}{kT}\right)
+\end{equation}
+
+\begin{equation}
+\nu=\frac{kT}{\pi\hbar}
+\end{equation}
+
+Модель использует приближение сплошной среды, что оправдано для масштабов порядка десятков нанометров. Она позволяет изучать влияние параметров роста на морфологию кольца в рамках эффективной численной реализации.
+
+Модель задаётся на интервале $r \in [0, R_\infty]$ с осевой симметрией. Поверхностные концентрации атомов $C_{\text{Ga}}(r,t)$ и $C_{\text{As}}(r,t)$ описываются уравнениями~\eqref{eq:as_diff_diff}–\eqref{eq:ga_diff}, и для их корректного численного решения необходимо задать начальные и граничные условия.
+
+\subsubsection*{Начальные условия}
+
+На начальный момент времени ($t = 0$): 
+
+\begin{equation}
+C_{Ga}\left(r,0\right)=0, \qquad
+C_{As}\left(r,0\right)=0.
+\end{equation}
+
+\subsubsection*{Граничные условия}
+
+На правой границе области ($r = R_\infty$) задаются:
+
+\begin{equation}
+C_{Ga}\left(R_{\infty},t\right)=0, \qquad
+C_{As}\left(R_{\infty},t\right)=F_{As}\tau_{As}.
+\end{equation}
+
+\subsection{Распределение потока галлия из капли}
+
+Одним из ключевых элементов модели капельной эпитаксии является описание пространственного распределения потока галлия, поступающего из жидкой капли на подложку. Корректное задание этой функции необходимо для воспроизведения морфологии кольца и скорости роста наноструктуры. Ниже приведено подробное аналитическое построение соответствующего выражения, опирающееся на решение уравнения диффузии с заданными граничными условиями.
+
+Нам требуется дополнительная концентрация атомов Ga на границе капли в соответствии с:
+
+\begin{equation}
+\tilde{C}_{Ga}\left(r,t\right)=C_{0}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
+\end{equation}
+
+Это приводит к дополнительному потоку, который является нашим единственным источником атомов Ga (рис.~\ref{fig:first}):
+
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{C_{0}}{\tau_{Ga}\left(t\right)}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
+\end{equation}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=11cm]{images/first.png}
+        \caption{\label{fig:first}
+        Визуализация потоков вещества Ga}
+    \end{center}
+\end{figure}
+
+Чтобы найти параметр $\tau_{\text{Ga}}$ (где $w$ — свободное постоянное значение), нам нужно учесть потерю атомов Ga. Для этого мы рассмотрим более простую модель, в которой расчёт выполняется для $r \in [R_{d}, R_{\infty}]$ и присутствует только Ga. Это приводит к следующему уравнению:
+
+\begin{equation}
+\frac{\partial C_{Ga}}{\partial t}=D_{Ga}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)
+\end{equation}
+
+\[
+C_{\text{Ga}}\left(R_d, t\right) = C_0,
+\qquad
+C_{\text{Ga}}\left(R_\infty, t\right) = 0
+\]
+
+Мы можем решить эту проблему путем разделения переменных или просто рассмотреть стационарное состояние:
+
+\[
+\frac{\partial C_{Ga}}{\partial t}=0
+\]
+
+Тогда нам нужно решить:
+
+\[
+\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)=0
+\]
+
+Мы получаем общее решение:
+
+\[
+C_{Ga}=A\ln\frac{r}{R_{0}}
+\]
+
+Где $A,R_{0}$ - неизвестные константы. Замена граничных условий приводит к:
+
+\[
+A\ln\frac{R_{d}}{R_{0}}=C_{0}
+\qquad
+A\ln\frac{R_{\infty}}{R_{0}}=0
+\]
+
+Таким образом, мы получаем:
+
+\[
+R_{0}=R_{\infty}
+\]
+
+\begin{equation}
+A=\frac{C_{0}}{\ln\frac{R_{d}}{R_{\infty}}}
+\end{equation}
+
+Из чего следует:
+
+\begin{equation}
+C_{Ga}=\frac{C_{0}}{\ln\frac{R_{d}}{R_{\infty}}}\ln\frac{r}{R_{\infty}}
+\end{equation}
+
+Теперь нам нужно найти поток от границы капли:
+
+\begin{equation}
+J_{Ga}=-D_{Ga}\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)
+\end{equation}
+
+\begin{equation}
+\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)=\frac{C_{0}}{R_{d}\ln\frac{R_{d}}{R_{\infty}}}
+\end{equation}
+
+\[
+J_{Ga}=-\frac{D_{Ga}C_{0}}{R_{d}\ln\frac{R_{d}}{R_{\infty}}}
+\]
+
+Поток положительный (потому что он должен двигаться от капли в направлении r → $R_{infty}$), поэтому мы переписываем его как:
+
+\begin{equation}
+J_{Ga}=\frac{D_{Ga}C_{0}}{R_{d}\ln\frac{R_{\infty}}{R_{d}}}>0
+\end{equation}
+
+Изменение числа атомов Ga:
+
+\begin{equation}
+\frac{dN_{Ga}}{dt}=-2\pi R_{d}J_{Ga}=-2\pi\frac{D_{Ga}C_{0}}{\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+С другой стороны, в нашей первоначальной задаче мы имеем:
+
+\begin{equation}
+\frac{dN_{Ga}}{dt}=-2\pi\int_{0}^{R_{\infty}}F_{Ga}rdr
+\end{equation}
+
+\[
+-\frac{dN_{Ga}}{dt}=2\pi\frac{C_{0}}{\tau_{Ga}}\int_{0}^{R_{\infty}}\exp\left(-\frac{\left(r-R_{d}\right)^{2}}{w^{2}}\right)rdr=
+\]
+
+\[
+u=r-R_{d},\qquad r=u+R_{d}
+\]
+
+\begin{equation}
+=2\pi\frac{C_{0}}{\tau_{Ga}}\int_{-R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu+2\pi\frac{C_{0}R_{d}}{\tau_{Ga}}\int_{-R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)du
+\end{equation}
+
+Благодаря симметрии:
+
+\[
+\int_{-R_{d}}^{R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu=0
+\]
+
+\[
+\int_{-R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu=\int_{R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu
+\]
+
+\[
+-\frac{dN_{Ga}}{dt}=\pi\frac{C_{0}w^{2}}{\tau_{Ga}}\int_{\frac{R_{d}^{2}}{w^{2}}}^{\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}}\exp\left(-v\right)dv+2\pi\frac{C_{0}wR_{d}}{\tau_{Ga}}\int_{-\frac{R_{d}}{w}}^{\frac{R_{\infty}-R_{d}}{w}}\exp\left(-v^{2}\right)dv
+\]
+
+\begin{equation}
+-\frac{dN_{Ga}}{dt}=\pi\frac{C_{0}w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)-\exp\left(-\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ \text{erf}\left(\frac{R_{\infty}-R_{d}}{w}\right)+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\end{equation}
+
+Сравнение двух потоков дает нам следующее уравнение:
+
+\[
+\frac{D_{Ga}}{\ln\frac{R_{\infty}}{R_{d}}}=\frac{1}{2}\frac{w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)-\exp\left(-\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ \text{erf}\left(\frac{R_{\infty}-R_{d}}{w}\right)+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\]
+
+\begin{equation}
+\tau_{Ga}=\frac{w^{2}}{2D_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)-\exp\left(-\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ \text{erf}\left(\frac{R_{\infty}-R_{d}}{w}\right)+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}
+\end{equation}
+
+\begin{equation}
+\tau_{Ga}=\frac{w^{2}}{2D_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}
+\end{equation}
+
+При $R_{\infty}\gg R_{d}$, то это уравнение упрощает:
+
+\begin{equation}
+\tau_{Ga}=\frac{w^{2}}{2D_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}
+\end{equation}
+
+Когда $R_{d}\to0$, то, естественно, $\tau_{Ga}\to+\infty$ и $F_{Ga}\to0$:
+
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{2D_{Ga}C_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)-\exp\left(-\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ \text{erf}\left(\frac{R_{\infty}-R_{d}}{w}\right)+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+Обратите внимание, что если мы переобозначим переменные:
+
+\[
+x=\frac{R_{d}}{w},\qquad p=\frac{R_{\infty}}{w}
+\]
+
+Тогда функция:
+
+\[
+q\left(x,p\right)=\exp\left(-x^{2}\right)-\exp\left(-\left(p-x\right)^{2}\right)+\sqrt{\pi}x\left\{ \text{erf}\left(p-x\right)+\text{erf}\left(x\right)\right\} 
+\]
+
+Может быть аппроксимирована к прямой линии:
+
+\[
+q\left(x,p\right)\approx a\left(p\right)x+b\left(p\right)
+\]
+
+Где:
+
+\[
+b\left(p\right)\approx\frac{0.187}{p-3.156}
+\]
+
+\[
+a\left(p\right)\approx3.545
+\]
+
+Таким образом, мы получаем:
+
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{2D_{Ga}C_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+\subsection{2.3. Уравнение изменения радиуса капли}
+
+Во время капельной эпитаксии радиус капли $r_d(t)$ уменьшается по мере расходования галлия на образование твёрдой фазы GaAs. Это связано с протеканием реакции между поверхностными атомами Ga и поступающим потоком мышьяка, что приводит к уменьшению объёма жидкой капли. Ниже приведён реализованный в программе подход к описанию эволюции $r_d(t)$, основанный на геометрических и кинетических соображениях.
+
+\subsubsection*{Геометрический коэффициент $B(\theta)$}
+
+Объём сферической капли с фиксированным углом смачивания $\theta$ может быть выражен как:
+
+\begin{equation}
+V = \frac{\pi r_d^3(t)}{B(\theta)},
+\end{equation}
+
+где $r_d$ — радиус основания капли, а $B(\theta)$ — геометрический коэффициент, зависящий от угла смачивания. Он имеет аналитический вид:
+
+\begin{equation}
+B(\theta) = \frac{3 \sin \theta - \sin 3\theta}{8 - 9 \cos \theta + \cos 3\theta}.
+\end{equation}
+
+Этот коэффициент используется при расчёте предфактора $R_0^3$ в модели.
+
+\subsubsection*{Алгоритм, реализованный в численной модели}
+
+Реализация в коде использует приближённое дискретное уравнение изменения радиуса капли на основе локальной скорости реакции компонентов Ga и As. Формула, реализованная в коде, имеет вид:
+
+\begin{equation}
+R_{i+1} = R_i - \frac{R_0^3}{R_i^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga}}^{i,j} \cdot C_{\text{As}}^{i,j},
+\end{equation}
+
+где $C_{\text{Ga}}^{i,j}$ и $C_{\text{As}}^{i,j}$ — значения концентраций в $j$-м узле сетки на $i$-м временном шаге, $N_r$ — число узлов по радиусу.
+
+Предвычисленный коэффициент $R_0^3$ задаётся как:
+
+\begin{equation}
+R_0^3 = \frac{2 \Omega_{\text{Ga}} \cdot \omega \cdot C_0 \cdot (\Delta r)^2}{B(\theta)},
 \end{equation}
 
 где:
 \begin{itemize}
-  \item $r$ — радиальная координата;
-  \item $r_d(t)$ — текущий радиус капли;
-  \item $w$ — эффективная ширина профиля (характеризует степень локализации потока);
-  \item $A(t)$ — амплитуда потока, зависящая от параметров роста и нормировки.
+    \item $\Omega_{\text{Ga}}$ — объём одного атома галлия;
+    \item $\omega$ — коэффициент реакции между компонентами;
+    \item $C_0$ — нормирующая поверхностная плотность;
+    \item $\Delta r$ — шаг пространственной сетки.
 \end{itemize}
 
-Такой подход позволяет реализовать физически обоснованную подачу вещества: максимальное поступление атомов происходит в центре капли, с экспоненциальным спадом на периферии. Это отражает экспериментально наблюдаемую локальную кристаллизацию на границе капли и приводит к формированию кольцевых структур.
-
-Дополнительно, нормировка амплитуды $A(t)$ может быть выбрана так, чтобы интегральный поток соответствовал заданной плотности атомов, поступающих от источника.
-
-Использование гауссова профиля также облегчает численную реализацию: его производная аналитически известна, а быстрое затухание за пределами $r \sim r_d + 2w$ позволяет ограничить область вычислений.
+Такой метод позволяет обновлять радиус капли на каждом временном шаге напрямую, без решения дифференциальных уравнений, и эффективно включать его в общую численную схему. Выражение получено из закона сохранения массы с учётом геометрической формы капли и численной аппроксимации объёмного расхода галлия.
 
 % ============================================
 % ГЛАВА 2
