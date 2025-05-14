@@ -576,11 +576,11 @@ V = \frac{1}{3} \pi \cdot \frac{R_d^3}{\sin^3 \theta} \cdot (1 - \cos\theta)^2 (
 
 Теперь введём коэффициент $B(\theta)$:
 \begin{equation}
-V = \frac{\pi R_d^3}{B(\theta)}.
+V = \frac{B(\theta)\pi R_d^3}{3}.
 \end{equation}
 Сравнивая, получаем:
 \[
-B(\theta) = \frac{3 \sin^3 \theta}{(1 - \cos\theta)^2 (2 + \cos\theta)}.
+B(\theta) = \frac{\left(1-\cos\theta\right)^{2}\left(2+\cos\theta\right)}{\sin^{3}\theta}.
 \]
 
 Это выражение можно упростить до более компактной формы с использованием тригонометрических тождеств:
@@ -597,7 +597,7 @@ B(\theta) = \frac{3 \sin^3 \theta}{(1 - \cos\theta)^2 (2 + \cos\theta)}.
 \]
 
 \begin{equation}
-B(\theta) = \frac{9 \sin\theta -3 \sin 3\theta}{8 - 9 \cos\theta + \cos 3\theta}
+B(\theta) = \frac{8-9\cos\theta+\cos3\theta}{3\sin\theta-\sin3\theta}
 .
 \label{eq:Btheta_final}
 \end{equation}
@@ -615,11 +615,10 @@ B(\theta) = \frac{9 \sin\theta -3 \sin 3\theta}{8 - 9 \cos\theta + \cos 3\theta}
 \]
 где:
 \begin{itemize}
-  \item $C_{\text{bound}}$ — концентрация связанного материала;
+  \item $C_{\text{bound}}$ — концентрация результата реакции (GaAs);
   \item $k_r$ — константа скорости реакции;
   \item $C_{\text{Ga}}, C_{\text{As}}$ — локальные концентрации атомов;
 \end{itemize}
-
 
 Количество вертикальных кристаллических ячеек GaAs на каждом расстоянии увеличивается в зависимости от:
 
@@ -629,7 +628,7 @@ C_{\text{bound}} = N_{\text{cells}} \cdot C_0 \quad \Rightarrow \quad
 \]
 где:
 \begin{itemize}
-  \item $C_0 = \frac{1}{a_0^2}$ , $a_0$ - половина постоянной решётки GaAs;
+  \item $C_0 = \frac{1}{a_0^2}$ , $a_0$ - постоянная решётки GaAs;
   \item $N_{\text{cells}}$ — количество слоёв ячеек GaAs, выросших в данной точке (вдоль вертикали);
 \end{itemize}
 
@@ -642,7 +641,7 @@ C_{\text{bound}} = N_{\text{cells}} \cdot C_0 \quad \Rightarrow \quad
 \[
 \frac{dh\left(r,t\right)}{dt}=\frac{h_{0}k_{r}}{C_{0}}C_{Ga}C_{As}
 \]
-где $h_0$ — высота одного элементарного слоя (порядка постоянной решётки);
+где $h_0=a_0$ — высота одного элементарного слоя (порядка постоянной решётки);
 
 Учитывая масштабирование концентраций с помощью $C_{0}$ и введённых параметров, мы записываем:
 
@@ -651,6 +650,58 @@ C_{\text{bound}} = N_{\text{cells}} \cdot C_0 \quad \Rightarrow \quad
 \]
 
 Интегрируя это уравнение по времени, можно получить полный профиль кольца. Поскольку значения $C_{\text{Ga}}$ и $C_{\text{As}}$ варьируются по координате $r$ и времени $t$, итоговая форма кольца чувствительна к условиям роста, включая поток, температуру и геометрию капли.
+
+\subsection{Уравнение изменения радиуса капли \texorpdfstring{$R_d(t)$}{Rd(t)}}
+
+Изменение радиуса жидкой капли галлия во времени связано с постепенной кристаллизацией GaAs в результате взаимодействия атомов Ga и As на поверхности.
+\begin{equation}
+\frac{\partial C_{\text{bound}}}{\partial t}=k_{r}C_{Ga}C_{As}
+\end{equation}
+
+Это должен быть единственный способ, которым атомы Ga могут исчезнуть (за исключением тех, которые выходят за пределы границы, но мы пока отбросим их). 
+
+Скорость изменения объёма капли пропорциональна количеству атомов, покидающих её в результате химической реакции. Если \( C_{\text{Ga}}(r,t) \) и \( C_{\text{As}}(r,t) \) — локальные поверхностные концентрации атомов галлия и мышьяка, то число атомов, вовлечённых в рост GaAs на малом интервале времени \( dt \), определяется как:
+
+\begin{equation}
+\frac{dN_{Ga}}{dt}=-2\pi k_{r}C_{0}^{2}\int_{0}^{R_{\infty}}rC_{Ga}C_{As}dr
+\end{equation}
+
+Рассмотрим сферическую каплю объёмом
+\begin{equation}
+V = \frac{B(\theta)\pi R_d^3}{3},
+\end{equation}
+
+Дифференцируя объём по времени, получаем:
+\begin{equation}
+\frac{dV}{dt} = {\pi R_d^2B(\theta)} \cdot \frac{dR_d}{dt}.
+\label{eq:dVdt_from_R}
+\end{equation}
+
+С другой стороны, объём капли можно выразить через количество атомов галлия:
+\begin{equation}
+V = \Omega_{\text{Ga}} \cdot N_{\text{Ga}} \quad \Rightarrow \quad \frac{dV}{dt} = \Omega_{\text{Ga}} \cdot \frac{dN_{\text{Ga}}}{dt},
+\label{eq:dVdt_from_N}
+\end{equation}
+где $\Omega_{\text{Ga}} = a_0^3$ — объём одного атома галлия.
+
+Подставляя \eqref{eq:dVdt_from_N} в \eqref{eq:dVdt_from_R}, получаем:
+\begin{equation}
+\frac{dR_d}{dt} = \frac{\Omega_{\text{Ga}} }{\pi R_d^2 B(\theta)} \cdot \frac{dN_{\text{Ga}}}{dt}.
+\end{equation}
+
+Мы получаем:
+
+\begin{equation}
+\frac{dR_{d}}{dt}=-\frac{2\Omega_{Ga}k_{r}C_{0}^{2}}{B\left(\theta\right)R_{d}^{2}}\int_{0}^{R_{\infty}}rC_{Ga}C_{As}dr
+\label{eq:dRdt_integral}
+\end{equation}
+где:
+\begin{itemize}
+  \item \( \Omega_{\text{Ga}} = a_0^3 \) — объём одного атома галлия;
+  \item \( R_\infty \) — граница области расчёта.
+\end{itemize}
+
+При численной реализации интеграл в уравнении \eqref{eq:dRdt_integral} заменяется на дискретную сумму по координатной сетке, как будет показано в главе 3. Тем не менее, приведённая здесь непрерывная форма демонстрирует физическую суть: скорость уменьшения радиуса капли определяется пространственно распределённой реакцией атомов Ga и As на поверхности.
 
 % ============================================
 % ГЛАВА 2
