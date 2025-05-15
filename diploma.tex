@@ -704,53 +704,53 @@ V = \Omega_{\text{Ga}} \cdot N_{\text{Ga}} \quad \Rightarrow \quad \frac{dV}{dt}
 При численной реализации интеграл в уравнении \eqref{eq:dRdt_integral} заменяется на дискретную сумму по координатной сетке, как будет показано в главе 3. Тем не менее, приведённая здесь непрерывная форма демонстрирует физическую суть: скорость уменьшения радиуса капли определяется пространственно распределённой реакцией атомов Ga и As на поверхности.
 
 % ============================================
-% ГЛАВА 2
+% ГЛАВА 3
 % ============================================
+
 \pagebreak
-\section{Теория и основные уравнения}
+\section{Численные методы и реализация}
 
-\subsection{Раздел 1}
+\subsection{Пространственно-временная сетка}
 
-Ненумерованная формула:
+Для численного решения модели расчётная область по радиальной координате \( r \in [0, R_\infty] \) разбивается на равномерную сетку с шагом \( \Delta r \). Точки сетки обозначаются как \( r_j = j \cdot \Delta r \), где \( j = 0, 1, ..., N_r \), и \( N_r \) — число интервалов. Соответственно, \( R_\infty = N_r \cdot \Delta r \).
 
+Временная эволюция описывается дискретными шагами по времени с шагом \( \Delta t \). Точки сетки обозначаются как \( t_{i}=i\cdot\Delta t \), где \( i=0,1,\ldots,N_{t} \), и \( N_t \) — число интервалов. 
+
+\paragraph{Условие устойчивости явной схемы.}
+
+При использовании явной схемы Эйлера для решения уравнений диффузии необходимо обеспечить выполнение условия устойчивости, чтобы избежать накопления ошибок и коллапса решения.
+
+Для одномерного уравнения диффузии в декартовых координатах:
+\[
+\frac{\partial c}{\partial t} = D \cdot \frac{\partial^2 c}{\partial x^2},
+\]
+явная схема Эйлера имеет вид:
+\[
+\frac{c_i^{j+1} - c_i^j}{\Delta t} = D \cdot \frac{c_{i+1}^j - 2c_i^j + c_{i-1}^j}{\Delta x^2}.
+\]
+
+Для устойчивости такой схемы необходимо\cite{leveque2007}, чтобы:
 \begin{equation}
-    \begin{pmatrix} \dot{\varphi}\\ \dot{\theta} \\ \dot{\psi} \end{pmatrix}
-    = \begin{pmatrix}
-        \cos(\theta)\cos(\psi) & -\sin(\psi) & 0 \\
-        \cos(\theta)\sin(\psi) & \cos(\psi)  & 0 \\
-        -\sin(\theta)         & 0         &  1
-    \end{pmatrix}^{-1}
-    \begin{pmatrix} \omega_x\\ \omega_y \\ \omega_z \end{pmatrix}. \nonumber
+\Delta t < \frac{1}{2} \cdot \frac{\Delta x^2}{D}.
+\label{eq:cfl_classic}
 \end{equation}
 
+В случае полярных координат с радиальной симметрией:
+\[
+\frac{\partial c}{\partial t} = D \left(
+\frac{\partial^2 c}{\partial r^2} + \frac{1}{r} \cdot \frac{\partial c}{\partial r}
+\right),
+\]
+вклад первой производной по \( r \) не оказывает доминирующего влияния на устойчивость. Поэтому основное ограничение на шаг времени остаётся тем же, что и в декартовой схеме.
+
+С учётом того, что в уравнении модели участвуют два компонента (Ga и As) с различными коэффициентами диффузии, шаг времени должен быть подобран так, чтобы обеспечивать устойчивость для обоих уравнений. Поэтому берётся наиболее жёсткое ограничение:
 
 \begin{equation}
-    E_{y}\left(z\geq L\right)=A_{12}e^{i\beta z}\cdot\begin{cases}
-        e^{sw}\cos\left(kw\right)e^{s\left(x-a\right)}, & x<a-w\\
-        \cos\left(k\left(x-a\right)\right), & a-w\leq x\le a+w\\
-        e^{sw}\cos\left(kw\right)e^{-s\left(x-a\right)}, & x>a+w
-        \end{cases}    
+\Delta t < \frac{1}{2} \cdot \frac{\Delta r^2}{\max(D_{\text{Ga}}, D_{\text{As}})}
+\label{eq:cfl_final}
 \end{equation}
 
-
-\subsection{Раздел 2}
-
-Нумерованные формулы:
-
-\begin{equation}
-\label{eq:1}
-    \dot{\theta}=\frac{P-p_{1}\cos\left(\varphi_{1}-\theta\right)-p_{2}\cos\left(\varphi_{2}-\theta\right)}{\mu+\sin^{2}\left(\varphi_{1}-\theta\right)+\sin^{2}\left(\varphi_{2}-\theta\right)}
-\end{equation}
-
-\begin{equation}
-    \dot{\varphi}_{1}=p_{1}-\dot{\theta}\cos(\phi_{1}-\theta)
-\end{equation}
-
-\begin{equation}
-    \dot{\varphi}_{2}=p_{2}-\dot{\theta}\cos(\phi_{2}-\theta)
-\end{equation}
-
-Тест ссылки на формулу (\ref{eq:1}).
+Таким образом, пространственно-временная сетка и дискретизация позволяют перейти от непрерывных уравнений физической модели к вычислимым численным алгоритмам, которые будут реализованы в последующих разделах.
 
 % ============================================
 % ГЛАВА 3
