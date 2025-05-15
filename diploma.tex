@@ -643,12 +643,6 @@ C_{\text{bound}} = N_{\text{cells}} \cdot C_0 \quad \Rightarrow \quad
 \]
 где $h_0=a_0$ — высота одного элементарного слоя (порядка постоянной решётки);
 
-Учитывая масштабирование концентраций с помощью $C_{0}$ и введённых параметров, мы записываем:
-
-\[
-\frac{dh\left(r,t\right)}{dt}=h_{0}C_{0}k_{r}C_{Ga}C_{As}
-\]
-
 Интегрируя это уравнение по времени, можно получить полный профиль кольца. Поскольку значения $C_{\text{Ga}}$ и $C_{\text{As}}$ варьируются по координате $r$ и времени $t$, итоговая форма кольца чувствительна к условиям роста, включая поток, температуру и геометрию капли.
 
 \subsection{Уравнение изменения радиуса капли \texorpdfstring{$R_d(t)$}{Rd(t)}}
@@ -710,7 +704,15 @@ V = \Omega_{\text{Ga}} \cdot N_{\text{Ga}} \quad \Rightarrow \quad \frac{dV}{dt}
 \pagebreak
 \section{Численные методы и реализация}
 
-\subsection{Пространственно-временная сетка}
+\subsection{Реализация схемы Эйлера}
+
+Для численного решения уравнений, описывающих поведение концентраций атомов галлия и мышьяка на поверхности, а также рост кольца и изменение радиуса капли, в настоящей работе используется конечно-разностная схема Эйлера.
+
+Поскольку в рамках данной работы схема применяется для поэлементного обновления концентраций, радиуса капли и высоты кольца, её простота позволяет эффективно связать теоретическую модель и программную реализацию. В следующих подпунктах представлены конкретные разностные выражения, используемые для каждого элемента модели.
+
+Метод Эйлера широко применяется для численного решения задач математической физики и химико-технологического моделирования~\cite{usheva2014}.
+
+\subsubsection{Пространственно-временная сетка}
 
 Для численного решения модели расчётная область по радиальной координате \( r \in [0, R_\infty] \) разбивается на равномерную сетку с шагом \( \Delta r \). Точки сетки обозначаются как \( r_j = j \cdot \Delta r \), где \( j = 0, 1, ..., N_r \), и \( N_r \) — число интервалов. Соответственно, \( R_\infty = N_r \cdot \Delta r \).
 
@@ -751,6 +753,186 @@ V = \Omega_{\text{Ga}} \cdot N_{\text{Ga}} \quad \Rightarrow \quad \frac{dV}{dt}
 \end{equation}
 
 Таким образом, пространственно-временная сетка и дискретизация позволяют перейти от непрерывных уравнений физической модели к вычислимым численным алгоритмам, которые будут реализованы в последующих разделах.
+
+\subsubsection{Основные уравнения диффузии и реакций и поток галлия}
+
+Аппроксимация уравнений реакции-диффузии зависит от положения узла сетки \( j \), и все выражения можно разбить на три случая:
+
+\paragraph{1. Узел \( j = 0 \) (центр симметрии)}
+
+В этом случае диффузионный член учитывает симметрию с удвоенным весом:
+
+\[
+C_{\text{Ga}}^{i+1,0} = C_{\text{Ga}}^{i,0}
++ \Delta t \left(
+\frac{D_{\text{Ga}}}{\Delta r^2} [4 C_{\text{Ga}}^{i,1} - 4 C_{\text{Ga}}^{i,0}]
++ F_{\text{Ga}}^{i,0}
+- k_r C_{\text{Ga}}^{i,0} C_{\text{As}}^{i,0}
+\right),
+\]
+
+\[
+C_{\text{As}}^{i+1,0} = C_{\text{As}}^{i,0}
++ \Delta t \left(
+\frac{D_{\text{As}}}{\Delta r^2} [4 C_{\text{As}}^{i,1} - 4 C_{\text{As}}^{i,0}]
+- \frac{C_{\text{As}}^{i,0}}{\tau_{\text{As}}}
++ F_{\text{As}} - k_r C_{\text{Ga}}^{i,0} C_{\text{As}}^{i,0}
+\right).
+\]
+
+\paragraph{2. Внутренние узлы \( j \in [1, N_r-1] \)}
+
+Для всех остальных внутренних узлов используется стандартная центральная аппроксимация с учётом полярных координат:
+
+\[
+C_{\text{Ga}}^{i+1,j} = C_{\text{Ga}}^{i,j}
++ \Delta t \left(
+\frac{D_{\text{Ga}}}{\Delta r^2}
+\left[ \left(1+\frac{1}{2j}\right) C_{\text{Ga}}^{i,j+1}
+- 2 C_{\text{Ga}}^{i,j}
++ \left(1-\frac{1}{2j}\right) C_{\text{Ga}}^{i,j-1} \right]
++ F_{\text{Ga}}^{i,j}
+- k_r C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}
+\right),
+\]
+
+\[
+C_{\text{As}}^{i+1,j} = C_{\text{As}}^{i,j}
++ \Delta t \left(
+\frac{D_{\text{As}}}{\Delta r^2}
+\left[ \left(1+\frac{1}{2j}\right) C_{\text{As}}^{i,j+1}
+- 2 C_{\text{As}}^{i,j}
++ \left(1-\frac{1}{2j}\right) C_{\text{As}}^{i,j-1} \right]
+- \frac{C_{\text{As}}^{i,j}}{\tau_{\text{As}}}
++ F_{\text{As}}
+- k_r C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}
+\right).
+\]
+
+\paragraph{3. Граничные условия на \( j = N_r \)}
+
+На правой границе области применяются условия:
+\[
+C_{\text{Ga}}^{i,N_r} = 0, \qquad C_{\text{As}}^{i,N_r} = F_{\text{As}} \cdot \tau_{\text{As}}.
+\]
+
+\paragraph{4. Переход к безразмерной форме}
+
+Для упрощения записи вводятся нормированные концентрации \( c = C / C_0 \) и безразмерные параметры:
+
+\[
+\alpha = \frac{D_{\text{Ga}} \Delta t}{\Delta r^2}, \quad
+\beta = \frac{D_{\text{As}} \Delta t}{\Delta r^2}, \quad
+\omega = C_0 k_r \Delta t, \quad
+\gamma = \frac{\Delta t}{\tau_{\text{As}}}, \quad
+\kappa = \frac{\Delta t F_{\text{As}}}{C_0}, \quad
+\epsilon = \frac{F_{\text{As}} \tau_{\text{As}}}{C_0}.
+\]
+
+Также вводятся параметры, связанные с потоком галлия:
+
+\[
+\eta = \frac{\Delta r^2}{w^2}, \quad
+f_{i,j} = \frac{\exp\left( -\frac{(r_j - R_d^i)^2}{w^2} \right)}
+{\left[3.545 \frac{R_d^i}{w} + \frac{0.187 w}{R_\infty - 3.156 w}\right] \ln\left( \frac{R_\infty}{R_d^i} \right)}, \quad
+\upsilon = 2 \alpha \eta.
+\]
+
+Итоговые выражения для нормированных концентраций для $j=0$:
+
+\[
+C_{\text{Ga}}^{i+1,0} = C_{\text{Ga}}^{i,0}
++ 4 \alpha (C_{\text{Ga}}^{i,1} - C_{\text{Ga}}^{i,0})
++ \upsilon f_{i,0}
+- \omega C_{\text{Ga}}^{i,0} C_{\text{As}}^{i,0},
+\]
+
+\[
+C_{\text{As}}^{i+1,0} = C_{\text{As}}^{i,0}
++ 4 \beta (C_{\text{As}}^{i,1} - C_{\text{As}}^{i,0})
+- \gamma C_{\text{As}}^{i,0}
++ \kappa
+- \omega C_{\text{Ga}}^{i,0} C_{\text{As}}^{i,0},
+\]
+
+для $j\in\left[1,N_{r-1}\right]$:
+
+\[
+C_{\text{Ga}}^{i+1,j} = C_{\text{Ga}}^{i,j}
++ \alpha \left( \left(1+\frac{1}{2j}\right) C_{\text{Ga}}^{i,j+1}
+- 2 C_{\text{Ga}}^{i,j}
++ \left(1-\frac{1}{2j}\right) C_{\text{Ga}}^{i,j-1} \right)
++ \upsilon f_{i,j}
+- \omega C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j},
+\]
+
+\[
+C_{\text{As}}^{i+1,j} = C_{\text{As}}^{i,j}
++ \beta \left( \left(1+\frac{1}{2j}\right) C_{\text{As}}^{i,j+1}
+- 2 C_{\text{As}}^{i,j}
++ \left(1-\frac{1}{2j}\right) C_{\text{As}}^{i,j-1} \right)
+- \gamma C_{\text{As}}^{i,j}
++ \kappa
+- \omega C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}.
+\]
+
+для $j=N_{r}$:
+
+\[
+C_{\text{Ga}}^{i,N_r} = 0, \qquad C_{\text{As}}^{i,N_r} = \epsilon.
+\]
+
+\subsubsection{Рост кольца}
+
+С учётом масштабирования по \( C_0 \), рост высоты кольца можно записать как:
+
+\begin{equation}
+\frac{d h(r,t)}{d t} = h_0 \cdot C_0 \cdot k_r \cdot C_{\text{Ga}}(r,t) \cdot C_{\text{As}}(r,t),
+\end{equation}
+
+Для численного расчёта это уравнение дискретизуется по времени с использованием явной схемы Эйлера:
+
+\begin{equation}
+h_{i+1,j} = h_{i,j} + \Delta t \cdot h_0 \cdot C_0 \cdot k_r \cdot C_{\text{Ga}}^{i,j} \cdot C_{\text{As}}^{i,j}.
+\end{equation}
+
+С учётом ранее введённого безразмерного параметра \( \omega = C_0 k_r \Delta t \), уравнение принимает окончательный вид:
+
+\begin{equation}
+h_{i+1,j} = h_{i,j} + \omega h_0 C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}.
+\end{equation}
+
+Начальное условие для высоты кольца задаётся как:
+
+\begin{equation}
+h_{0,j} = 0.
+\end{equation}
+
+\subsubsection{Изменение радиуса капли}
+
+Основываясь на объёме сферического сегмента и скорости расхода атомов, можно записать уравнение \eqref{eq:dRdt_integral} в виде:
+
+\begin{equation}
+R_d^{i+1} = R_d^i - \frac{2 \Omega_{\text{Ga}} k_r C_0^2 \Delta t \Delta r^2}{B(\theta) (R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j},
+\end{equation}
+
+После перехода к безразмерным концентрациям и введения параметра , уравнение принимает вид:
+
+\begin{equation}
+R_d^{i+1} = R_d^i - \frac{2 \Omega_{\text{Ga}} \omega C_0 \Delta r^2}{B(\theta) (R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}.
+\end{equation}
+
+Для упрощения записи удобно обозначить:
+
+\begin{equation}
+R_0^3 = \frac{2 \Omega_{\text{Ga}} \omega C_0 \Delta r^2}{B(\theta)},
+\end{equation}
+
+тогда итоговая формула будет:
+
+\begin{equation}
+R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}.
+\end{equation}
 
 % ============================================
 % ГЛАВА 3
