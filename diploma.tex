@@ -706,11 +706,7 @@ V = \Omega_{\text{Ga}} \cdot N_{\text{Ga}} \quad \Rightarrow \quad \frac{dV}{dt}
 
 \subsection{Реализация схемы Эйлера}
 
-Для численного решения уравнений, описывающих поведение концентраций атомов галлия и мышьяка на поверхности, а также рост кольца и изменение радиуса капли, в настоящей работе используется конечно-разностная схема Эйлера.
-
-Поскольку в рамках данной работы схема применяется для поэлементного обновления концентраций, радиуса капли и высоты кольца, её простота позволяет эффективно связать теоретическую модель и программную реализацию. В следующих подпунктах представлены конкретные разностные выражения, используемые для каждого элемента модели.
-
-Метод Эйлера широко применяется для численного решения задач математической физики и химико-технологического моделирования~\cite{usheva2014}.
+В настоящей работе для численного решения уравнений диффузии и реакции была выбрана явная схема Эйлера. Её преимуществами являются простота реализации и прозрачность численных операций. При соблюдении условий устойчивости (см. уравнение 3.2) схема обеспечивает адекватное поведение решения и позволяет эффективно исследовать динамику на относительно коротких временах~\cite{usheva2014}.
 
 \subsubsection{Пространственно-временная сетка}
 
@@ -915,6 +911,7 @@ h_{0,j} = 0.
 \begin{equation}
 R_d^{i+1} = R_d^i - \frac{2 \Omega_{\text{Ga}} k_r C_0^2 \Delta t \Delta r^2}{B(\theta) (R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j},
 \end{equation}
+,где каждый элемент суммы соответствует участку площадью, пропорциональной $\Delta r^2 \cdot j$. Это стандартная аппроксимация интеграла в полярных координатах при радиальной симметрии.
 
 После перехода к безразмерным концентрациям и введения параметра , уравнение принимает вид:
 
@@ -934,66 +931,102 @@ R_0^3 = \frac{2 \Omega_{\text{Ga}} \omega C_0 \Delta r^2}{B(\theta)},
 R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}.
 \end{equation}
 
-% ============================================
-% ГЛАВА 3
-% ============================================
-\pagebreak
-\section{Численные методы и алгоритмы}
+\subsection{Численные параметры}
 
-\subsection{Раздел 1}
+Для численной реализации модели использовалась безразмерная система единиц, в которой длина, концентрация и объём нормированы относительно характеристик элементарной ячейки. Все расчёты проводились в условных единицах, где $a_0 = 1$ — постоянная решётки, $C_0 = 2$ — масштаб концентрации, и $t_0$ — масштаб времени, связанный с диффузией атомов Ga.
 
-\subsection{Раздел 2}
+Значения параметров, использованные в расчётах, представлены в таблице~\ref{table-parameters} были полученны путём коллибровки модели.
 
-\begin{lstlisting}[language=rust,caption={Программная реализация метода Рунге-Кутты},label={listing-1}]
-    // From the pendulum program
-    fn runge_kutta(
-        vars: &MyVec,
-        pars: &Vec<f64>,
-        rhs: &dyn Fn(&MyVec, &Vec<f64>) -> MyVec,
-        dt: f64,
-    ) -> MyVec {
-        let rk_1 = rhs(vars, pars);
-        let rk_2 = rhs(&vars.add(&rk_1.scale(dt / 2.0)), pars);
-        let rk_3 = rhs(&vars.add(&rk_2.scale(dt / 2.0)), pars);
-        let rk_4 = rhs(&vars.add(&rk_3.scale(dt)), pars);
+\begin{center}
+    \begin{table}[h]
+    \centering{}%
+    \caption{Основные параметры, использованные в расчётах\label{table-parameters}}
+    \begin{tabularx}{0.95\textwidth}{|B|R|X|}
+    \hline 
+    \textbf{Параметр} & \textbf{Значение} & \textbf{Описание} \tabularnewline
+    \hline
+    $h_0$ & $1$ & Высота элементарной ячейки \tabularnewline
+    \hline
+    $\Omega_{\text{Ga}}$ & $0.1$ & Объём одного атома Ga \tabularnewline
+    \hline
+    $\Omega_{\text{GaAs}}$ & $1$ & Объём элементарной ячейки GaAs \tabularnewline
+    \hline
+    $k_r$ & $0.1$ & Константа скорости реакции (в ячейках$^{-2}$/время) \tabularnewline
+    \hline
+    $D_{\text{Ga}}$ & $1$ & Коэффициент диффузии атомов Ga (по нормировке) \tabularnewline
+    \hline
+    \end{tabularx}
+    \end{table}
+\end{center}
     
-        let vars_new = vars
-            .add(&rk_1.scale(dt / 6.0))
-            .add(&rk_2.scale(dt / 3.0))
-            .add(&rk_3.scale(dt / 3.0))
-            .add(&rk_4.scale(dt / 6.0));
-        vars_new
-    }
-    \end{lstlisting}
+Дополнительно в модели используются:
+\begin{itemize}
+    \item температура $T$ и поток мышьяка $F_{\text{As}}$ задаются пользователем;
+    \item параметры $E_{\text{Ga}}, E_{\text{As}}, E_a$ выбираются по материалу и подложке.
+\end{itemize}
+
+В таблице~\ref{table-literature-params} приведены типичные значения коэффициентов диффузии и энергий активации, используемых в различных источниках.
+
+\begin{center}
+    \begin{table}[h]
+    \centering{}%
+    \caption{Параметры модели из различных источников\label{table-literature-params}}
+    \begin{tabularx}{0.95\textwidth}{|B|X|R|R|R|X|}
+    \hline 
+    \textbf{Источник} & \textbf{Система / подложка} & $E_{\text{Ga}}$, эВ & $E_{\text{As}}$, эВ & $E_a$, эВ & \textbf{Комментарий} \tabularnewline
+    \hline
+    - & - & - & - & - & -\tabularnewline
+    \hline
+    - & - & - & - & - & -\tabularnewline
+    \hline
+    - & - & - & - & - & -\tabularnewline
+    \hline
+    - & - & - & - & - & -\tabularnewline
+    \hline
+    \end{tabularx}
+    \end{table}
+\end{center}
     
-    \begin{lstlisting}[language=C++,caption={Подпрограмма случайного блуждания на плоскости},label={listing-2}]
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_int_distribution<long> dist(1, 4);
-    std::vector<long> xn(n0, 0);
-    std::vector<long> yn(n0, 0);
-    for (long jt = 0; jt < M; jt++)
-    {
-        for (long jn = 0; jn < n0; jn++)
-        {
-            switch (dist(mt))
-            {
-            case 1:
-                xn[jn] ++;
-                break;
-            case 2:
-                xn[jn] --;
-                break;
-            case 3:
-                yn[jn] ++;
-                break;
-            case 4:
-                yn[jn] --;
-                break;
-            }
-        }
-    }
+\subsection{Программная реализация}
+
+Математическая модель, описанная в предыдущих разделах, была реализована на языке \texttt{Rust}, что обеспечило высокую производительность, безопасную работу с памятью и удобную модульную структуру кода. Программа состоит из нескольких логически выделенных модулей:
+
+\begin{itemize}
+    \item \texttt{main.rs} — точка входа, инициализация параметров и запуск основного цикла расчёта;
+    \item \texttt{geometry.rs} — вычисление потока галлия $F_{\text{Ga}}(r, t)$ и вспомогательные функции, связанные с геометрией капли;
+    \item \texttt{solver.rs} — реализация схемы Эйлера для обновления концентраций $C_{\text{Ga}}$, $C_{\text{As}}$, высоты $h(r)$ и радиуса капли $R_d(t)$;
+    \item \texttt{output.rs} — сохранение промежуточных и итоговых данных в текстовые файлы.
+\end{itemize}
+
+На каждом временном шаге расчёт выполняет следующий последовательный алгоритм:
+\begin{enumerate}
+    \item Расчёт профиля потока $F_{\text{Ga}}(r, t)$ вблизи границы капли;
+    \item Обновление поверхностных концентраций $C_{\text{Ga}}(r)$ и $C_{\text{As}}(r)$;
+    \item Вычисление прироста высоты кольца $h(r)$;
+    \item Обновление радиуса капли $R_d(t)$ по формуле~(3.10);
+    \item Сохранение текущих данных в выходные файлы.
+\end{enumerate}
+
+Функциональная реализация этих шагов отражена в следующем фрагменте кода \ref{listing-1}:
+
+\begin{lstlisting}[language=Rust, caption={Основной цикл численного расчёта\label{listing-1}}]
+for step in 0..nt {
+    let flux = geometry::compute_flux(&state.r_d, &params);
+    solver::update_concentrations(&mut state, &flux, &params);
+    solver::update_height(&mut state, &params);
+    solver::update_radius(&mut state, &params);
+    output::save_step(&state, step);
+}
 \end{lstlisting}
+
+Результаты моделирования сохраняются в текстовые файлы:
+\begin{itemize}
+    \item \texttt{droplet.dat} — зависимость радиуса капли $R_d(t)$;
+    \item \texttt{height.dat} — профиль высоты кольца $h(r)$;
+    \item \texttt{c\_ga.dat}, \texttt{c\_as.dat} — концентрации атомов Ga и As на поверхности.
+\end{itemize}
+
+Для последующего анализа и построения графиков используется отдельный скрипт на Python (\texttt{plot.py}), основанный на библиотеке \texttt{matplotlib}.
 
 % ============================================
 % ГЛАВА 4
