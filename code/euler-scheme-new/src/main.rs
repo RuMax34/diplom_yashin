@@ -16,7 +16,7 @@ fn main() {
     let kt = 8.62e-5*(273.0+temperature); // Temperature in eV
     let nu0 = 2e6*kt/4.136; // GHz or ns^-1
 
-    let flux_relative = 3e-12; // relative flux, correct order, do not change the order
+    let flux_relative = 1e-10; // relative flux, correct order, do not change the order
     let f_as = c0*nu0*flux_relative;         // As flux, nm^(-2)/ns
 
     let d_ga = nu0/c0*(-e_ga/kt).exp(); // diffusion coefficient
@@ -26,7 +26,7 @@ fn main() {
     println!("As diffusion length is {} nm", diff_length_as);
     let kr = d_ga;           // nm^2 / ns ! just a guess, may need to change
     let w: f64 = 3.0;            // width of Gaussian flux, nm
-    let r_inf = 250.0;      // domain size, nm
+    let r_inf = 100.0;      // domain size, nm
     let theta = 60.0;       // contact angle in degrees
     let rd_initial: f64 = 30.0; // nm
     let h0 = a0;           // cell height per layer
@@ -38,7 +38,7 @@ fn main() {
     let b_theta = numerator_b / denominator_b;
 
     // Grid setup
-    let nr = 1250;
+    let nr = 500;
     let dr = r_inf / nr as f64;
     let dr2 = dr*dr;
     let r: Vec<f64> = (0..=nr).map(|i| i as f64 * dr).collect();
