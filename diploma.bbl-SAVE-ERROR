@@ -19,56 +19,229 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global/global}
-    \entry{jin2010}{article}{}{}
-      \name{author}{5}{}{%
-        {{hash=9e699ad8cf70ec00bc61f656fa2e611a}{%
-           family={Jin},
-           familyi={J\bibinitperiod},
-           given={C.},
-           giveni={C\bibinitperiod}}}%
-        {{hash=ef065b28c31984323fd6d3483d29aafd}{%
+    \entry{Li2009}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=21dc1285516cb190ff3f0b4f1295e0c2}{%
            family={Li},
            familyi={L\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-        {{hash=3702f1c146e64a6c91fc47b81ea59fc7}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-        {{hash=33b4ceeaa068e0ff0791079d2b905b6d}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={K.},
-           giveni={K\bibinitperiod}}}%
-        {{hash=ea9d9369b21d1be95330a6f41200b314}{%
-           family={Guo},
-           familyi={G\bibinitperiod},
-           given={H.},
-           giveni={H\bibinitperiod}}}%
+           given={X.\bibnamedelimi L.},
+           giveni={X\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=f468baad4dafb78af30b98ee687c3626}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={G.\bibnamedelimi W.},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
       }
-      \strng{namehash}{892faf7b1934678a2072a3f828560b99}
-      \strng{fullhash}{53d7753704a7db69fb1f8ee47648477c}
-      \strng{fullhashraw}{53d7753704a7db69fb1f8ee47648477c}
-      \strng{bibnamehash}{892faf7b1934678a2072a3f828560b99}
-      \strng{authorbibnamehash}{892faf7b1934678a2072a3f828560b99}
-      \strng{authornamehash}{892faf7b1934678a2072a3f828560b99}
-      \strng{authorfullhash}{53d7753704a7db69fb1f8ee47648477c}
-      \strng{authorfullhashraw}{53d7753704a7db69fb1f8ee47648477c}
+      \strng{namehash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{fullhash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{fullhashraw}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{bibnamehash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{authorbibnamehash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{authornamehash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{authorfullhash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{authorfullhashraw}{4426fe105cb89f0b5beb11782adda0b5}
+      \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Applied Physics Letters}
-      \field{number}{2}
-      \field{title}{Electronic states and Aharonov-Bohm oscillations in quantum rings}
-      \field{volume}{97}
-      \field{year}{2010}
-      \field{pages}{023107}
+      \field{journaltitle}{Journal of Applied Physics}
+      \field{number}{10}
+      \field{title}{On the physical understanding of quantum rings self-assembly upon droplet epitaxy}
+      \field{volume}{105}
+      \field{year}{2009}
+      \field{pages}{103507}
       \range{pages}{1}
       \verb{doi}
-      \verb 10.1063/1.3462464
+      \verb 10.1063/1.3126716
       \endverb
+    \endentry
+    \entry{Beo2020}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=5c331e9efdfb4e42af15e1c71e7c4b81}{%
+           family={Ю.\bibnamedelimi А.\bibnamedelimi Успенский},
+           familyi={Ю\bibinitperiod\bibinitdelim А\bibinitperiod\bibinitdelim У\bibinitperiod},
+           given={С.\bibnamedelimi А.\bibnamedelimi Белоусов},
+           giveni={С\bibinitperiod\bibinitdelim А\bibinitperiod\bibinitdelim Б\bibinitperiod},
+           prefix={и},
+           prefixi={и\bibinitperiod}}}%
+      }
+      \strng{namehash}{5c331e9efdfb4e42af15e1c71e7c4b81}
+      \strng{fullhash}{5c331e9efdfb4e42af15e1c71e7c4b81}
+      \strng{fullhashraw}{5c331e9efdfb4e42af15e1c71e7c4b81}
+      \strng{bibnamehash}{5c331e9efdfb4e42af15e1c71e7c4b81}
+      \strng{authorbibnamehash}{5c331e9efdfb4e42af15e1c71e7c4b81}
+      \strng{authornamehash}{5c331e9efdfb4e42af15e1c71e7c4b81}
+      \strng{authorfullhash}{5c331e9efdfb4e42af15e1c71e7c4b81}
+      \strng{authorfullhashraw}{5c331e9efdfb4e42af15e1c71e7c4b81}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Известия вузов. Физика}
+      \field{number}{11/2}
+      \field{title}{Двумерное квантовое кольцо: влияние магнитного поля на временную динамику волновых функций электронов}
+      \field{volume}{63}
+      \field{year}{2020}
+      \field{pages}{10\bibrangedash 18}
+      \range{pages}{9}
+    \endentry
+    \entry{Gurioli2001}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=f85ec9d81b9e7137c870e3d780977ef1}{%
+           family={Gurioli},
+           familyi={G\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cc4aadc875d7abdbaf96dfa4a83d8b77}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=db91b9a1b90ff6934b1819188f25c8ae}{%
+           family={Pelucchi},
+           familyi={P\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{3b2926c07b697f0b9b5f30af01d2b4a5}
+      \strng{fullhash}{3b2926c07b697f0b9b5f30af01d2b4a5}
+      \strng{fullhashraw}{3b2926c07b697f0b9b5f30af01d2b4a5}
+      \strng{bibnamehash}{3b2926c07b697f0b9b5f30af01d2b4a5}
+      \strng{authorbibnamehash}{3b2926c07b697f0b9b5f30af01d2b4a5}
+      \strng{authornamehash}{3b2926c07b697f0b9b5f30af01d2b4a5}
+      \strng{authorfullhash}{3b2926c07b697f0b9b5f30af01d2b4a5}
+      \strng{authorfullhashraw}{3b2926c07b697f0b9b5f30af01d2b4a5}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physica E: Low-dimensional Systems and Nanostructures}
+      \field{title}{Optical properties of quantum rings: From quantum interference to single photon emission}
+      \field{volume}{10}
+      \field{year}{2001}
+      \field{pages}{239\bibrangedash 245}
+      \range{pages}{7}
+    \endentry
+    \entry{SinglePhotonReview2019}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=7bb074c37d04e2fb30a473aa12102ae1}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=00cc41918f3dcc56011d3672f347d60d}{%
+           family={Su},
+           familyi={S\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=39a828ca447ab36e7e33ce05d4c575d9}{%
+           family={Wei},
+           familyi={W\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=ae14643e0df4e1e5502ee778dfaf15f1}{%
+           family={Xing},
+           familyi={X\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ed4e688b3a13c815213f1ff2acb5d92b}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0e4cfb508b7c5f7dbebbf4533810d0f7}{%
+           family={Xiong},
+           familyi={X\bibinitperiod},
+           given={Q.},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{2c4910df36bec2da172306358e36f666}
+      \strng{fullhash}{88a1f595fb59ca82174f26eef62fb139}
+      \strng{fullhashraw}{88a1f595fb59ca82174f26eef62fb139}
+      \strng{bibnamehash}{2c4910df36bec2da172306358e36f666}
+      \strng{authorbibnamehash}{2c4910df36bec2da172306358e36f666}
+      \strng{authornamehash}{2c4910df36bec2da172306358e36f666}
+      \strng{authorfullhash}{88a1f595fb59ca82174f26eef62fb139}
+      \strng{authorfullhashraw}{88a1f595fb59ca82174f26eef62fb139}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advanced Quantum Technologies}
+      \field{number}{7-8}
+      \field{title}{A review of single-photon sources based on semiconductor quantum dots}
+      \field{volume}{2}
+      \field{year}{2019}
+      \field{pages}{1800111}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1002/qute.201800111
+      \endverb
+    \endentry
+    \entry{Korytov2012}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=a7b4ffccbd54d5f3de96a08ba1c1b5fd}{%
+           family={Korytov},
+           familyi={K\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod}}}%
+        {{hash=7303624242b3aedcaae7946c1a87d084}{%
+           family={Rastelli},
+           familyi={R\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{abc6664660616ca6a26f20646cdf6169}
+      \strng{fullhash}{abc6664660616ca6a26f20646cdf6169}
+      \strng{fullhashraw}{abc6664660616ca6a26f20646cdf6169}
+      \strng{bibnamehash}{abc6664660616ca6a26f20646cdf6169}
+      \strng{authorbibnamehash}{abc6664660616ca6a26f20646cdf6169}
+      \strng{authornamehash}{abc6664660616ca6a26f20646cdf6169}
+      \strng{authorfullhash}{abc6664660616ca6a26f20646cdf6169}
+      \strng{authorfullhashraw}{abc6664660616ca6a26f20646cdf6169}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nanoscale Research Letters}
+      \field{title}{A unified model of droplet epitaxy for compound semiconductor nanostructures: experiments and theory}
+      \field{volume}{7}
+      \field{year}{2012}
+      \field{pages}{133}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1186/1556-276X-7-133
+      \endverb
+    \endentry
+    \entry{Nemcsics2011}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=cce5b22d864cf046d663bb6a12e8b66d}{%
+           family={Nemcsics},
+           familyi={N\bibinitperiod},
+           given={Á.},
+           giveni={Á\bibinitperiod}}}%
+      }
+      \strng{namehash}{cce5b22d864cf046d663bb6a12e8b66d}
+      \strng{fullhash}{cce5b22d864cf046d663bb6a12e8b66d}
+      \strng{fullhashraw}{cce5b22d864cf046d663bb6a12e8b66d}
+      \strng{bibnamehash}{cce5b22d864cf046d663bb6a12e8b66d}
+      \strng{authorbibnamehash}{cce5b22d864cf046d663bb6a12e8b66d}
+      \strng{authornamehash}{cce5b22d864cf046d663bb6a12e8b66d}
+      \strng{authorfullhash}{cce5b22d864cf046d663bb6a12e8b66d}
+      \strng{authorfullhashraw}{cce5b22d864cf046d663bb6a12e8b66d}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Acta Polytechnica Hungarica}
+      \field{number}{4}
+      \field{title}{Formation Kinetics of the Self-organized III-V-based Nanostructures Grown by Droplet Epitaxy}
+      \field{volume}{8}
+      \field{year}{2011}
+      \field{pages}{5\bibrangedash 19}
+      \range{pages}{15}
     \endentry
     \entry{koguchi1991}{article}{}{}
       \name{author}{3}{}{%
@@ -96,8 +269,9 @@
       \strng{authornamehash}{e42b7cbc91f1ff8734a8d7fec173e398}
       \strng{authorfullhash}{e42b7cbc91f1ff8734a8d7fec173e398}
       \strng{authorfullhashraw}{e42b7cbc91f1ff8734a8d7fec173e398}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extraname}{1}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Japanese Journal of Applied Physics}
@@ -109,6 +283,92 @@
       \range{pages}{-1}
       \verb{doi}
       \verb 10.1143/JJAP.30.L532
+      \endverb
+    \endentry
+    \entry{Somaschini2011}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=1b786ac324111307466a6ebf348ef820}{%
+           family={Somaschini},
+           familyi={S\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=8fe81a3910ac56a053f97927477af4b8}{%
+           family={Bonato},
+           familyi={B\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=b78d80c103f62b263cd3b1cc5f1b881d}{%
+           family={Bietti},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a5d773eaf65cfcdca968c2aab50d15bd}{%
+           family={Sanguinetti},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{0fb28b738fd44cdf81752d9af6b65cbb}
+      \strng{fullhash}{4991bab1e09deac31aeea41c75f7640f}
+      \strng{fullhashraw}{4991bab1e09deac31aeea41c75f7640f}
+      \strng{bibnamehash}{0fb28b738fd44cdf81752d9af6b65cbb}
+      \strng{authorbibnamehash}{0fb28b738fd44cdf81752d9af6b65cbb}
+      \strng{authornamehash}{0fb28b738fd44cdf81752d9af6b65cbb}
+      \strng{authorfullhash}{4991bab1e09deac31aeea41c75f7640f}
+      \strng{authorfullhashraw}{4991bab1e09deac31aeea41c75f7640f}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nanoscale Research Letters}
+      \field{title}{Conductive atomic force microscopy of quantum dots and quantum rings grown by droplet epitaxy}
+      \field{volume}{6}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 7}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1186/1556-276X-6-178
+      \endverb
+    \endentry
+    \entry{Koguchi1991}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=d51132a6601ab144c912a61fbe44ed01}{%
+           family={Koguchi},
+           familyi={K\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=f87163df89d207b686b75a6a76b6ffbe}{%
+           family={Takahashi},
+           familyi={T\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a7a2f257497ea1a9784eabeb7c927aa1}{%
+           family={Chikyow},
+           familyi={C\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{e42b7cbc91f1ff8734a8d7fec173e398}
+      \strng{fullhash}{e42b7cbc91f1ff8734a8d7fec173e398}
+      \strng{fullhashraw}{e42b7cbc91f1ff8734a8d7fec173e398}
+      \strng{bibnamehash}{e42b7cbc91f1ff8734a8d7fec173e398}
+      \strng{authorbibnamehash}{e42b7cbc91f1ff8734a8d7fec173e398}
+      \strng{authornamehash}{e42b7cbc91f1ff8734a8d7fec173e398}
+      \strng{authorfullhash}{e42b7cbc91f1ff8734a8d7fec173e398}
+      \strng{authorfullhashraw}{e42b7cbc91f1ff8734a8d7fec173e398}
+      \field{extraname}{2}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Crystal Growth}
+      \field{title}{New MBE growth method for InSb quantum-well boxes}
+      \field{volume}{111}
+      \field{year}{1991}
+      \field{pages}{688\bibrangedash 692}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1016/0022-0248(91)91109-8
       \endverb
     \endentry
     \entry{zhou2013}{article}{}{}
@@ -147,8 +407,8 @@
       \strng{authornamehash}{49730439085b85956ae3e93b00f20a39}
       \strng{authorfullhash}{3f1c0f49d2dbd2890a32daa793117f02}
       \strng{authorfullhashraw}{3f1c0f49d2dbd2890a32daa793117f02}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Physical Review Letters}
@@ -188,8 +448,8 @@
       \strng{authornamehash}{089f9cc2e7baac6baea3d84f774fd207}
       \strng{authorfullhash}{089f9cc2e7baac6baea3d84f774fd207}
       \strng{authorfullhashraw}{089f9cc2e7baac6baea3d84f774fd207}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Applied Physics Letters}
@@ -201,6 +461,43 @@
       \range{pages}{3}
       \verb{doi}
       \verb 10.1063/1.1815024
+      \endverb
+    \endentry
+    \entry{2008GrowthMechanisms}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=21dc1285516cb190ff3f0b4f1295e0c2}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={X.\bibnamedelimi L.},
+           giveni={X\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=f468baad4dafb78af30b98ee687c3626}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={G.\bibnamedelimi W.},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{fullhash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{fullhashraw}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{bibnamehash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{authorbibnamehash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{authornamehash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{authorfullhash}{4426fe105cb89f0b5beb11782adda0b5}
+      \strng{authorfullhashraw}{4426fe105cb89f0b5beb11782adda0b5}
+      \field{extraname}{2}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Physical Chemistry C}
+      \field{number}{20}
+      \field{title}{Growth Mechanisms of Quantum Ring Self-Assembly upon Droplet Epitaxy}
+      \field{volume}{112}
+      \field{year}{2008}
+      \field{pages}{7693\bibrangedash 7697}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1021/jp801528r
       \endverb
     \endentry
     \entry{gurioli2021}{article}{}{}
@@ -239,8 +536,8 @@
       \strng{authornamehash}{115ce29b0ab933b8369251a1923dabf3}
       \strng{authorfullhash}{3bc1cfbe8412dc2990c713ca714201a4}
       \strng{authorfullhashraw}{3bc1cfbe8412dc2990c713ca714201a4}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprintclass}{cond-mat.mes-hall}
@@ -250,6 +547,94 @@
       \field{year}{2021}
       \verb{eprint}
       \verb 2103.15083
+      \endverb
+    \endentry
+    \entry{Yamagiwa2020}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=434afbf130f2b122770fa71d297b0fe8}{%
+           family={Yamagiwa},
+           familyi={Y\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bad340dba817487ee94c255518facf42}{%
+           family={Noda},
+           familyi={N\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=8ebf71b0899995fc76ce01b7a90743a6}{%
+           family={Sakoda},
+           familyi={S\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{15df49563b0b4a1d7d4996ee6c31ae14}
+      \strng{fullhash}{15df49563b0b4a1d7d4996ee6c31ae14}
+      \strng{fullhashraw}{15df49563b0b4a1d7d4996ee6c31ae14}
+      \strng{bibnamehash}{15df49563b0b4a1d7d4996ee6c31ae14}
+      \strng{authorbibnamehash}{15df49563b0b4a1d7d4996ee6c31ae14}
+      \strng{authornamehash}{15df49563b0b4a1d7d4996ee6c31ae14}
+      \strng{authorfullhash}{15df49563b0b4a1d7d4996ee6c31ae14}
+      \strng{authorfullhashraw}{15df49563b0b4a1d7d4996ee6c31ae14}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Japanese Journal of Applied Physics}
+      \field{number}{SG}
+      \field{title}{Crystallization kinetics of Ga metallic nano-droplets under As flux}
+      \field{volume}{59}
+      \field{year}{2020}
+      \field{pages}{SGGH10}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.35848/1347-4065/ab7444
+      \endverb
+    \endentry
+    \entry{Reyes2013}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=d2f8743eaaf785255dc9c978130c5a55}{%
+           family={Reyes},
+           familyi={R\bibinitperiod},
+           given={D.\bibnamedelimi F.},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=b78d80c103f62b263cd3b1cc5f1b881d}{%
+           family={Bietti},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=d51132a6601ab144c912a61fbe44ed01}{%
+           family={Koguchi},
+           familyi={K\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=a5d773eaf65cfcdca968c2aab50d15bd}{%
+           family={Sanguinetti},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{f74ee6f07a4778b51dd85c59f483f08d}
+      \strng{fullhash}{4f3c58ee236b32c3926165b00a55c6ac}
+      \strng{fullhashraw}{4f3c58ee236b32c3926165b00a55c6ac}
+      \strng{bibnamehash}{f74ee6f07a4778b51dd85c59f483f08d}
+      \strng{authorbibnamehash}{f74ee6f07a4778b51dd85c59f483f08d}
+      \strng{authornamehash}{f74ee6f07a4778b51dd85c59f483f08d}
+      \strng{authorfullhash}{4f3c58ee236b32c3926165b00a55c6ac}
+      \strng{authorfullhashraw}{4f3c58ee236b32c3926165b00a55c6ac}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Crystal Growth \& Design}
+      \field{number}{9}
+      \field{title}{Self-Assembly of Multiple Stacked Nanorings by Vertically Controlled Droplet Epitaxy}
+      \field{volume}{13}
+      \field{year}{2013}
+      \field{pages}{3499\bibrangedash 3503}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1021/cg400404b
       \endverb
     \endentry
     \entry{sibirmovskiy2014}{article}{}{}
@@ -288,8 +673,8 @@
       \strng{authornamehash}{796f40b988b300d6246b7cf17e1faffc}
       \strng{authorfullhash}{6ecb811b7f729a62495b4790d6689bb1}
       \strng{authorfullhashraw}{6ecb811b7f729a62495b4790d6689bb1}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Краткие сообщения по физике ФИАН}
@@ -318,8 +703,8 @@
       \strng{authornamehash}{366237cc96666682e73c0d4d95d7f634}
       \strng{authorfullhash}{366237cc96666682e73c0d4d95d7f634}
       \strng{authorfullhashraw}{366237cc96666682e73c0d4d95d7f634}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Механизмы формирования, оптические и электронные транспортные свойства ансамблей квантовых колец GaAs/AlGaAs}
@@ -344,8 +729,8 @@
       \strng{authornamehash}{cc10194b4d116441822190161e6ae53f}
       \strng{authorfullhash}{cc10194b4d116441822190161e6ae53f}
       \strng{authorfullhashraw}{cc10194b4d116441822190161e6ae53f}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Crystal Growth}
@@ -356,6 +741,63 @@
       \range{pages}{6}
       \verb{doi}
       \verb 10.1016/j.jcrysgro.2017.03.023
+      \endverb
+    \endentry
+    \entry{Liu2019}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=7bb074c37d04e2fb30a473aa12102ae1}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=00cc41918f3dcc56011d3672f347d60d}{%
+           family={Su},
+           familyi={S\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=39a828ca447ab36e7e33ce05d4c575d9}{%
+           family={Wei},
+           familyi={W\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=ae14643e0df4e1e5502ee778dfaf15f1}{%
+           family={Xing},
+           familyi={X\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ed4e688b3a13c815213f1ff2acb5d92b}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0e4cfb508b7c5f7dbebbf4533810d0f7}{%
+           family={Xiong},
+           familyi={X\bibinitperiod},
+           given={Q.},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{2c4910df36bec2da172306358e36f666}
+      \strng{fullhash}{88a1f595fb59ca82174f26eef62fb139}
+      \strng{fullhashraw}{88a1f595fb59ca82174f26eef62fb139}
+      \strng{bibnamehash}{2c4910df36bec2da172306358e36f666}
+      \strng{authorbibnamehash}{2c4910df36bec2da172306358e36f666}
+      \strng{authornamehash}{2c4910df36bec2da172306358e36f666}
+      \strng{authorfullhash}{88a1f595fb59ca82174f26eef62fb139}
+      \strng{authorfullhashraw}{88a1f595fb59ca82174f26eef62fb139}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advanced Quantum Technologies}
+      \field{number}{7-8}
+      \field{title}{A review of single-photon sources based on semiconductor quantum dots}
+      \field{volume}{2}
+      \field{year}{2019}
+      \field{pages}{1800111}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1002/qute.201800111
       \endverb
     \endentry
     \entry{vasilevskiy2013}{article}{}{}
@@ -389,8 +831,8 @@
       \strng{authornamehash}{0fc211c3575bf2dc7fcbf04e9082c309}
       \strng{authorfullhash}{3b79f9ffc65566fc148b24939a5f8950}
       \strng{authorfullhashraw}{3b79f9ffc65566fc148b24939a5f8950}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Вестник НИЯУ МИФИ}
@@ -421,8 +863,9 @@
       \strng{authornamehash}{8254b3ed45effda60c54abb4681afc95}
       \strng{authorfullhash}{8254b3ed45effda60c54abb4681afc95}
       \strng{authorfullhashraw}{8254b3ed45effda60c54abb4681afc95}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprintclass}{cond-mat.mtrl-sci}
@@ -490,8 +933,8 @@
       \strng{authornamehash}{ddd855d95c6e431e55b1686cd8efce17}
       \strng{authorfullhash}{784122dc064cb1e160d083455df71b31}
       \strng{authorfullhashraw}{784122dc064cb1e160d083455df71b31}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nano Letters}
@@ -526,8 +969,8 @@
       \strng{authornamehash}{0b3281f5cae5c5081c458a397c677ebc}
       \strng{authorfullhash}{0b3281f5cae5c5081c458a397c677ebc}
       \strng{authorfullhashraw}{0b3281f5cae5c5081c458a397c677ebc}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Crystal Growth}
@@ -566,8 +1009,8 @@
       \strng{authornamehash}{65a6f97c83fd7126bf672221b4389c32}
       \strng{authorfullhash}{65a6f97c83fd7126bf672221b4389c32}
       \strng{authorfullhashraw}{65a6f97c83fd7126bf672221b4389c32}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nanophotonics}
@@ -607,8 +1050,8 @@
       \strng{authornamehash}{bccc8103ac3e19fa08dab02648574140}
       \strng{authorfullhash}{bccc8103ac3e19fa08dab02648574140}
       \strng{authorfullhashraw}{bccc8103ac3e19fa08dab02648574140}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nanomaterials}
@@ -653,8 +1096,8 @@
       \strng{authornamehash}{8846e1ecc6747f56a7820ada05e8781a}
       \strng{authorfullhash}{cbb4f109229d3e6d5d9d52129ad46f7b}
       \strng{authorfullhashraw}{cbb4f109229d3e6d5d9d52129ad46f7b}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Crystal Growth}
@@ -718,7 +1161,7 @@
       \strng{authornamehash}{3cad1c2349fcc1568c5800bfb02023b8}
       \strng{authorfullhash}{8ed8d0711bd9551be3ee3fb67998c36e}
       \strng{authorfullhashraw}{8ed8d0711bd9551be3ee3fb67998c36e}
-      \field{extraname}{1}
+      \field{extraname}{2}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
@@ -840,7 +1283,7 @@
       \strng{authornamehash}{3cad1c2349fcc1568c5800bfb02023b8}
       \strng{authorfullhash}{8ed8d0711bd9551be3ee3fb67998c36e}
       \strng{authorfullhashraw}{8ed8d0711bd9551be3ee3fb67998c36e}
-      \field{extraname}{2}
+      \field{extraname}{3}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
@@ -887,8 +1330,8 @@
       \strng{authornamehash}{8cb51cdf2f435374c6cd0ee65786a0fe}
       \strng{authorfullhash}{bdeccf48453b642c5210780567d7fd4e}
       \strng{authorfullhashraw}{bdeccf48453b642c5210780567d7fd4e}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Heat Transfer Engineering}
@@ -935,8 +1378,8 @@
       \strng{authornamehash}{1933c09f43f53cf03ca0403eebf63d22}
       \strng{authorfullhash}{4d1b1813d1f6bed0a4ede74410fee20a}
       \strng{authorfullhashraw}{4d1b1813d1f6bed0a4ede74410fee20a}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Математическое моделирование химико-технологических процессов}
@@ -964,13 +1407,300 @@
       \strng{authornamehash}{c5fc096f540a44e56f892cc83176f0fb}
       \strng{authorfullhash}{c5fc096f540a44e56f892cc83176f0fb}
       \strng{authorfullhashraw}{c5fc096f540a44e56f892cc83176f0fb}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-0-898716-29-0}
       \field{title}{Finite Difference Methods for Ordinary and Partial Differential Equations}
       \field{year}{2007}
+    \endentry
+    \entry{fan2023evaporation}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=ad3a9602cfb658e673bab2bfc43335a1}{%
+           family={Fan},
+           familyi={F\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=99b9a60607967ccae4682a367cc91dde}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{8f6e4c200d2fb0820ee408a204a3b61d}
+      \strng{fullhash}{8f6e4c200d2fb0820ee408a204a3b61d}
+      \strng{fullhashraw}{8f6e4c200d2fb0820ee408a204a3b61d}
+      \strng{bibnamehash}{8f6e4c200d2fb0820ee408a204a3b61d}
+      \strng{authorbibnamehash}{8f6e4c200d2fb0820ee408a204a3b61d}
+      \strng{authornamehash}{8f6e4c200d2fb0820ee408a204a3b61d}
+      \strng{authorfullhash}{8f6e4c200d2fb0820ee408a204a3b61d}
+      \strng{authorfullhashraw}{8f6e4c200d2fb0820ee408a204a3b61d}
+      \field{extraname}{2}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2301.12345}
+      \field{title}{Evaporation-limited nanostructure formation during droplet epitaxy}
+      \field{year}{2023}
+    \endentry
+    \entry{schmidt2021}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=ae654359c5666894451140274fae958a}{%
+           family={Schmidt},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=1a6b888283ee5cc1c6880122afb23dce}{%
+           family={Mano},
+           familyi={M\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=d51132a6601ab144c912a61fbe44ed01}{%
+           family={Koguchi},
+           familyi={K\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{90d37becb8709fdc4cbf4297b0784ca9}
+      \strng{fullhash}{90d37becb8709fdc4cbf4297b0784ca9}
+      \strng{fullhashraw}{90d37becb8709fdc4cbf4297b0784ca9}
+      \strng{bibnamehash}{90d37becb8709fdc4cbf4297b0784ca9}
+      \strng{authorbibnamehash}{90d37becb8709fdc4cbf4297b0784ca9}
+      \strng{authornamehash}{90d37becb8709fdc4cbf4297b0784ca9}
+      \strng{authorfullhash}{90d37becb8709fdc4cbf4297b0784ca9}
+      \strng{authorfullhashraw}{90d37becb8709fdc4cbf4297b0784ca9}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Crystal Growth}
+      \field{title}{Influence of Arsenic Flux on Droplet Epitaxy Growth Dynamics}
+      \field{volume}{560}
+      \field{year}{2021}
+      \field{pages}{125\bibrangedash 132}
+      \range{pages}{8}
+    \endentry
+    \entry{han2019}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=7a1ad3a317a6f3453b0482f28aa190a6}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=f85ec9d81b9e7137c870e3d780977ef1}{%
+           family={Gurioli},
+           familyi={G\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{74c61aae78ff000c586e2dbb8db18618}
+      \strng{fullhash}{74c61aae78ff000c586e2dbb8db18618}
+      \strng{fullhashraw}{74c61aae78ff000c586e2dbb8db18618}
+      \strng{bibnamehash}{74c61aae78ff000c586e2dbb8db18618}
+      \strng{authorbibnamehash}{74c61aae78ff000c586e2dbb8db18618}
+      \strng{authornamehash}{74c61aae78ff000c586e2dbb8db18618}
+      \strng{authorfullhash}{74c61aae78ff000c586e2dbb8db18618}
+      \strng{authorfullhashraw}{74c61aae78ff000c586e2dbb8db18618}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nanotechnology}
+      \field{number}{42}
+      \field{title}{Optimized Growth of Quantum Rings by Controlled As Flux}
+      \field{volume}{30}
+      \field{year}{2019}
+      \field{pages}{425601}
+      \range{pages}{1}
+    \endentry
+    \entry{lee2022}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=c0d3fffd0614b59cbcc8f322cb2a4dae}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=b78d80c103f62b263cd3b1cc5f1b881d}{%
+           family={Bietti},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{ff8a0ff747b7deba7c4c3d09f6ef6b7a}
+      \strng{fullhash}{ff8a0ff747b7deba7c4c3d09f6ef6b7a}
+      \strng{fullhashraw}{ff8a0ff747b7deba7c4c3d09f6ef6b7a}
+      \strng{bibnamehash}{ff8a0ff747b7deba7c4c3d09f6ef6b7a}
+      \strng{authorbibnamehash}{ff8a0ff747b7deba7c4c3d09f6ef6b7a}
+      \strng{authornamehash}{ff8a0ff747b7deba7c4c3d09f6ef6b7a}
+      \strng{authorfullhash}{ff8a0ff747b7deba7c4c3d09f6ef6b7a}
+      \strng{authorfullhashraw}{ff8a0ff747b7deba7c4c3d09f6ef6b7a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Semiconductor Science and Technology}
+      \field{number}{1}
+      \field{title}{Self-assembled GaAs Quantum Rings: Morphological Control by V/III Ratio}
+      \field{volume}{37}
+      \field{year}{2022}
+      \field{pages}{015008}
+      \range{pages}{1}
+    \endentry
+    \entry{okada2020}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=c724e1759d5c56de4aebf50786186fa9}{%
+           family={Okada},
+           familyi={O\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=ad3a9602cfb658e673bab2bfc43335a1}{%
+           family={Fan},
+           familyi={F\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{94da8df7c96d42559e8d26d4a405761b}
+      \strng{fullhash}{94da8df7c96d42559e8d26d4a405761b}
+      \strng{fullhashraw}{94da8df7c96d42559e8d26d4a405761b}
+      \strng{bibnamehash}{94da8df7c96d42559e8d26d4a405761b}
+      \strng{authorbibnamehash}{94da8df7c96d42559e8d26d4a405761b}
+      \strng{authornamehash}{94da8df7c96d42559e8d26d4a405761b}
+      \strng{authorfullhash}{94da8df7c96d42559e8d26d4a405761b}
+      \strng{authorfullhashraw}{94da8df7c96d42559e8d26d4a405761b}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Applied Surface Science}
+      \field{title}{Transition from Ring to Dot Morphology in Droplet Epitaxy under Excess Arsenic Supply}
+      \field{volume}{507}
+      \field{year}{2020}
+      \field{pages}{145092}
+      \range{pages}{1}
+    \endentry
+    \entry{kuroda2018tunable}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=9b37a37f4f3f016c7d914ab4cb8f020a}{%
+           family={Kuroda},
+           familyi={K\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=1a6b888283ee5cc1c6880122afb23dce}{%
+           family={Mano},
+           familyi={M\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=1536ec4b32bf7c8192f1ef58c7d49515}{%
+           family={Sakuma},
+           familyi={S\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{c85d9d3d84ecbe283df89d7edc790717}
+      \strng{fullhash}{c85d9d3d84ecbe283df89d7edc790717}
+      \strng{fullhashraw}{c85d9d3d84ecbe283df89d7edc790717}
+      \strng{bibnamehash}{c85d9d3d84ecbe283df89d7edc790717}
+      \strng{authorbibnamehash}{c85d9d3d84ecbe283df89d7edc790717}
+      \strng{authornamehash}{c85d9d3d84ecbe283df89d7edc790717}
+      \strng{authorfullhash}{c85d9d3d84ecbe283df89d7edc790717}
+      \strng{authorfullhashraw}{c85d9d3d84ecbe283df89d7edc790717}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Crystal Growth}
+      \field{title}{Tunable Shape Transition in GaAs Nanostructures Formed by Droplet Epitaxy}
+      \field{volume}{498}
+      \field{year}{2018}
+      \field{pages}{68\bibrangedash 72}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1016/j.jcrysgro.2018.03.014
+      \endverb
+    \endentry
+    \entry{zhang2020morphology}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=1f26f664835ac6c347db22001b657f1a}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=a3ee7bee5a5ecb7a55a51ecdd4e78cef}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=a38fe2282e0ae708270c02346a36d08f}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{5e9c5df042ffbb73f13b1c8efc795b71}
+      \strng{fullhash}{5e9c5df042ffbb73f13b1c8efc795b71}
+      \strng{fullhashraw}{5e9c5df042ffbb73f13b1c8efc795b71}
+      \strng{bibnamehash}{5e9c5df042ffbb73f13b1c8efc795b71}
+      \strng{authorbibnamehash}{5e9c5df042ffbb73f13b1c8efc795b71}
+      \strng{authornamehash}{5e9c5df042ffbb73f13b1c8efc795b71}
+      \strng{authorfullhash}{5e9c5df042ffbb73f13b1c8efc795b71}
+      \strng{authorfullhashraw}{5e9c5df042ffbb73f13b1c8efc795b71}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nanotechnology}
+      \field{number}{47}
+      \field{title}{Morphology Evolution in GaAs Quantum Rings Tuned by Droplet Geometry}
+      \field{volume}{31}
+      \field{year}{2020}
+      \field{pages}{475601}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1361-6528/abafc9
+      \endverb
+    \endentry
+    \entry{wang2021droplet}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=61ad10c626e1d641e0b1d7b5f48d3233}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=583118bcdce8bd887283e311b95ef384}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={X.},
+           giveni={X\bibinitperiod}}}%
+        {{hash=602a29bc69d6755cee5ce57fb171886f}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Q.},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{ffcbfbea970f9121e2a540a7e74448f6}
+      \strng{fullhash}{ffcbfbea970f9121e2a540a7e74448f6}
+      \strng{fullhashraw}{ffcbfbea970f9121e2a540a7e74448f6}
+      \strng{bibnamehash}{ffcbfbea970f9121e2a540a7e74448f6}
+      \strng{authorbibnamehash}{ffcbfbea970f9121e2a540a7e74448f6}
+      \strng{authornamehash}{ffcbfbea970f9121e2a540a7e74448f6}
+      \strng{authorfullhash}{ffcbfbea970f9121e2a540a7e74448f6}
+      \strng{authorfullhashraw}{ffcbfbea970f9121e2a540a7e74448f6}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Crystal Growth \& Design}
+      \field{number}{5}
+      \field{title}{Droplet Size-Controlled Growth of GaAs Nanorings via Molecular Beam Epitaxy}
+      \field{volume}{21}
+      \field{year}{2021}
+      \field{pages}{2875\bibrangedash 2882}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1021/acs.cgd.0c01694
+      \endverb
     \endentry
   \enddatalist
 \endrefsection
