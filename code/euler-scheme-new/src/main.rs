@@ -12,7 +12,7 @@ fn main() {
     let e_a: f64 = 1.0;  // eV
 
     // User-defined parameters
-    let temperature = 250.0; // temperature in C
+    let temperature = 240.0; // temperature in C
     let kt = 8.62e-5*(273.0+temperature); // Temperature in eV
     let nu0 = 2e6*kt/4.136; // GHz or ns^-1
 
@@ -28,7 +28,7 @@ fn main() {
     let w: f64 = 3.0;            // width of Gaussian flux, nm
     let r_inf = 200.0;      // domain size, nm
     let theta = 60.0;       // contact angle in degrees
-    let rd_initial: f64 = 30.0; // nm
+    let rd_initial: f64 = 60.0; // nm
     let h0 = a0;           // cell height per layer
 
     // Derived parameters
@@ -38,7 +38,7 @@ fn main() {
     let b_theta = numerator_b / denominator_b;
 
     // Grid setup
-    let nr = 500;
+    let nr = 1000;
     let dr = r_inf / nr as f64;
     let dr2 = dr*dr;
     let r: Vec<f64> = (0..=nr).map(|i| i as f64 * dr).collect();
