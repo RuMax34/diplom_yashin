@@ -3131,6 +3131,19 @@ F_{Ga}\left(r,t\right)=\left(1+\frac{F_{As}}{4D_{Ga}C_{0}}\left(R_{\infty}^{2}-R
 
 \end_layout
 
+\begin_layout Standard
+Interestingly,
+ the bracket is equal to 1 when 
+\begin_inset Formula $R_{d}\to0$
+\end_inset
+
+ and equal to 1 when 
+\begin_inset Formula $R_{d}\to R_{\infty}$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
