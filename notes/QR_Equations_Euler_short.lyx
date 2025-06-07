@@ -3055,6 +3055,82 @@ C_{d}=\frac{F_{As}R_{d}^{2}}{4D_{Ga}}
 
 \end_layout
 
+\begin_layout Standard
+Or,
+ using an approximation from above:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{Ga}\left(r,t\right)=F_{As}\frac{R_{d}^{2}}{w^{2}}\frac{\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let's explicitly extract 
+\begin_inset Formula $R_{d}$
+\end_inset
+
+ as this is a time-dependent function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{C_{0}}{C_{d}}=\frac{4D_{Ga}C_{0}}{F_{As}R_{d}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{F_{As}}{w^{2}}\frac{\left(\frac{2D_{Ga}C_{0}}{F_{As}}+\frac{R_{\infty}^{2}-R_{d}^{2}}{2}-R_{d}^{2}\ln\frac{R_{\infty}}{R_{d}}\right)\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left(3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right)\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The old flux expression is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}^{\text{old}}\left(r,t\right)=\frac{2D_{Ga}C_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So the new one can be written as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=\left(1+\frac{\frac{R_{\infty}^{2}}{R_{d}^{2}}-1-\ln\frac{R_{\infty}^{2}}{R_{d}^{2}}}{\frac{C_{0}}{C_{d}}}\right)F_{Ga}^{\text{old}}\left(r,t\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
