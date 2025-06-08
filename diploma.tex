@@ -7,6 +7,8 @@
 % Подсветка кода (все стили в файле)
 \input{code_highlight.tex}
 
+\usepackage{float}
+
 \begin{document}
 
 \input{titlepage.tex}
@@ -77,21 +79,21 @@
     \item \textbf{Дополнительная обработка.} При необходимости структура может быть подвергнута термическому отжигу или заращиванию покровным слоем, что изменяет её морфологию, симметрию и оптические свойства. Например, частичный отжиг может привести к перераспределению материала и трансформации точки в кольцо.
 \end{enumerate}
 
-Морфология образующихся структур чувствительна к ряду технологических параметров: температуре подложки, интенсивности и длительности потока компонентов, времени экспозиции, а также к типу и ориентации подложки. Это делает капельную эпитаксию не только удобным, но и гибким инструментом для целенаправленного синтеза наноструктур с заданными свойствами~\cite{sibirmovskiy2014}.
-
-Стадии капельной эпитаксии наглядно представлены на схематическом изображении, заимствованном из статьи~\cite{gurioli2021} (рис.~\ref{fig:gurioli1}). На нём показан процесс формирования капель, возможные пути кристаллизации и типичные формы наноструктур.
-
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
-        \includegraphics[width=11cm]{images/gurioli_fig1.png}
+        \includegraphics[width=10cm]{images/gurioli_fig1.png}
         \caption{\label{fig:gurioli1}
             Стадии капельной эпитаксии (воспроизведено из~\cite{gurioli2021}): (a) схема последовательного осаждения атомов III и V группы, (b) AFM-изображения капель с различной плотностью, (c) два механизма роста — поглощение атомов As каплей и диффузия Ga наружу, (d) формирование квантовой точки или кольца в зависимости от доминирующего механизма.}
     \end{center}
 \end{figure}
 
+Морфология образующихся структур чувствительна к ряду технологических параметров: температуре подложки, интенсивности и длительности потока компонентов, времени экспозиции, а также к типу и ориентации подложки. Это делает капельную эпитаксию не только удобным, но и гибким инструментом для целенаправленного синтеза наноструктур с заданными свойствами~\cite{sibirmovskiy2014}.
+
+Стадии капельной эпитаксии наглядно представлены на схематическом изображении, заимствованном из статьи~\cite{gurioli2021} (рис.~\ref{fig:gurioli1}). На нём показан процесс формирования капель, возможные пути кристаллизации и типичные формы наноструктур.
+
 Дополнительно, на рис.~\ref{fig:zhou1} представлена последовательность реальных SEM-изображений, иллюстрирующая трансформацию капли Ga во времени под действием потока As, в том числе образование двойного кольца. Эти данные наглядно подтверждают описанный выше механизм.
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=11cm]{images/Zhou1-Firgure1.png}
         \caption{\label{fig:zhou1}
@@ -117,7 +119,7 @@ E_M = \frac{\hbar^2}{2m^* r^2} \left( M + \frac{\Phi}{\Phi_0} \right)^2,
 
 Энергетические и оптические свойства КК зависят от их геометрических параметров — внешнего и внутреннего радиусов, толщины, глубины. Геометрия, в свою очередь, может быть определена, например, методом атомно-силовой микроскопии. На рис.~\ref{fig:elborg2} представлен AFM-изображение одиночного квантового кольца, полученного в работе~\cite{elborg2017}.
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=11cm]{images/elborg_fig2.png}
         \caption{\label{fig:elborg2}
@@ -135,7 +137,7 @@ E_M = \frac{\hbar^2}{2m^* r^2} \left( M + \frac{\Phi}{\Phi_0} \right)^2,
 
 Интенсивность потока мышьяка (или эффективное давление As$_4$) регулирует скорость кристаллизации(см. рис.~\ref{fig:morph_map}). Высокий поток ведёт к мгновенному насыщению капли As и образованию точек. Напротив, при умеренном или ступенчатом потоке As возможно последовательное формирование двойных или концентрических колец~\cite{zhou2013,fan2023}.
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=14cm]{images/morphology_map.png}
         \caption{\label{fig:morph_map}
@@ -145,7 +147,7 @@ E_M = \frac{\hbar^2}{2m^* r^2} \left( M + \frac{\Phi}{\Phi_0} \right)^2,
 
 Схожие результаты были получены в недавней обзорной работе Fan и Ma~\cite{fan2023}, где показано, как изменяются формы GaAs наноструктур (точки, кольца, двойные кольца, диск) при варьировании температуры и потока As. При 150 °C формируются точки, при 200 °C — кольца, а при 300 °C наблюдаются двойные кольца и кольцевые углубления (см. рис.~\ref{fig:fanma_temp}). Аналогично, при фиксированной температуре изменение потока As также приводит к трансформации форм (см. рис.~\ref{fig:fanma_pressure}).
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=11cm]{images/fanma_fig2e_left.png}
         \caption{\label{fig:fanma_temp}
@@ -153,7 +155,7 @@ E_M = \frac{\hbar^2}{2m^* r^2} \left( M + \frac{\Phi}{\Phi_0} \right)^2,
     \end{center}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=11cm]{images/fanma_fig2e_right.png}
         \caption{\label{fig:fanma_pressure}
@@ -184,7 +186,7 @@ E_M = \frac{\hbar^2}{2m^* r^2} \left( M + \frac{\Phi}{\Phi_0} \right)^2,
 \subsubsection*{Модели на основе уравнений диффузии и химической реакции}
 Один из наиболее распространённых подходов основан на описании эволюции поверхностных концентраций компонентов III и V групп с помощью реакционно-диффузионных уравнений. Такие модели позволяют анализировать пространственное распределение атомов и воспроизводить морфологию кольца. Классическим примером является модель, предложенная в работе Zhou et al.\cite{zhou2013}, в которой учитываются диффузия атомов Ga и As, их взаимодействие, а также влияние параметров роста. Модель хорошо воспроизводит профиль кольца, но не учитывает динамическое изменение радиуса капли. На рис.\ref{fig:zhou_profiles} показано соответствие между профилем кольца, полученным в расчёте, и экспериментальными AFM-данными.
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=11cm]{images/zhou_profiles.png}
         \caption{\label{fig:zhou_profiles}
@@ -195,7 +197,7 @@ E_M = \frac{\hbar^2}{2m^* r^2} \left( M + \frac{\Phi}{\Phi_0} \right)^2,
 \subsubsection*{Кинетические модели нуклеации и эволюции капель}
 Другим направлением являются модели, описывающие образование и эволюцию капель на подложке. Они фокусируются на стадиях нуклеации, росте и слиянии капель, а также на влиянии температуры и плотности потока. Модель Dubrovskii et al.\cite{dubrovskii2021} представляет собой систему обыкновенных дифференциальных уравнений для плотностей мономеров, капель и критического размера. Она позволяет количественно описать начальную стадию формирования кольца, однако не рассматривает морфологию полученной структуры. На рис.\ref{fig:dubrovskii_model} показана временная эволюция параметров нуклеации согласно расчётам данной модели.
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=11cm]{images/dubrovskii_fig2.png}
         \caption{\label{fig:dubrovskii_model}
@@ -206,9 +208,9 @@ E_M = \frac{\hbar^2}{2m^* r^2} \left( M + \frac{\Phi}{\Phi_0} \right)^2,
 \subsubsection*{Модели на основе метода Монте-Карло}
 Для описания сложной кинетики роста на атомарном уровне применяются модели на основе кинетического Монте-Карло. Они позволяют учитывать локальные процессы осаждения, поверхностной диффузии и кристаллизации. Примером служит модель Shwartz et al.\cite{shwartz2018}, в которой смоделировано образование кольца с учётом направления поступления атомов As, перераспределения Ga и влияния геометрии капли. Такие модели хорошо воспроизводят эволюцию формы, но являются вычислительно затратными и трудны для параметрического анализа. На рис.\ref{fig:shwartz4} приведены последовательные конфигурации кольца на различных стадиях роста.
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
-        \includegraphics[width=11cm]{images/shwartz_fig4.png}
+        \includegraphics[width=9cm]{images/shwartz_fig4.png}
         \caption{\label{fig:shwartz4}
             Эволюция морфологии кольца в модели Монте-Карло. Слева — поперечные сечения, справа — вид сверху. Капля Ga обозначена фиолетовым, GaAs — коричневым. Воспроизведено из~\cite{shwartz2018}, рис.~4.}
     \end{center}
@@ -317,19 +319,7 @@ C_{As}\left(R_{\infty},t\right)=F_{As}\tau_{As}.
 
 Одним из ключевых элементов модели капельной эпитаксии является описание пространственного распределения потока галлия, поступающего из жидкой капли на подложку. Корректное задание этой функции необходимо для воспроизведения морфологии кольца и скорости роста наноструктуры. Ниже приведено подробное аналитическое построение соответствующего выражения, опирающееся на решение уравнения диффузии с заданными граничными условиями.
 
-Нам требуется дополнительная концентрация атомов Ga на границе капли в соответствии с:
-
-\begin{equation}
-\tilde{C}_{Ga}\left(r,t\right)=C_{0}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
-\end{equation}
-
-Это приводит к дополнительному потоку, который является нашим единственным источником атомов Ga (рис.~\ref{fig:first}):
-
-\begin{equation}
-F_{Ga}\left(r,t\right)=\frac{C_{0}}{\tau_{Ga}\left(t\right)}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
-\end{equation}
-
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
         \includegraphics[width=11cm]{images/first.png}
         \caption{\label{fig:first}
@@ -337,225 +327,258 @@ F_{Ga}\left(r,t\right)=\frac{C_{0}}{\tau_{Ga}\left(t\right)}\exp\left(-\frac{\le
     \end{center}
 \end{figure}
 
-Чтобы найти параметр $\tau_{\text{Ga}}$ (где $w$ — свободное постоянное значение), нам нужно учесть потерю атомов Ga. Для этого мы рассмотрим более простую модель, в которой расчёт выполняется для $r \in [R_{d}, R_{\infty}]$ и присутствует только Ga. Это приводит к следующему уравнению:
+Общее выражение для потока (рис.~\ref{fig:first}):
 
 \begin{equation}
-\frac{\partial C_{Ga}}{\partial t}=D_{Ga}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)
+    F_{Ga}\left(r,t\right)=\frac{C_{0}}{\tau_{Ga}\left(t\right)}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
+\end{equation}
+
+Мы решаем упрощённую задачу о капле Ga, испускающей атомы в присутствии потока As, и предполагаем сильное взаимодействие, при котором каждый поступающий атом As удаляет один атом Ga с поверхности, связывая его и образуя GaAs. Тогда уравнение диффузии для Ga будет выглядеть так:
+
+\begin{equation}
+    \frac{\partial C_{Ga}}{\partial t}=D_{Ga}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)-F_{As}
 \end{equation}
 
 \[
-C_{\text{Ga}}\left(R_d, t\right) = C_0,
-\qquad
-C_{\text{Ga}}\left(R_\infty, t\right) = 0
+C_{Ga}\left(R_{d},t\right)=C_{0}
 \]
 
-Мы можем решить эту проблему путем разделения переменных или просто рассмотреть стационарное состояние:
+\[
+C_{Ga}\left(R_{\infty},t\right)=0
+\]
+
+Давайте решим задачу, предположив, что состояние стационарно:
 
 \[
 \frac{\partial C_{Ga}}{\partial t}=0
 \]
 
-Тогда нам нужно решить:
-
 \[
-\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)=0
+\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)=\frac{F_{As}}{D_{Ga}}
 \]
 
-Мы получаем общее решение:
+Общее решение таково:
 
 \[
-C_{Ga}=A\ln\frac{r}{R_{0}}
+C_{Ga}=\frac{F_{As}}{4D_{Ga}}r^{2}+A\ln\frac{r}{a}
 \]
 
-Где $A,R_{0}$ - неизвестные константы. Замена граничных условий приводит к:
+где A, a — неизвестные константы.
+
+Чтобы вычислить их, мы используем граничные условия.
+
+Первое граничное условие:
 
 \[
-A\ln\frac{R_{d}}{R_{0}}=C_{0}
-\qquad
-A\ln\frac{R_{\infty}}{R_{0}}=0
+\frac{F_{As}}{4D_{Ga}}R_{d}^{2}+A\ln\frac{R_{d}}{a}=C_{0}\qquad\Rightarrow\qquad A=\frac{C_{0}-\frac{F_{As}}{4D_{Ga}}R_{d}^{2}}{\ln\frac{R_{d}}{a}}
 \]
 
-Таким образом, мы получаем:
-
-\[
-R_{0}=R_{\infty}
-\]
+Обозначим:
 
 \begin{equation}
-A=\frac{C_{0}}{\ln\frac{R_{d}}{R_{\infty}}}
-\end{equation}
-
-Из чего следует:
-
-\begin{equation}
-C_{Ga}=\frac{C_{0}}{\ln\frac{R_{d}}{R_{\infty}}}\ln\frac{r}{R_{\infty}}
-\end{equation}
-
-Теперь нам нужно найти поток от границы капли:
-
-\begin{equation}
-J_{Ga}=-D_{Ga}\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)
-\end{equation}
-
-\begin{equation}
-\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)=\frac{C_{0}}{R_{d}\ln\frac{R_{d}}{R_{\infty}}}
+    \frac{F_{As}R_{d}^{2}}{4D_{Ga}}=C_{d}
 \end{equation}
 
 \[
-J_{Ga}=-\frac{D_{Ga}C_{0}}{R_{d}\ln\frac{R_{d}}{R_{\infty}}}
+C_{Ga}=C_{d}\frac{r^{2}}{R_{d}^{2}}+\left(C_{0}-C_{d}\right)\frac{\ln\frac{r}{a}}{\ln\frac{R_{d}}{a}}=C_{d}\left(\frac{r^{2}}{R_{d}^{2}}+\left(\frac{C_{0}}{C_{d}}-1\right)\frac{\ln\frac{r}{a}}{\ln\frac{R_{d}}{a}}\right)
 \]
-
-Поток положительный (потому что он должен двигаться от капли в направлении r → $R_{infty}$), поэтому мы переписываем его как:
-
-\begin{equation}
-J_{Ga}=\frac{D_{Ga}C_{0}}{R_{d}\ln\frac{R_{\infty}}{R_{d}}}>0
-\end{equation}
-
-Изменение числа атомов Ga:
-
-\begin{equation}
-\frac{dN_{Ga}}{dt}=-2\pi R_{d}J_{Ga}=-2\pi\frac{D_{Ga}C_{0}}{\ln\frac{R_{\infty}}{R_{d}}}
-\end{equation}
-
-С другой стороны, в нашей первоначальной задаче мы имеем:
-
-\begin{equation}
-\frac{dN_{Ga}}{dt}=-2\pi\int_{0}^{R_{\infty}}F_{Ga}rdr
-\end{equation}
+  
+Снова проверяем граничные условия:
 
 \[
--\frac{dN_{Ga}}{dt}=2\pi\frac{C_{0}}{\tau_{Ga}}\int_{0}^{R_{\infty}}\exp\left(-\frac{\left(r-R_{d}\right)^{2}}{w^{2}}\right)rdr=
+C_{Ga}\left(R_{d}\right)=C_{d}\left(1+\frac{C_{0}}{C_{d}}-1\right)=C_{0}
 \]
 
-\[
-u=r-R_{d},\qquad r=u+R_{d}
-\]
+Второе граничное условие:
 
-\begin{equation}
-=2\pi\frac{C_{0}}{\tau_{Ga}}\int_{-R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu+2\pi\frac{C_{0}R_{d}}{\tau_{Ga}}\int_{-R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)du
-\end{equation}
-
-Благодаря симметрии:
-
-\[
-\int_{-R_{d}}^{R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu=0
-\]
-
-\[
-\int_{-R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu=\int_{R_{d}}^{R_{\infty}-R_{d}}\exp\left(-\frac{u^{2}}{w^{2}}\right)udu
-\]
-
-\[
--\frac{dN_{Ga}}{dt}=\pi\frac{C_{0}w^{2}}{\tau_{Ga}}\int_{\frac{R_{d}^{2}}{w^{2}}}^{\frac{\left(R_{\infty}-R_{d}\right)^{2}}{w^{2}}}\exp\left(-v\right)dv+2\pi\frac{C_{0}wR_{d}}{\tau_{Ga}}\int_{-\frac{R_{d}}{w}}^{\frac{R_{\infty}-R_{d}}{w}}\exp\left(-v^{2}\right)dv
-\]
-
-\begin{equation}
-    \begin{split}
-    -\frac{dN_{Ga}}{dt} &= \pi \frac{C_{0} w^{2}}{\tau_{Ga}} \left[
-    \exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)
-    - \exp\left(-\frac{(R_{\infty} - R_{d})^{2}}{w^{2}}\right) \right. \\
-    &\quad + \left. \sqrt{\pi} \frac{R_{d}}{w}
-    \left\{ \text{erf}\left(\frac{R_{\infty} - R_{d}}{w}\right)
-    + \text{erf}\left(\frac{R_{d}}{w}\right) \right\}
-    \right]
-    \end{split}
-\end{equation}
+\begin{multline*}
+    C_{d}\left(
+    \frac{R_{\infty}^{2}}{R_{d}^{2}} +
+    \left(\frac{C_{0}}{C_{d}} - 1\right)
+    \cdot
+    \frac{\ln\left( \frac{R_{\infty}}{a} \right)}{\ln\left( \frac{R_{d}}{a} \right)}
+    \right)
+    = 0
+    \qquad\Rightarrow\qquad \\
+    \left(\ln R_{d} - \ln a\right)
+    \cdot \frac{R_{\infty}^{2}}{R_{d}^{2}} =
+    -\left( \frac{C_{0}}{C_{d}} - 1 \right)
+    \cdot \left(\ln R_{\infty} - \ln a\right)
+\end{multline*}
     
 
-Сравнение двух потоков дает нам следующее уравнение:
+\[
+\left(\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}\right)\ln a=\frac{R_{\infty}^{2}}{R_{d}^{2}}\ln R_{d}+\left(\frac{C_{0}}{C_{d}}-1\right)\ln R_{\infty}
+\]
 
 \[
-    \begin{split}
-    \frac{D_{Ga}}{\ln\frac{R_{\infty}}{R_{d}}} &= \frac{1}{2} \cdot \frac{w^{2}}{\tau_{Ga}} \left[
-    \exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)
-    - \exp\left(-\frac{(R_{\infty} - R_{d})^{2}}{w^{2}}\right) \right. \\
-    &\quad + \left. \sqrt{\pi} \cdot \frac{R_{d}}{w}
-    \left\{ \text{erf}\left(\frac{R_{\infty} - R_{d}}{w}\right)
-    + \text{erf}\left(\frac{R_{d}}{w}\right) \right\}
-    \right]
-    \end{split}
+\ln a=\frac{\frac{R_{\infty}^{2}}{R_{d}^{2}}\ln R_{d}+\left(\frac{C_{0}}{C_{d}}-1\right)\ln R_{\infty}}{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}
 \]
+
+Итак, мы получаем:
+
+\begin{multline*}
+    \ln R_{d} - \ln a =
+    \frac{
+    \left( \frac{C_0}{C_d} - 1 \right) \ln R_d
+    + \frac{R_{\infty}^{2}}{R_d^2} \ln R_d
+    - \frac{R_{\infty}^{2}}{R_d^2} \ln R_d
+    - \left( \frac{C_0}{C_d} - 1 \right) \ln R_{\infty}
+    }{
+    \left( \frac{C_0}{C_d} - 1 \right)
+    + \frac{R_{\infty}^{2}}{R_d^2}
+    } = \\
+    = \frac{
+    \left( \frac{C_0}{C_d} - 1 \right)
+    }{
+    \left( \frac{C_0}{C_d} - 1 \right)
+    + \frac{R_{\infty}^{2}}{R_d^2}
+    }
+    \cdot \ln \left( \frac{R_d}{R_{\infty}} \right)
+\end{multline*}
+    
+\begin{multline*}
+    \ln R_{\infty} - \ln a =
+    \frac{
+    \left( \frac{C_0}{C_d} - 1 \right) \ln R_{\infty}
+    + \frac{R_{\infty}^2}{R_d^2} \ln R_{\infty}
+    - \frac{R_{\infty}^2}{R_d^2} \ln R_d
+    - \left( \frac{C_0}{C_d} - 1 \right) \ln R_{\infty}
+    }{
+    \left( \frac{C_0}{C_d} - 1 \right) + \frac{R_{\infty}^2}{R_d^2}
+    } = \\
+    = -\frac{ \dfrac{R_{\infty}^2}{R_d^2} }{ 
+    \left( \dfrac{C_0}{C_d} - 1 \right) + \dfrac{R_{\infty}^2}{R_d^2} 
+    }
+    \cdot \ln \left( \frac{R_d}{R_{\infty}} \right)
+\end{multline*}
+    
+   
+Так:
+
+\[
+\ln\frac{r}{a}=\ln\frac{r}{R_{\infty}}+\ln\frac{R_{\infty}}{a}=\ln\frac{r}{R_{\infty}}-\frac{\frac{R_{\infty}^{2}}{R_{d}^{2}}}{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}\ln\frac{R_{d}}{R_{\infty}}
+\]
+
+И так мы имеем:
+
+\[
+C_{Ga}=C_{d}\left(\frac{r^{2}}{R_{d}^{2}}+\frac{\left(\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}\right)\ln\frac{r}{R_{\infty}}-\frac{R_{\infty}^{2}}{R_{d}^{2}}\ln\frac{R_{d}}{R_{\infty}}}{\ln\frac{R_{d}}{R_{\infty}}}\right)
+\]
+
+Упрощаем:
+
+\begin{equation}
+    C_{Ga}=C_{d}\left(\frac{r^{2}-R_{\infty}^{2}}{R_{d}^{2}}+\left(\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}\right)\frac{\ln\frac{r}{R_{\infty}}}{\ln\frac{R_{d}}{R_{\infty}}}\right)
+\end{equation}
+
+\[
+C_{d}=\frac{F_{As}R_{d}^{2}}{4D_{Ga}}
+\]
+
+Проверка второго граничного условия не представляет сложности. 
+
+Теперь снова проверим первое граничное условие:
+
+\begin{multline*}
+    C_{Ga}(R_d) = C_d \left(
+    \frac{R_d^2 - R_{\infty}^2}{R_d^2}
+    + \left(
+    \frac{C_0}{C_d} - 1 + \frac{R_{\infty}^2}{R_d^2}
+    \right)
+    \cdot
+    \frac{ \ln \left( \frac{R_d}{R_{\infty}} \right) }{ \ln \left( \frac{R_d}{R_{\infty}} \right) }
+    \right) = \\
+    = C_d \left(
+    1 - \frac{R_{\infty}^2}{R_d^2}
+    + \left( \frac{C_0}{C_d} - 1 + \frac{R_{\infty}^2}{R_d^2} \right)
+    \right) = C_0
+\end{multline*}
     
 
-\begin{equation}
-    \begin{split}
-    \tau_{Ga} = \frac{w^{2}}{2 D_{Ga}} \left[
-    \exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)
-    - \exp\left(-\frac{(R_{\infty} - R_{d})^{2}}{w^{2}}\right) \right. \\
-    \left. + \sqrt{\pi} \cdot \frac{R_{d}}{w}
-    \left\{ \text{erf}\left(\frac{R_{\infty} - R_{d}}{w}\right)
-    + \text{erf}\left(\frac{R_{d}}{w}\right) \right\}
-    \right] \cdot \ln\left(\frac{R_{\infty}}{R_{d}}\right)
-    \end{split}
-\end{equation}
+Теперь нам нужно найти поток на границе капли:
 
 \begin{equation}
-\tau_{Ga}=\frac{w^{2}}{2D_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}
+    J_{Ga}=-D_{Ga}\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)
 \end{equation}
 
-При $R_{\infty}\gg R_{d}$, то это уравнение упрощает:
+\begin{multline}
+    \left. \frac{\partial C_{\text{Ga}}}{\partial r} \right|_{r = R_d}
+    = C_d \left(
+    \frac{2r}{R_d^2}
+    + \frac{ \frac{C_0}{C_d} - 1 + \frac{R_\infty^2}{R_d^2} }{ \ln \left( \frac{R_d}{R_\infty} \right) } \cdot \frac{1}{r}
+    \right) \Bigg|_{r = R_d} = \\
+    = -\frac{2C_d}{R_d} \left(
+    \frac{
+    \frac{C_0}{C_d} - 1 + \frac{R_\infty^2}{R_d^2}
+    }{
+    2 \ln \left( \frac{R_\infty}{R_d} \right)
+    }
+    - 1
+    \right) < 0
+\end{multline} 
+
+Последнее условие вытекает из общего неравенства $x^{2}+\epsilon>\ln x^{2}$,  $x\geq1$ и:
+
+\[
+\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}>2\ln\frac{R_{\infty}}{R_{d}}=\ln\frac{R_{\infty}^{2}}{R_{d}^{2}},\qquad C_{0}>C_{d}
+\]
+
+Отрицательный поток подтверждает, что концентрация Ga уменьшается по мере удаления от капли, как и должно быть.
 
 \begin{equation}
-\tau_{Ga}=\frac{w^{2}}{2D_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]\ln\frac{R_{\infty}}{R_{d}}
+    J_{Ga}=\frac{2C_{d}D_{Ga}}{R_{d}}\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)=\frac{F_{As}R_{d}}{2}\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)
 \end{equation}
-
-Когда $R_{d}\to0$, то, естественно, $\tau_{Ga}\to+\infty$ и $F_{Ga}\to0$:
-    
-\[
-    \begin{split}
-    F_{\text{Ga}}(r,t) = \frac{2 D_{\text{Ga}} C_0}{w^2} \cdot \Bigg[ 
-    \exp\left( -\frac{(r - R_d(t))^2}{w^2} \right) 
-    \bigg/ \Big( 
-    \exp\left( -\frac{R_d^2}{w^2} \right) 
-    - \exp\left( -\frac{(R_{\infty} - R_d)^2}{w^2} \right) \\
-    + \sqrt{\pi} \cdot \frac{R_d}{w} \cdot \bigg\{
-    \text{erf}\left( \frac{R_{\infty} - R_d}{w} \right) 
-    + \text{erf}\left( \frac{R_d}{w} \right) 
-    \bigg\} \Big) 
-    \cdot \ln\left( \frac{R_{\infty}}{R_d} \right) 
-    \Bigg]
-    \end{split}
-\]  
-
-Обратите внимание, что если мы переобозначим переменные:
-
-\[
-x=\frac{R_{d}}{w},\qquad p=\frac{R_{\infty}}{w}
-\]
-
-Тогда функция:
-
-\[
-q\left(x,p\right)=\exp\left(-x^{2}\right)-\exp\left(-\left(p-x\right)^{2}\right)+\sqrt{\pi}x\left\{ \text{erf}\left(p-x\right)+\text{erf}\left(x\right)\right\} 
-\]
-
-Может быть аппроксимирована к прямой линии:
-
-\[
-q\left(x,p\right)\approx a\left(p\right)x+b\left(p\right)
-\]
-
-Где:
-
-\[
-b\left(p\right)\approx\frac{0.187}{p-3.156}
-\]
-
-\[
-a\left(p\right)\approx3.545
-\]
 
 Таким образом, мы получаем:
 
 \begin{equation}
-F_{Ga}\left(r,t\right)=\frac{2D_{Ga}C_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}}}
+    \frac{dN_{Ga}}{dt}=-2\pi R_{d}J_{Ga}=-\pi F_{As}R_{d}^{2}\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)
+\end{equation}
+
+\begin{equation}
+    \frac{dN_{Ga}}{dt}=-\pi\frac{C_{0}w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\end{equation}
+
+Сравнивая эти два выражения, мы получаем:
+
+\[
+F_{As}R_{d}^{2}\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)=\frac{C_{0}w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\]
+
+\[
+\tau_{Ga}=\frac{C_{0}w^{2}}{F_{As}R_{d}^{2}}\frac{\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} }{\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1}
+\]
+
+\begin{equation}
+    F_{Ga}\left(r,t\right)=F_{As}\frac{R_{d}^{2}}{w^{2}}\frac{\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} }
+\end{equation}
+
+\[
+C_{d}=\frac{F_{As}R_{d}^{2}}{4D_{Ga}}
+\]
+
+Или, используя приближение, описанное выше:
+
+\[
+F_{Ga}\left(r,t\right)=F_{As}\frac{R_{d}^{2}}{w^{2}}\frac{\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}}
+\]
+
+Давайте выделим $R_{d}$ отдельно, поскольку это функция, зависящая от времени:
+
+\[
+\frac{C_{0}}{C_{d}}=\frac{4D_{Ga}C_{0}}{F_{As}R_{d}^{2}}
+\]
+
+\begin{equation}
+    F_{Ga}\left(r,t\right)=\frac{F_{As}}{w^{2}}\frac{\left(\frac{2D_{Ga}C_{0}}{F_{As}}+\frac{R_{\infty}^{2}-R_{d}^{2}}{2}-R_{d}^{2}\ln\frac{R_{\infty}}{R_{d}}\right)\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left(3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right)\ln\frac{R_{\infty}}{R_{d}}}
 \end{equation}
 
 \subsection{Геометрия капли и коэффициент $B(\theta)$}
 
 Для корректного описания изменения объёма жидкой капли галлия при капельной эпитаксии используется приближение сферического сегмента с фиксированным углом смачивания $\theta$. Такая капля рассматривается как часть сферы радиуса $R$, с высотой $h$ и радиусом основания $R_d$ (см. рис.~\ref{fig:drop_geom}).
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
     \includegraphics[width=11cm]{images/contact_angle_schematic.png}
     \caption{\label{fig:drop_geom}
@@ -803,9 +826,9 @@ C_{\text{As}}^{i+1,0} = C_{\text{As}}^{i,0}
     &\quad + F_{\text{Ga}}^{i,j}
     - k_r C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}
     \Bigg),
-    \end{align*}
+\end{align*}
     
-    \begin{align*}
+\begin{align*}
     C_{\text{As}}^{i+1,j} &= C_{\text{As}}^{i,j}
     + \Delta t \Bigg(
       \frac{D_{\text{As}}}{\Delta r^2}
@@ -832,23 +855,36 @@ C_{\text{Ga}}^{i,N_r} = 0, \qquad C_{\text{As}}^{i,N_r} = F_{\text{As}} \cdot \t
 
 Для упрощения записи вводятся нормированные концентрации \( c = C / C_0 \) и безразмерные параметры:
 
-\[
-\alpha = \frac{D_{\text{Ga}} \Delta t}{\Delta r^2}, \quad
-\beta = \frac{D_{\text{As}} \Delta t}{\Delta r^2}, \quad
-\omega = C_0 k_r \Delta t, \quad
-\gamma = \frac{\Delta t}{\tau_{\text{As}}}, \quad
-\kappa = \frac{\Delta t F_{\text{As}}}{C_0}, \quad
-\epsilon = \frac{F_{\text{As}} \tau_{\text{As}}}{C_0}.
-\]
+\begin{align}
+    \alpha &= \frac{D_{\text{Ga}} \Delta t}{\Delta r^2}, \quad
+    \beta = \frac{D_{\text{As}} \Delta t}{\Delta r^2}, \quad
+    \omega = C_0 k_r \Delta t, \nonumber \\
+    \gamma &= \frac{\Delta t}{\tau_{\text{As}}}, \quad
+    \kappa = \frac{\Delta t F_{\text{As}}}{C_0}, \quad
+    \epsilon = \frac{F_{\text{As}} \tau_{\text{As}}}{C_0}.
+\end{align}   
 
 Также вводятся параметры, связанные с потоком галлия:
 
 \[
 \eta = \frac{\Delta r^2}{w^2}, \quad
-f_{i,j} = \frac{\exp\left( -\frac{(r_j - R_d^i)^2}{w^2} \right)}
-{\left[3.545 \frac{R_d^i}{w} + \frac{0.187 w}{R_\infty - 3.156 w}\right] \ln\left( \frac{R_\infty}{R_d^i} \right)}, \quad
-\upsilon = 2 \alpha \eta.
+f_{\mathrm{Ga}}(\rho, t) = 
+\frac{F_{\mathrm{As}}}{w^2} \cdot 
+\frac{
+\left[
+\frac{2 D_{\mathrm{Ga}} C_0}{F_{\mathrm{As}}}
++ \frac{R_\infty^2 - (R_d^i)^2}{2}
+- (R_d^i)^2 \ln\left( \frac{R_\infty}{R_d^i} \right)
+\right]
+\cdot
+\exp\left( - \frac{(r_j - R_d^i)^2}{w^2} \right)
+}{
+\left( 3.545 \cdot \frac{R_d^i}{w} + \frac{0.187 w}{R_\infty - 3.156 w} \right)
+\cdot
+\ln\left( \frac{R_\infty}{R_d^i} \right)
+}
 \]
+.
 
 В дальнейшем, для удобства, нормированные концентрации \( c = C / C_0 \)
 обозначаются теми же символами \( C \).
@@ -872,24 +908,21 @@ C_{\text{As}}^{i+1,0} = C_{\text{As}}^{i,0}
 
 для $j\in\left[1,N_{r-1}\right]$:
 
-\[
-C_{\text{Ga}}^{i+1,j} = C_{\text{Ga}}^{i,j}
-+ \alpha \left( \left(1+\frac{1}{2j}\right) C_{\text{Ga}}^{i,j+1}
-- 2 C_{\text{Ga}}^{i,j}
-+ \left(1-\frac{1}{2j}\right) C_{\text{Ga}}^{i,j-1} \right)
-+ \upsilon f_{i,j}
-- \omega C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j},
-\]
-
-\[
-C_{\text{As}}^{i+1,j} = C_{\text{As}}^{i,j}
-+ \beta \left( \left(1+\frac{1}{2j}\right) C_{\text{As}}^{i,j+1}
-- 2 C_{\text{As}}^{i,j}
-+ \left(1-\frac{1}{2j}\right) C_{\text{As}}^{i,j-1} \right)
-- \gamma C_{\text{As}}^{i,j}
-+ \kappa
-- \omega C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}.
-\]
+\begin{align}
+    C_{\text{Ga}}^{i+1,j} &= C_{\text{Ga}}^{i,j}
+    + \alpha \left( \left(1+\frac{1}{2j}\right) C_{\text{Ga}}^{i,j+1}
+    - 2 C_{\text{Ga}}^{i,j}
+    + \left(1-\frac{1}{2j}\right) C_{\text{Ga}}^{i,j-1} \right) \nonumber \\
+    &\quad + \upsilon f_{i,j}
+    - \omega C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}, \nonumber \\
+    C_{\text{As}}^{i+1,j} &= C_{\text{As}}^{i,j}
+    + \beta \left( \left(1+\frac{1}{2j}\right) C_{\text{As}}^{i,j+1}
+    - 2 C_{\text{As}}^{i,j}
+    + \left(1-\frac{1}{2j}\right) C_{\text{As}}^{i,j-1} \right) \nonumber \\
+    &\quad - \gamma C_{\text{As}}^{i,j}
+    + \kappa
+    - \omega C_{\text{Ga}}^{i,j} C_{\text{As}}^{i,j}.
+\end{align}    
 
 для $j=N_{r}$:
 
@@ -968,7 +1001,7 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
 \begin{itemize}
     \item \texttt{main.rs} — инициализация параметров, запуск основного расчётного цикла;
     \item \texttt{geometry.rs} — функции для вычисления потока галлия $F_{\mathrm{Ga}}(r, t)$ и вспомогательная геометрия (объём капли, угол смачивания и др.);
-    \item \texttt{solver.rs} — реализация явной схемы Эйлера: обновление концентраций $C_{\mathrm{Ga}}, C_{\mathrm{As}}$, высоты $h(r)$ и радиуса капли $R_d(t)$;
+    \item \texttt{solver.rs} — реализация схемы Эйлера: обновление концентраций $C_{\mathrm{Ga}}, C_{\mathrm{As}}$, высоты $h(r)$ и радиуса капли $R_d(t)$;
     \item \texttt{output.rs} — сохранение промежуточных и финальных данных в текстовые файлы.
 \end{itemize}
 
@@ -1002,7 +1035,7 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
 
 Базовые параметры модели для серии моделирований в пунктах 4.1—4.3 (см. табл.~\ref{tab:params-fixed}).
 
-\begin{table}
+\begin{table}[H]
     \centering
     \caption{Постоянные параметры численного моделирования}
     \label{tab:params-fixed}
@@ -1028,27 +1061,36 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
 
 Для анализа термодинамического поведения квантового кольца были проведены численные эксперименты при четырёх температурах: (а)~$T = 170^\circ$C, (б)~$T = 250^\circ$C, (в)~$T = 300^\circ$C и (г)~$T = 400^\circ$C. Ниже приведены графики временной эволюции концентраций атомов галлия и мышьяка, а также профиля высоты кольца.    
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
     \includegraphics[width=18cm]{images/C_Ga_t.png}
     \caption{\label{fig:c_ga_t} Распределение концентрации атомов галлия $C_{\text{Ga}}(r, t)$ при разных температурах: (а)~$T = 170^\circ$C, (б)~$T = 250^\circ$C, (в)~$T = 300^\circ$C и (г)~$T = 400^\circ$C.}
     \end{center}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
     \includegraphics[width=18cm]{images/C_As_t.png}
     \caption{\label{fig:c_as_t} Распределение концентрации атомов мышьяка $C_{\text{As}}(r, t)$ при разных температурах:(а)~$T = 170^\circ$C, (б)~$T = 250^\circ$C, (в)~$T = 300^\circ$C и (г)~$T = 400^\circ$C.}
     \end{center}
 \end{figure}
 
-\begin{figure}
+Для наглядности на рис.~\ref{fig:diff_length_as} представлена зависимость длины диффузии мышьяка от температуры. Видно, что при понижении температуры $L_{\mathrm{As}}$ экспоненциально возрастает, достигая сотен нанометров, тогда как при высоких температурах десорбция преобладает, и диффузия становится крайне ограниченной. Эта зависимость оказывает ключевое влияние на механизм роста и тип формируемой структуры.
+
+\begin{figure}[H]
     \begin{center}
     \includegraphics[width=18cm]{images/h-t.png}
     \caption{\label{fig:h_t} Профиль высоты кольца $h(r, t)$ во времени при различных температурах:(а)~$T = 170^\circ$C, (б)~$T = 250^\circ$C, (в)~$T = 300^\circ$C и (г)~$T = 400^\circ$C.}
     \end{center}
 \end{figure}
 
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=15cm]{images/L_diff_As.png}
+    \caption{\label{fig:diff_length_as} Зависимость длины диффузии атомов мышьяка от температуры.}
+    \end{center}
+\end{figure}
+    
 \textbf{Низкая температура (T = 170\textdegree C)} (рис. 4.1а, 4.2а, 4.3а) соответствует кинетически ограниченному режиму, в котором рост структуры формируется преимущественно под действием локализованного потока галлия. Длина диффузии мышьяка в этом режиме составляет 196{,}9~нм, что указывает на высокую подвижность атомов As, несмотря на низкую температуру.
 
 График концентрации мышьяка $C_\mathrm{As}(r, t)$ (рис. 4.2а) показывает, что As активно накапливается на периферии, но его концентрация в центральной области существенно ниже~— особенно на ранних этапах. Только к поздним временам профиль становится более пологим и приближается к насыщению. Это указывает на то, что, несмотря на относительно высокую длину диффузии, распределение As по поверхности не является равномерным.
@@ -1085,7 +1127,7 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
 
 В то же время профиль $C_\mathrm{Ga}(r, t)$ (рис. 4.1г) сохраняет свою форму, с максимумом в центре. Галлий по-прежнему поступает из капли, но в отсутствие достаточного количества мышьяка реакция практически не протекает.
 
-График высоты $h(r)$ (рис. 4.3г) демонстрирует крайне низкие значения — порядка 0.002~нм. Профиль размыт, нет чёткого пика или кольцевой формы. Это означает, что осаждение GaAs существенно ограничено: рост либо отсутствует, либо осуществляется на уровне фонообразного шума.
+График высоты $h(r)$ (рис. 4.3г) демонстрирует крайне низкие значения — порядка 0.01~нм. Профиль размыт, нет чёткого пика или кольцевой формы. Это означает, что осаждение GaAs существенно ограничено: рост либо отсутствует, либо осуществляется на уровне фонообразного шума.
 
 Аналогичное поведение было описано в работе~\cite{fan2023evaporation}, где рост GaAs-структур при высоких температурах ограничивался испарением As, что приводило к подавлению кристаллизации. В таких условиях вместо кольца формируется слабый, почти плоский “диск” без центрального провала.
 
@@ -1097,113 +1139,72 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
 
 Результаты моделирования представлены на рис.~\ref{fig:ga_flux_2}–\ref{fig:h_flux_2} и демонстрируют распределения концентраций галлия, мышьяка, а также профили высоты кольца на различных временных срезах.
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
-    \includegraphics[width=18cm]{images/C_Ga_t_2.png}
+    \includegraphics[width=15cm]{images/C_Ga_t_2.png}
     \caption{\label{fig:ga_flux_2} Распределение концентрации галлия $C_{\text{Ga}}(r)$ во времени при различных потоках мышьяка: (а)~$F_{\text{As}} = 2 \times 10^{-11}$ нм$^{-2}$с$^{-1}$, (б)~$1 \times 10^{-10}$ нм$^{-2}$с$^{-1}$, (в)~$4 \times 10^{-10}$ нм$^{-2}$с$^{-1}$.}
     \end{center}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
-    \includegraphics[width=18cm]{images/C_As_t_2.png}
+    \includegraphics[width=15cm]{images/C_As_t_2.png}
     \caption{\label{fig:as_flux_2} Распределение концентрации мышьяка $C_{\text{As}}(r)$ во времени при различных потоках $F_{\text{As}}$: (а)~$2 \times 10^{-11}$, (б)~$1 \times 10^{-10}$, (в)~$4 \times 10^{-10}$ нм$^{-2}$с$^{-1}$.}
     \end{center}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \begin{center}
-    \includegraphics[width=18cm]{images/h_t_2.png}
+    \includegraphics[width=15cm]{images/h_t_2.png}
     \caption{\label{fig:h_flux_2} Профиль высоты кольца $h(r)$ во времени при различных потоках мышьяка: (а)~$F_{\text{As}} = 2 \times 10^{-11}$, (б)~$1 \times 10^{-10}$, (в)~$4 \times 10^{-10}$ нм$^{-2}$с$^{-1}$.}
     \end{center}
 \end{figure}
 
 
-\textbf{Сильно пониженный поток мышьяка ($F_\mathrm{As} = 2 \times 10^{-11}~\text{нм}^{-2}\text{с}^{-1}$)} (рис. 4.4а, 4.5а, 4.6а) соответствует режиму, в котором образование GaAs-структуры практически невозможно вследствие крайней нехватки атомов мышьяка. Это экстремальное условие моделирует ситуацию, при которой поток мышьяка недостаточен для инициирования полноценной кристаллизации даже в присутствии капли галлия.
+\textbf{Сильно пониженный поток мышьяка ($F_\mathrm{As} = 2 \times 10^{-11}~\text{нм}^{-2}\text{с}^{-1}$)} (рис. 4.5а, 4.6а, 4.7а) соответствует режиму, в котором образование GaAs-структуры практически невозможно вследствие крайней нехватки атомов мышьяка. Это экстремальное условие моделирует ситуацию, при которой поток мышьяка недостаточен для инициирования полноценной кристаллизации даже в присутствии капли галлия.
 
-Профиль концентрации мышьяка $C_\mathrm{As}(r, t)$ (рис. 4.5а) показывает, что вещество практически не накапливается ни в центральной зоне, ни на периферии. Даже к позднему времени значения концентрации остаются близкими к нулю по всей области. Это указывает на то, что атомы As либо десорбируются сразу после осаждения, либо не достигают поверхности в достаточном количестве. Такая картина полностью согласуется с результатами моделирования, представленными в работе~\cite{fan2023evaporation}, где описан аналогичный режим с подавлением роста вследствие испарения мышьяка.
+Профиль концентрации мышьяка $C_\mathrm{As}(r, t)$ (рис. 4.6а) показывает, что вещество практически не накапливается ни в центральной зоне, ни на периферии. Даже к позднему времени значения концентрации остаются близкими к нулю по всей области. Это указывает на то, что атомы As либо десорбируются сразу после осаждения, либо не достигают поверхности в достаточном количестве. Такая картина полностью согласуется с результатами моделирования, представленными в работе~\cite{fan2023evaporation}, где описан аналогичный режим с подавлением роста вследствие испарения мышьяка.
 
-Профиль галлия $C_\mathrm{Ga}(r, t)$ (рис. 4.4а) показывает, что поток Ga, хотя и локализован вблизи центра, распространяется немного шире, чем в температурно ограниченных режимах. Однако, в отсутствие достаточного количества As, реакция Ga~+~As~$\rightarrow$~GaAs практически не происходит.
+Профиль галлия $C_\mathrm{Ga}(r, t)$ (рис. 4.5а) показывает, что поток Ga, хотя и локализован вблизи центра, распространяется немного шире, чем в температурно ограниченных режимах. Однако, в отсутствие достаточного количества As, реакция Ga~+~As~$\rightarrow$~GaAs практически не происходит.
 
-На графике высоты $h(r)$ (рис. 4.6а) это выражается в виде слабого центрального подъёма без характерной кольцевой формы. Максимальная высота структуры не превышает долей нанометра, профиль пологий, слабо выраженный, без чёткого вала. По сути, формируется не кольцо, а усреднённый куполообразный наноскопический дефект.
+На графике высоты $h(r)$ (рис. 4.7а) это выражается в виде слабого центрального подъёма без характерной кольцевой формы. Максимальная высота структуры не превышает долей нанометра, профиль пологий, слабо выраженный, без чёткого вала. По сути, формируется не кольцо, а усреднённый куполообразный наноскопический дефект.
 
 Таким образом, при сильно пониженном потока мышьяка ограничивающим фактором роста является именно отсутствие второго компонента. Даже в присутствии капли галлия процесс кристаллизации GaAs не реализуется, что приводит к срыву формирования квантовой структуры.
 
-\textbf{Базовый поток мышьяка ($F_\mathrm{As} = 1 \times 10^{-10}~\text{нм}^{-2}\text{с}^{-1}$)} (рис. 4.4б, 4.5б, 4.6б). Режим при $F_\mathrm{As} = 1 \times 10^{-10}~\text{нм}^{-2}\text{с}^{-1}$ соответствует базовому сценарию, уже подробно рассмотренному в разделе~4.1 при температуре $T = 250$\textdegree C. Здесь достигается сбалансированное перекрытие компонентов Ga и As, обеспечивающее устойчивый рост одиночного кольца.
+\textbf{Базовый поток мышьяка ($F_\mathrm{As} = 1 \times 10^{-10}~\text{нм}^{-2}\text{с}^{-1}$)} (рис. 4.5б, 4.6б, 4.7б). Режим при $F_\mathrm{As} = 1 \times 10^{-10}~\text{нм}^{-2}\text{с}^{-1}$ соответствует базовому сценарию, уже подробно рассмотренному в разделе~4.1 при температуре $T = 250$\textdegree C. Здесь достигается сбалансированное перекрытие компонентов Ga и As, обеспечивающее устойчивый рост одиночного кольца.
  
-\textbf{Повышенный поток мышьяка ($F_\mathrm{As} = 4 \times 10^{-10}~\text{нм}^{-2}\text{с}^{-1}$)} (рис. 4.4в, 4.5в, 4.6в) приводит к заметным изменениям в морфологии кольца. При избыточном поступлении As нарушается сбалансированность между компонентами, что влияет на локализацию зоны реакции и симметрию структуры.
+\textbf{Повышенный поток мышьяка ($F_\mathrm{As} = 4 \times 10^{-10}~\text{нм}^{-2}\text{с}^{-1}$)} (рис. 4.5в, 4.6в, 4.7в) приводит к заметным изменениям в морфологии кольца. При избыточном поступлении As нарушается сбалансированность между компонентами, что влияет на локализацию зоны реакции и симметрию структуры.
 
-Профиль концентрации мышьяка $C_\mathrm{As}(r, t)$ (рис. 4.5в) демонстрирует раннее насыщение по всей поверхности, включая периферию. Мышьяк становится практически неограничивающим фактором: его присутствие в избытке обеспечивает полное покрытие подложки, но не способствует избирательному росту.
+Профиль концентрации мышьяка $C_\mathrm{As}(r, t)$ (рис. 4.6в) демонстрирует раннее насыщение по всей поверхности, включая периферию. Мышьяк становится практически неограничивающим фактором: его присутствие в избытке обеспечивает полное покрытие подложки, но не способствует избирательному росту.
 
-Профиль $C_\mathrm{Ga}(r, t)$ (рис. 4.4в) остаётся относительно локализованным, но начинает сдвигаться в периферийную область. Это может быть связано с перераспределением потока в условиях избытка As. В результате зона эффективного перекрытия компонентов размывается и смещается, снижая пространственную селективность роста.
+Профиль $C_\mathrm{Ga}(r, t)$ (рис. 4.5в) остаётся относительно локализованным, но начинает сдвигаться в периферийную область. Это может быть связано с перераспределением потока в условиях избытка As. В результате зона эффективного перекрытия компонентов размывается и смещается, снижая пространственную селективность роста.
 
-На графике высоты $h(r)$ (рис. 4.6в) наблюдается более сложная форма: основной максимум становится менее симметричным, центральный провал уменьшается, и структура теряет характерный выраженный вал. Всё более выраженное сглаживание профиля и исчезновение центрального провала свидетельствуют о том, что структура топологически стремится к форме куполообразной наноструктуры — квантовой точки. Таким образом, избыток мышьяка приводит к потере радиальной избирательности роста, и структура переходит от кольцевой формы к морфологии, типичной для точечного осаждения.
+На графике высоты $h(r)$ (рис. 4.7в) наблюдается более сложная форма: основной максимум становится менее симметричным, центральный провал уменьшается, и структура теряет характерный выраженный вал. Всё более выраженное сглаживание профиля и исчезновение центрального провала свидетельствуют о том, что структура топологически стремится к форме куполообразной наноструктуры — квантовой точки. Таким образом, избыток мышьяка приводит к потере радиальной избирательности роста, и структура переходит от кольцевой формы к морфологии, типичной для точечного осаждения.
 
 Похожие эффекты описаны в работе~\cite{fan2023evaporation}, где при усилении флюкса As наблюдалась потеря симметрии, расширение зон осаждения и сглаживание структуры. Также, как показано в~\cite{mano2005nano}, отклонения от оптимального потока приводят к нарушению топологической стабильности кольца.
 
 Таким образом, при повышенном потоке мышьяка структура теряет чёткость, и рост выходит за рамки строго контролируемого кольца, переходя либо к неустойчивому многозонному осаждению, либо к упрощённой морфологии, характерной для квантовой точки.
-
-\subsection{Анализ влияния начального радиуса капли на формирование кольца}
-
-Одним из ключевых параметров, определяющих морфологию формируемой структуры при капельной эпитаксии, является начальный радиус капли \( R_d(0) \). Он определяет ширину и интенсивность потока галлия \( F_{\text{Ga}}(r, t) \), объём доступного материала, а также геометрию зоны, в которой происходит реакция с атомами мышьяка. В данной серии моделирования рассмотрены три значения начального радиуса капли: (а)~15 нм, (б)~30 нм (базовое), (в)~60 нм. Результаты представлены на рис.~\ref{fig:rd_c_as},~\ref{fig:rd_c_ga},~\ref{fig:rd_h}.
-
-\begin{figure}
-    \begin{center}
-    \includegraphics[width=18cm]{images/C_As_t_3.png}
-    \caption{\label{fig:rd_c_as} Распределение концентрации мышьяка $C_{\text{As}}(r)$ при разных значениях начального радиуса капли: (а)~15 нм, (б)~30 нм, (в)~60 нм.}
-    \end{center}
-\end{figure}
-
-\begin{figure}
-    \begin{center}
-    \includegraphics[width=18cm]{images/C_Ga_t_3.png}
-    \caption{\label{fig:rd_c_ga} Распределение концентрации галлия $C_{\text{Ga}}(r)$ при разных $R_d(0)$.}
-    \end{center}
-\end{figure}
-
-\begin{figure}
-    \begin{center}
-    \includegraphics[width=18cm]{images/h_t_3.png}
-    \caption{\label{fig:rd_h} Профиль высоты кольца $h(r)$ во времени при разных начальных радиусах капли.}
-    \end{center}
-\end{figure}
-
-Начальный радиус капли $R_0$ напрямую определяет форму и пространственное распределение потока галлия $F_\mathrm{Ga}(r, t)$ на поверхности. В данной серии расчётов проанализированы три случая: малый радиус ($R_0 = 15$~нм), базовый ($R_0 = 30$~нм) и крупный ($R_0 = 60$~нм), при фиксированных значениях температуры ($T = 250$\textdegree C) и потока мышьяка ($F_\mathrm{As} = 1 \times 10^{-10}~\text{нм}^{-2}\text{с}^{-1}$).
-
-\textbf{Малый радиус капли ($R_0 = 15$~нм)} (рис. 4.7а, 4.8а, 4.9а) приводит к сильной локализации потока галлия вблизи центра. Профиль $C_\mathrm{Ga}(r, t)$ демонстрирует резкий максимум при $r = 0$ и быстрое спадание к периферии, в то время как мышьяк $C_\mathrm{As}(r, t)$ равномерно покрывает всю поверхность. Это создаёт крайне ограниченную зону перекрытия компонентов, сосредоточенную строго в центре.
-
-На графике высоты $h(r)$ (рис. 4.9а) видно, что структура имеет форму узкого, одиночного пика без центрального провала или периферийных валов. Профиль напоминает куполообразную наноструктуру, сформированную за счёт вертикального роста при отсутствии радиального переноса.
-
-Такая морфология не соответствует кольцу, а по своей топологии и механизму формирования близка к квантовой точке. Следует отметить, что в данном контексте под «точкой» подразумевается именно форма и локализация роста, а не строгое квантовое ограничение во всех трёх измерениях. Подобные режимы описаны в теоретической модели~\cite{zhou2013}, где показано, что узкий поток галлия и ограниченное перекрытие с мышьяком приводят к образованию точечных структур вместо кольцевых.
-
-\textbf{Средний радиус капли ($R_0 = 30$~нм)} соответствует базовому сценарию, уже рассмотренному ранее при $T = 250$\textdegree C. В этом случае достигается сбалансированное распределение потока $F_\mathrm{Ga}(r, t)$, которое перекрывается с мышьяком на периферии. На графике $h(r)$ наблюдается устойчивая кольцевая морфология с центральным провалом и симметричным валом~— структура, типичная для одиночного квантового кольца, как в эксперименте~\cite{mano2005nano}.
-
-\textbf{Крупный радиус капли ($R_0 = 60$~нм)} (рис. 4.7в, 4.8в, 4.9в) приводит к значительному расширению потока галлия по поверхности. Профиль $C_\mathrm{Ga}(r, t)$ становится пологим и растянутым, максимум смещается на периферию. В то же время мышьяк $C_\mathrm{As}(r, t)$ равномерно покрывает всю область. В результате зона эффективного перекрытия компонентов Ga и As оказывается размытой и удалённой от центра, что влияет на симметрию и стабильность роста.
-
-На графике высоты $h(r)$ (рис. 4.9в) центральный провал сглаживается, основной максимум смещён в радиальном направлении, а на периферии наблюдаются признаки дополнительного подъёма. Такая морфология указывает на переход к более сложной топологии~— возможно, к зарождению двойного кольца или к многозонной структуре. Наблюдаемое ослабление симметрии и рост в удалённых участках являются признаками топологической перестройки, аналогичной описанной в работах~\cite{mano2005nano, fan2023evaporation}.
-
-Подобная трансформация может быть обусловлена снижением пространственной селективности потока галлия при увеличении $R_0$, как показано в модели~\cite{zhou2013}, где расширение зоны поступления Ga приводило к формированию многокольцевых структур. Следовательно, при крупном радиусе капли морфология утрачивает чёткую кольцевую форму и демонстрирует тенденцию к неустойчивому росту с элементами многозонной самоорганизации.
-
-Таким образом, увеличение начального радиуса капли приводит к переходу от точечной морфологии (при $R_0 = 15$~нм), через оптимальное кольцо ($R_0 = 30$~нм), к расширенной и неустойчивой структуре с признаками множественных зон роста ($R_0 = 60$~нм).
 
 %  ВЫВОДЫ И ЗАКЛЮЧЕНИЕ
 % ============================================
 \pagebreak
 \specialsection{Заключение}
 
-В рамках настоящей работы была разработана и реализована численная модель капельной эпитаксии квантовых колец, учитывающая пространственно-временное распределение атомов галлия и мышьяка, кинетику их взаимодействия, а также динамику изменения геометрии капли. Модель основана на реакционно-диффузионном описании с осевой симметрией и дополнена реалистичным распределением потока Ga из капли с учётом её усыхания во времени.
+В данной работе была построена и реализована численная модель капельной эпитаксии квантовых колец, описывающая пространственно-временное распределение атомов галлия и мышьяка, их взаимодействие и изменение формы капли. Модель основана на реакционно-диффузионном подходе с осевой симметрией и учитывает реалистическое распределение потока Ga с его усыханием во времени.
 
-Проведённая серия численных экспериментов продемонстрировала, что морфология формирующихся структур критически зависит от условий роста: температуры, интенсивности потока мышьяка и начального радиуса капли. Были выявлены следующие закономерности:
+Проведённая серия численных экспериментов продемонстрировала, что морфология формирующихся структур критически зависит от условий роста: температуры и интенсивности потока мышьяка. Были выявлены следующие закономерности:
 
 \begin{itemize}
-    \item При низкой температуре, повышеном потоке мышьяка или малом радиусе капли структура стремится к куполообразной морфологии, типичной для квантовой точки.
-    \item Оптимальные условия ($T \approx 250$\textdegree C, сбалансированный поток As, радиус капли $\approx 30$~нм) обеспечивают устойчивое формирование одиночного симметричного кольца.
-    \item Повышение температуры, избыток мышьяка или расширение капли приводят к нарушению симметрии и формированию двойных или многозонных структур.
+    \item При низкой температуре или повышенном потоке мышьяка структура стремится к куполообразной морфологии, типичной для квантовой точки.
+    \item Оптимальные условия ($T \approx 250$\textdegree C, сбалансированный поток As) обеспечивают устойчивое формирование одиночного симметричного кольца.
+    \item Повышение температуры приводит к нарушению симметрии и формированию двойных или многозонных структур.
 \end{itemize}
 
-Важно отметить, что полученные морфологические переходы при варьировании ключевых параметров роста качественно соответствуют теоретическим моделям и физическим механизмам, описанным в литературе~\cite{zhou2013,mano2005nano,fan2023evaporation}. Это подтверждает корректность использованного подхода и его применимость для анализа и прогнозирования процессов капельной эпитаксии.
+Результаты вычислений по разработанной модели качественно соответствуют известным экспериментальным данным: при увеличении температуры и уменьшении потока мышьяка радиус кольца увеличивается, а форма структуры меняется от одиночного кольца к двойному или к сплошному диску. Полученные морфологические переходы при варьировании ключевых параметров роста согласуются с теоретическими моделями и физическими механизмами, описанными в работах~\cite{zhou2013,mano2005nano,fan2023evaporation}. Это подтверждает корректность использованного подхода и его применимость для анализа и прогнозирования процессов капельной эпитаксии.
 
-В дальнейшем перспективным развитием модели будет учёт пространственной анизотропии коэффициента диффузии, которая может существенно повлиять на распределение мышьяка по поверхности и, как следствие, на форму формирующейся наноструктуры. Особенно важно это при моделировании процессов на кристаллических подложках с выраженной анизотропией, где диффузия вдоль различных кристаллографических направлений отличается. Кроме того, предполагается учесть эллиптическую (в общем случае неосесимметричную) форму капли, что позволит описывать более широкий класс ситуаций, включая асимметричные структуры и условия, приближенные к реальному эпитаксиальному росту.
+Ключевым преимуществом предложенной модели является её динамический характер: диффузия и рост описываются как функции времени, что позволяет учитывать эволюцию концентрационных профилей и морфологии в процессе роста. В отличие от большинства известных моделей, использующих стационарные приближения диффузии~\cite{zhou2013}, в данной модели решаются нестационарные уравнения, отражающие реальные кинетические процессы.
+
+В дальнейшем перспективным направлением развития модели является учёт пространственной анизотропии коэффициента диффузии, которая может существенно повлиять на распределение мышьяка по поверхности и, как следствие, на форму формирующейся наноструктуры. Особенно важно это при моделировании процессов на кристаллических подложках с выраженной анизотропией, где диффузия вдоль различных кристаллографических направлений отличается. Кроме того, предполагается учесть эллиптическую (в общем случае неосесимметричную) форму капли, что позволит описывать более широкий класс ситуаций, включая асимметричные структуры и условия, приближенные к реальному эпитаксиальному росту.
 
 \clearpage
 \addcontentsline{toc}{section}{Список литературы}
@@ -1236,7 +1237,7 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
         let kt = 8.62e-5*(273.0+temperature); // Temperature in eV
         let nu0 = 2e6*kt/4.136; // GHz or ns^-1
     
-        let flux_relative = 1e-10; // relative flux, correct order, do not change the order
+        let flux_relative = 0.25*1e-10; // relative flux, correct order, do not change the order
         let f_as = c0*nu0*flux_relative;         // As flux, nm^(-2)/ns
     
         let d_ga = nu0/c0*(-e_ga/kt).exp(); // diffusion coefficient
@@ -1258,7 +1259,7 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
         let b_theta = numerator_b / denominator_b;
     
         // Grid setup
-        let nr = 500;
+        let nr = 1000;
         let dr = r_inf / nr as f64;
         let dr2 = dr*dr;
         let r: Vec<f64> = (0..=nr).map(|i| i as f64 * dr).collect();
@@ -1273,6 +1274,7 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
         let epsilon = (f_as * tau_as) / c0;
         // See Ga flux calculation below, same as before
         let flux_factor = dt * 2.0*d_ga/w.powi(2);
+        let flux_radius2 = 4.0*d_ga*c0/f_as;
         let r03_droplet_coefficient = 2.0*omega_ga*omega*c0*dr2/b_theta;
     
         // Initial time limit
@@ -1319,6 +1321,7 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
                     kappa,
                     epsilon,
                     flux_factor,
+                    flux_radius2,
                     r_inf,
                     nr,
                 );
@@ -1396,6 +1399,7 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
                     kappa,
                     epsilon,
                     flux_factor,
+                    flux_radius2,
                     r_inf,
                     nr,
                 );
@@ -1435,6 +1439,7 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
         kappa: f64,
         epsilon: f64,
         flux_factor: f64,
+        flux_radius2: f64,
         r_inf: f64,
         nr: usize,
     ) {
@@ -1442,8 +1447,10 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
         // Handle j=0
         // Ga flux calculation using the formulas, derived before, now gives a correct result
         c_ga_next[0] = c_ga[0] + 4.0 * alpha * (c_ga[1] - c_ga[0])
-            - omega * c_ga[0] * c_as[0] + flux_factor*wp_j(0.0, rd, w)/(3.545*rd/w+0.187*w/(r_inf-3.156*w))/(r_inf/rd).ln();
-        
+            - omega * c_ga[0] * c_as[0]
+            + flux_factor * wp_j(0.0, rd, w)
+            / (3.545 * rd / w + 0.187 * w / (r_inf - 3.156 * w))
+            / (r_inf / rd).ln();
         c_as_next[0] = c_as[0] + 4.0 * beta * (c_as[1] - c_as[0]) 
             - gamma * c_as[0] 
             + kappa 
@@ -1460,10 +1467,15 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
                 - 2.0 * c_ga[j] 
                 + (1.0 - coeff) * c_ga[j - 1]
             );
-            // Ga flux calculation using the formulas, derived before, now gives a correct result
+            // Ga flux calculation 3rd version from the notes
+            let conc_ratio = flux_radius2/rd.powi(2);
+            let rd_rinf_ratio2 = r_inf.powi(2)/rd.powi(2);
+            let additional_factor = 1.0 + (rd_rinf_ratio2 - 1.0 + rd_rinf_ratio2.ln())/conc_ratio;
             c_ga_next[j] = c_ga[j] + term_ga
-            - omega * c_ga[j] * c_as[j] + flux_factor*wp_j(j_f64*dr, rd, w)/(3.545*rd/w+0.187*w/(r_inf-3.156*w))/(r_inf/rd).ln();
-            
+            - omega * c_ga[j] * c_as[j]
+            + flux_factor * additional_factor * wp_j(j_f64 * dr, rd, w)
+            / (3.545 * rd / w + 0.187 * w / (r_inf - 3.156 * w))
+            / (r_inf / rd).ln();
             // as atoms
             let term_as = beta * (
                 (1.0 + coeff) * c_as[j + 1] 
@@ -1496,7 +1508,7 @@ R_d^{i+1} = R_d^i - \frac{R_0^3}{(R_d^i)^2} \sum_{j=1}^{N_r} j \cdot C_{\text{Ga
     fn wp_j(x: f64, x0: f64, w: f64) -> f64 {
         let x2 = -((x-x0)/w).powi(2);
         x2.exp()
-    }    
+    } 
 \end{lstlisting}
 
 \end{document}
