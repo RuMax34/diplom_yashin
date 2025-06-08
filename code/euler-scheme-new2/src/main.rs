@@ -16,7 +16,7 @@ fn main() {
     let kt = 8.62e-5*(273.0+temperature); // Temperature in eV
     let nu0 = 2e6*kt/4.136; // GHz or ns^-1
 
-    let flux_relative = 0.25*1e-10; // relative flux, correct order, do not change the order
+    let flux_relative = 4.0*1e-10; // relative flux, correct order, do not change the order
     let f_as = c0*nu0*flux_relative;         // As flux, nm^(-2)/ns
 
     let d_ga = nu0/c0*(-e_ga/kt).exp(); // diffusion coefficient
@@ -57,7 +57,7 @@ fn main() {
     let r03_droplet_coefficient = 2.0*omega_ga*omega*c0*dr2/b_theta;
 
     // Initial time limit
-    let nt_max = 1_000_000;
+    let nt_max = 1_200_000;
 
     // Progress bar
     let pb = ProgressBar::new(nt_max as u64);

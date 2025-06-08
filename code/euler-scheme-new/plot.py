@@ -86,7 +86,7 @@ fig, ax = plt.subplots(figsize=inch(width, height))  # Figure size in inches (wi
 ax.plot(x, y1, label=r'$R_d(t)$', color=col(0), linestyle=d[0], linewidth=lwd, markersize=msz)
 
 # Customize the axes
-ax.set_xlabel(r'$t$, наносекунды', fontsize=fsz, fontweight='normal', labelpad=5*scale)
+ax.set_xlabel(r'$t$, усл.ед.', fontsize=fsz, fontweight='normal', labelpad=5*scale)
 ax.set_ylabel(r'Радиус $R_d$, нм', fontsize=fsz, fontweight='normal', labelpad=5*scale)
 ax.set_title('Зависимость радиуса капли от времени', fontsize=fsz, fontweight='normal', pad=5*scale)
 ax.tick_params(axis='both', which='major', labelsize=fsz-2, length=2*scale, width=bwd, direction='out')
@@ -153,22 +153,23 @@ scale = 1.5
 fig, ax = plt.subplots(figsize=inch(width, height))  # Figure size in inches (width, height)
 
 # Plot the data
-ax.plot(x, y1, label=r't=1', color=col(0), linestyle=d[0], linewidth=lwd, markersize=msz)
-ax.plot(x, y2, label=r't=2', color=col(1), linestyle=d[1], linewidth=lwd, markersize=msz)
-ax.plot(x, y3, label=r't=3', color=col(2), linestyle=d[2], linewidth=lwd, markersize=msz)
-ax.plot(x, y4, label=r't=4', color=col(3), linestyle=d[3], linewidth=lwd, markersize=msz)
-ax.plot(x, y5, label=r't=5', color=col(4), linestyle=d[4], linewidth=lwd, markersize=msz)
-ax.plot(x, y6, label=r't=6', color=col(5), linestyle=d[5], linewidth=lwd, markersize=msz)
-ax.plot(x, y7, label=r't=7', color=col(6), linestyle=d[6], linewidth=lwd, markersize=msz)
-ax.plot(x, y8, label=r't=8', color=col(7), linestyle=d[7], linewidth=lwd, markersize=msz)
-ax.plot(x, y9, label=r't=9', color=col(8), linestyle=d[8], linewidth=lwd, markersize=msz)
-ax.plot(x, y10, label=r't=10', color=col(9), linestyle=d[9], linewidth=lwd, markersize=msz)
+ax.plot(x, y1, label=r't=0.1T', color=col(0), linestyle=d[0], linewidth=lwd, markersize=msz)
+ax.plot(x, y2, label=r't=0.2T', color=col(1), linestyle=d[1], linewidth=lwd, markersize=msz)
+ax.plot(x, y3, label=r't=0.3T', color=col(2), linestyle=d[2], linewidth=lwd, markersize=msz)
+ax.plot(x, y4, label=r't=0.4T', color=col(3), linestyle=d[3], linewidth=lwd, markersize=msz)
+ax.plot(x, y5, label=r't=0.5T', color=col(4), linestyle=d[4], linewidth=lwd, markersize=msz)
+ax.plot(x, y6, label=r't=0.6T', color=col(5), linestyle=d[5], linewidth=lwd, markersize=msz)
+ax.plot(x, y7, label=r't=0.7T', color=col(6), linestyle=d[6], linewidth=lwd, markersize=msz)
+ax.plot(x, y8, label=r't=0.8T', color=col(7), linestyle=d[7], linewidth=lwd, markersize=msz)
+ax.plot(x, y9, label=r't=0.9T', color=col(8), linestyle=d[8], linewidth=lwd, markersize=msz)
+ax.plot(x, y10, label=r't=T', color=col(9), linestyle=d[9], linewidth=lwd, markersize=msz)
 
 # Customize the axes
 ax.set_xlabel(r'$r$, нм', fontsize=fsz, fontweight='normal', labelpad=5*scale)
-ax.set_ylabel(r'$h(r)$, нм', fontsize=fsz, fontweight='normal', labelpad=5*scale)
+ax.set_ylabel(r'$h(r)$, усл.ед.', fontsize=fsz, fontweight='normal', labelpad=5*scale)
 ax.set_title('Профиль КК в разные моменты времени', fontsize=fsz, fontweight='normal', pad=5*scale)
 ax.tick_params(axis='both', which='major', labelsize=fsz-2, length=2*scale, width=bwd, direction='out')
+ax.ticklabel_format(axis='y', style="sci")
 ax.grid(True, which='both', linestyle='dotted', linewidth=bwd, alpha=1)
 
 # Change the box (spines) line width
@@ -235,16 +236,16 @@ scale = 1.5
 fig, ax = plt.subplots(figsize=inch(width, height))  # Figure size in inches (width, height)
 
 # Plot the data
-ax.plot(x, y1, label=r't=1', color=col(0), linestyle=d[0], linewidth=lwd, markersize=msz)
-ax.plot(x, y2, label=r't=2', color=col(1), linestyle=d[1], linewidth=lwd, markersize=msz)
-ax.plot(x, y3, label=r't=3', color=col(2), linestyle=d[2], linewidth=lwd, markersize=msz)
-ax.plot(x, y4, label=r't=4', color=col(3), linestyle=d[3], linewidth=lwd, markersize=msz)
-ax.plot(x, y5, label=r't=5', color=col(4), linestyle=d[4], linewidth=lwd, markersize=msz)
-ax.plot(x, y6, label=r't=6', color=col(5), linestyle=d[5], linewidth=lwd, markersize=msz)
-ax.plot(x, y7, label=r't=7', color=col(6), linestyle=d[6], linewidth=lwd, markersize=msz)
-ax.plot(x, y8, label=r't=8', color=col(7), linestyle=d[7], linewidth=lwd, markersize=msz)
-ax.plot(x, y9, label=r't=9', color=col(8), linestyle=d[8], linewidth=lwd, markersize=msz)
-ax.plot(x, y10, label=r't=10', color=col(9), linestyle=d[9], linewidth=lwd, markersize=msz)
+ax.plot(x, y1, label=r't=0.1T', color=col(0), linestyle=d[0], linewidth=lwd, markersize=msz)
+ax.plot(x, y2, label=r't=0.2T', color=col(1), linestyle=d[1], linewidth=lwd, markersize=msz)
+ax.plot(x, y3, label=r't=0.3T', color=col(2), linestyle=d[2], linewidth=lwd, markersize=msz)
+ax.plot(x, y4, label=r't=0.4T', color=col(3), linestyle=d[3], linewidth=lwd, markersize=msz)
+ax.plot(x, y5, label=r't=0.5T', color=col(4), linestyle=d[4], linewidth=lwd, markersize=msz)
+ax.plot(x, y6, label=r't=0.6T', color=col(5), linestyle=d[5], linewidth=lwd, markersize=msz)
+ax.plot(x, y7, label=r't=0.7T', color=col(6), linestyle=d[6], linewidth=lwd, markersize=msz)
+ax.plot(x, y8, label=r't=0.8T', color=col(7), linestyle=d[7], linewidth=lwd, markersize=msz)
+ax.plot(x, y9, label=r't=0.9T', color=col(8), linestyle=d[8], linewidth=lwd, markersize=msz)
+ax.plot(x, y10, label=r't=T', color=col(9), linestyle=d[9], linewidth=lwd, markersize=msz)
 
 # Customize the axes
 ax.set_xlabel(r'$r$, нм', fontsize=fsz, fontweight='normal', labelpad=5*scale)
@@ -317,16 +318,16 @@ scale = 1.5
 fig, ax = plt.subplots(figsize=inch(width, height))  # Figure size in inches (width, height)
 
 # Plot the data
-ax.plot(x, y1, label=r't=1', color=col(0), linestyle=d[0], linewidth=lwd, markersize=msz)
-ax.plot(x, y2, label=r't=2', color=col(1), linestyle=d[1], linewidth=lwd, markersize=msz)
-ax.plot(x, y3, label=r't=3', color=col(2), linestyle=d[2], linewidth=lwd, markersize=msz)
-ax.plot(x, y4, label=r't=4', color=col(3), linestyle=d[3], linewidth=lwd, markersize=msz)
-ax.plot(x, y5, label=r't=5', color=col(4), linestyle=d[4], linewidth=lwd, markersize=msz)
-ax.plot(x, y6, label=r't=6', color=col(5), linestyle=d[5], linewidth=lwd, markersize=msz)
-ax.plot(x, y7, label=r't=7', color=col(6), linestyle=d[6], linewidth=lwd, markersize=msz)
-ax.plot(x, y8, label=r't=8', color=col(7), linestyle=d[7], linewidth=lwd, markersize=msz)
-ax.plot(x, y9, label=r't=9', color=col(8), linestyle=d[8], linewidth=lwd, markersize=msz)
-ax.plot(x, y10, label=r't=10', color=col(9), linestyle=d[9], linewidth=lwd, markersize=msz)
+ax.plot(x, y1, label=r't=0.1T', color=col(0), linestyle=d[0], linewidth=lwd, markersize=msz)
+ax.plot(x, y2, label=r't=0.2T', color=col(1), linestyle=d[1], linewidth=lwd, markersize=msz)
+ax.plot(x, y3, label=r't=0.3T', color=col(2), linestyle=d[2], linewidth=lwd, markersize=msz)
+ax.plot(x, y4, label=r't=0.4T', color=col(3), linestyle=d[3], linewidth=lwd, markersize=msz)
+ax.plot(x, y5, label=r't=0.5T', color=col(4), linestyle=d[4], linewidth=lwd, markersize=msz)
+ax.plot(x, y6, label=r't=0.6T', color=col(5), linestyle=d[5], linewidth=lwd, markersize=msz)
+ax.plot(x, y7, label=r't=0.7T', color=col(6), linestyle=d[6], linewidth=lwd, markersize=msz)
+ax.plot(x, y8, label=r't=0.8T', color=col(7), linestyle=d[7], linewidth=lwd, markersize=msz)
+ax.plot(x, y9, label=r't=0.9T', color=col(8), linestyle=d[8], linewidth=lwd, markersize=msz)
+ax.plot(x, y10, label=r't=T', color=col(9), linestyle=d[9], linewidth=lwd, markersize=msz)
 
 # Customize the axes
 ax.set_xlabel(r'$r$, нм', fontsize=fsz, fontweight='normal', labelpad=5*scale)

@@ -12,7 +12,7 @@ fn main() {
     let e_a: f64 = 1.0;  // eV
 
     // User-defined parameters
-    let temperature = 250.0; // temperature in C
+    let temperature = 200.0; // temperature in C
     let kt = 8.62e-5*(273.0+temperature); // Temperature in eV
     let nu0 = 2e6*kt/4.136; // GHz or ns^-1
 
