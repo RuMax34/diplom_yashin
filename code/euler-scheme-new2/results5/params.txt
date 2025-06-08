@@ -1,0 +1,19 @@
+    // User-defined parameters
+    let temperature = 280.0; // temperature in C
+    let kt = 8.62e-5*(273.0+temperature); // Temperature in eV
+    let nu0 = 2e6*kt/4.136; // GHz or ns^-1
+
+    let flux_relative = 0.75*1e-10; // relative flux, correct order, do not change the order
+    let f_as = c0*nu0*flux_relative;         // As flux, nm^(-2)/ns
+
+    let d_ga = nu0/c0*(-e_ga/kt).exp(); // diffusion coefficient
+    let d_as = nu0/c0*(-e_as/kt).exp(); // nm^2 / ns
+    let tau_as = (e_a / kt).exp()/nu0;
+    let diff_length_as = (d_as*tau_as).sqrt(); // nm
+    println!("As diffusion length is {} nm", diff_length_as);
+    let kr = d_ga;           // nm^2 / ns ! just a guess, may need to change
+    let w: f64 = 3.0;            // width of Gaussian flux, nm
+    let r_inf = 200.0;      // domain size, nm
+    let theta = 60.0;       // contact angle in degrees
+    let rd_initial: f64 = 30.0; // nm
+    let h0 = a0;           // cell height per layer

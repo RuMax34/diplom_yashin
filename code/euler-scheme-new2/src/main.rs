@@ -16,7 +16,7 @@ fn main() {
     let kt = 8.62e-5*(273.0+temperature); // Temperature in eV
     let nu0 = 2e6*kt/4.136; // GHz or ns^-1
 
-    let flux_relative = 1e-10; // relative flux, correct order, do not change the order
+    let flux_relative = 0.25*1e-10; // relative flux, correct order, do not change the order
     let f_as = c0*nu0*flux_relative;         // As flux, nm^(-2)/ns
 
     let d_ga = nu0/c0*(-e_ga/kt).exp(); // diffusion coefficient
@@ -53,10 +53,11 @@ fn main() {
     let epsilon = (f_as * tau_as) / c0;
     // See Ga flux calculation below, same as before
     let flux_factor = dt * 2.0*d_ga/w.powi(2);
+    let flux_radius2 = 4.0*d_ga*c0/f_as;
     let r03_droplet_coefficient = 2.0*omega_ga*omega*c0*dr2/b_theta;
 
     // Initial time limit
-    let nt_max = 3_000_000;
+    let nt_max = 1_000_000;
 
     // Progress bar
     let pb = ProgressBar::new(nt_max as u64);
@@ -99,6 +100,7 @@ fn main() {
                 kappa,
                 epsilon,
                 flux_factor,
+                flux_radius2,
                 r_inf,
                 nr,
             );
@@ -176,6 +178,7 @@ fn main() {
                 kappa,
                 epsilon,
                 flux_factor,
+                flux_radius2,
                 r_inf,
                 nr,
             );
@@ -215,6 +218,7 @@ fn update_concentrations(
     kappa: f64,
     epsilon: f64,
     flux_factor: f64,
+    flux_radius2: f64,
     r_inf: f64,
     nr: usize,
 ) {
@@ -240,9 +244,12 @@ fn update_concentrations(
             - 2.0 * c_ga[j] 
             + (1.0 - coeff) * c_ga[j - 1]
         );
-        // Ga flux calculation using the formulas, derived before, now gives a correct result
+        // Ga flux calculation 3rd version from the notes
+        let conc_ratio = flux_radius2/rd.powi(2);
+        let rd_rinf_ratio2 = r_inf.powi(2)/rd.powi(2);
+        let additional_factor = 1.0 + (rd_rinf_ratio2 - 1.0 + rd_rinf_ratio2.ln())/conc_ratio;
         c_ga_next[j] = c_ga[j] + term_ga
-        - omega * c_ga[j] * c_as[j] + flux_factor*wp_j(j_f64*dr, rd, w)/(3.545*rd/w+0.187*w/(r_inf-3.156*w))/(r_inf/rd).ln();
+        - omega * c_ga[j] * c_as[j] + flux_factor*additional_factor*wp_j(j_f64*dr, rd, w)/(3.545*rd/w+0.187*w/(r_inf-3.156*w))/(r_inf/rd).ln();
         
         // as atoms
         let term_as = beta * (

@@ -2554,6 +2554,596 @@ The absolute error is less than
 .
 \end_layout
 
+\begin_layout Section
+Alternative Alternative flux calculation
+\end_layout
+
+\begin_layout Standard
+We can use another model for calculating the flux,
+ which depends on the As flux (as it should).
+ Let's go back to the general flux expression:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{Ga}\left(r,t\right)=\frac{C_{0}}{\tau_{Ga}\left(t\right)}\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We solve a simplified problem of a Ga droplet emitting atoms in the presence of 
+\series bold
+As flux
+\series default
+ as well and we assume strong interaction so that each incoming As atom removes one Ga atom from the surface by binding it and creating GaAs.
+ Then the diffusion equation for Ga will be:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial C_{Ga}}{\partial t}=D_{Ga}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)-F_{As}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}\left(R_{d},t\right)=C_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}\left(R_{\infty},t\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us solve the problem by assuming a stationary state:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial C_{Ga}}{\partial t}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial C_{Ga}}{\partial r}\right)=\frac{F_{As}}{D_{Ga}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The general solution is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}=\frac{F_{As}}{4D_{Ga}}r^{2}+A\ln\frac{r}{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $A,a$
+\end_inset
+
+ are unknown constants.
+\end_layout
+
+\begin_layout Standard
+To evaluate them we use the boundary conditions.
+\end_layout
+
+\begin_layout Standard
+First b.c.:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{F_{As}}{4D_{Ga}}R_{d}^{2}+A\ln\frac{R_{d}}{a}=C_{0}\qquad\Rightarrow\qquad A=\frac{C_{0}-\frac{F_{As}}{4D_{Ga}}R_{d}^{2}}{\ln\frac{R_{d}}{a}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Denote:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{F_{As}R_{d}^{2}}{4D_{Ga}}=C_{d}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}=C_{d}\frac{r^{2}}{R_{d}^{2}}+\left(C_{0}-C_{d}\right)\frac{\ln\frac{r}{a}}{\ln\frac{R_{d}}{a}}=C_{d}\left(\frac{r^{2}}{R_{d}^{2}}+\left(\frac{C_{0}}{C_{d}}-1\right)\frac{\ln\frac{r}{a}}{\ln\frac{R_{d}}{a}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Checking the b.c.
+ again:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}\left(R_{d}\right)=C_{d}\left(1+\frac{C_{0}}{C_{d}}-1\right)=C_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Second b.c.:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{d}\left(\frac{R_{\infty}^{2}}{R_{d}^{2}}+\left(\frac{C_{0}}{C_{d}}-1\right)\frac{\ln\frac{R_{\infty}}{a}}{\ln\frac{R_{d}}{a}}\right)=0\qquad\Rightarrow\qquad\left(\ln R_{d}-\ln a\right)\frac{R_{\infty}^{2}}{R_{d}^{2}}=-\left(\frac{C_{0}}{C_{d}}-1\right)\left(\ln R_{\infty}-\ln a\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}\right)\ln a=\frac{R_{\infty}^{2}}{R_{d}^{2}}\ln R_{d}+\left(\frac{C_{0}}{C_{d}}-1\right)\ln R_{\infty}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ln a=\frac{\frac{R_{\infty}^{2}}{R_{d}^{2}}\ln R_{d}+\left(\frac{C_{0}}{C_{d}}-1\right)\ln R_{\infty}}{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ln R_{d}-\ln a=\frac{\left(\frac{C_{0}}{C_{d}}-1\right)\ln R_{d}+\frac{R_{\infty}^{2}}{R_{d}^{2}}\ln R_{d}-\frac{R_{\infty}^{2}}{R_{d}^{2}}\ln R_{d}-\left(\frac{C_{0}}{C_{d}}-1\right)\ln R_{\infty}}{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}=\frac{\frac{C_{0}}{C_{d}}-1}{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}\ln\frac{R_{d}}{R_{\infty}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ln R_{\infty}-\ln a=\frac{\left(\frac{C_{0}}{C_{d}}-1\right)\ln R_{\infty}+\frac{R_{\infty}^{2}}{R_{d}^{2}}\ln R_{\infty}-\frac{R_{\infty}^{2}}{R_{d}^{2}}\ln R_{d}-\left(\frac{C_{0}}{C_{d}}-1\right)\ln R_{\infty}}{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}=-\frac{\frac{R_{\infty}^{2}}{R_{d}^{2}}}{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}\ln\frac{R_{d}}{R_{\infty}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ln\frac{r}{a}=\ln\frac{r}{R_{\infty}}+\ln\frac{R_{\infty}}{a}=\ln\frac{r}{R_{\infty}}-\frac{\frac{R_{\infty}^{2}}{R_{d}^{2}}}{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}\ln\frac{R_{d}}{R_{\infty}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}=C_{d}\left(\frac{r^{2}}{R_{d}^{2}}+\frac{\left(\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}\right)\ln\frac{r}{R_{\infty}}-\frac{R_{\infty}^{2}}{R_{d}^{2}}\ln\frac{R_{d}}{R_{\infty}}}{\ln\frac{R_{d}}{R_{\infty}}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Simplifying:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{equation}
+C_{Ga}=C_{d}\left(\frac{r^{2}-R_{\infty}^{2}}{R_{d}^{2}}+\left(\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}\right)\frac{\ln\frac{r}{R_{\infty}}}{\ln\frac{R_{d}}{R_{\infty}}}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+C_{d}=\frac{F_{As}R_{d}^{2}}{4D_{Ga}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Checking the second boundary condition is trivial.
+\end_layout
+
+\begin_layout Standard
+Now check the first b.c.
+ again:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{Ga}\left(R_{d}\right)=C_{d}\left(\frac{R_{d}^{2}-R_{\infty}^{2}}{R_{d}^{2}}+\left(\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}\right)\frac{\ln\frac{R_{d}}{R_{\infty}}}{\ln\frac{R_{d}}{R_{\infty}}}\right)=C_{d}\left(1-\frac{R_{\infty}^{2}}{R_{d}^{2}}+\left(\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}\right)\right)=C_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we need to find the flux from the droplet boundary:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J_{Ga}=-D_{Ga}\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial C_{Ga}}{\partial r}\left(r=R_{d}\right)=C_{d}\left(\frac{2r}{R_{d}^{2}}+\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{\ln\frac{R_{d}}{R_{\infty}}}\frac{1}{r}\right)\left(r=R_{d}\right)=-\frac{2C_{d}}{R_{d}}\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)<0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The last condition comes from the general inequality 
+\begin_inset Formula $x^{2}+\epsilon>\ln x^{2},\qquad x\geq1$
+\end_inset
+
+ and:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}>2\ln\frac{R_{\infty}}{R_{d}}=\ln\frac{R_{\infty}^{2}}{R_{d}^{2}},\qquad C_{0}>C_{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The negative flux confirms the the Ga concentration is a decreasing function of 
+\begin_inset Formula $r$
+\end_inset
+
+ —
+ the concentration falls away from the droplet,
+ as it should.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J_{Ga}=\frac{2C_{d}D_{Ga}}{R_{d}}\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)=\frac{F_{As}R_{d}}{2}\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dN_{Ga}}{dt}=-2\pi R_{d}J_{Ga}=-\pi F_{As}R_{d}^{2}\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dN_{Ga}}{dt}=-\pi\frac{C_{0}w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comparing the two expressions,
+ we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{As}R_{d}^{2}\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)=\frac{C_{0}w^{2}}{\tau_{Ga}}\left[\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} \right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau_{Ga}=\frac{C_{0}w^{2}}{F_{As}R_{d}^{2}}\frac{\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} }{\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=F_{As}\frac{R_{d}^{2}}{w^{2}}\frac{\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\exp\left(-\frac{R_{d}^{2}}{w^{2}}\right)+\sqrt{\pi}\frac{R_{d}}{w}\left\{ 1+\text{erf}\left(\frac{R_{d}}{w}\right)\right\} }
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+C_{d}=\frac{F_{As}R_{d}^{2}}{4D_{Ga}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or,
+ using an approximation from above:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{Ga}\left(r,t\right)=F_{As}\frac{R_{d}^{2}}{w^{2}}\frac{\left(\frac{\frac{C_{0}}{C_{d}}-1+\frac{R_{\infty}^{2}}{R_{d}^{2}}}{2\ln\frac{R_{\infty}}{R_{d}}}-1\right)\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let's explicitly extract 
+\begin_inset Formula $R_{d}$
+\end_inset
+
+ as this is a time-dependent function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{C_{0}}{C_{d}}=\frac{4D_{Ga}C_{0}}{F_{As}R_{d}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=\frac{F_{As}}{w^{2}}\frac{\left(\frac{2D_{Ga}C_{0}}{F_{As}}+\frac{R_{\infty}^{2}-R_{d}^{2}}{2}-R_{d}^{2}\ln\frac{R_{\infty}}{R_{d}}\right)\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left(3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right)\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The old flux expression is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}^{\text{old}}\left(r,t\right)=\frac{2D_{Ga}C_{0}}{w^{2}}\frac{\exp\left(-\frac{\left(r-R_{d}\left(t\right)\right)^{2}}{w^{2}}\right)}{\left[3.545\frac{R_{d}}{w}+\frac{0.187w}{R_{\infty}-3.156w}\right]\ln\frac{R_{\infty}}{R_{d}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So the new one can be written as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{Ga}\left(r,t\right)=\left(1+\frac{F_{As}}{4D_{Ga}C_{0}}\left(R_{\infty}^{2}-R_{d}^{2}-R_{d}^{2}\ln\frac{R_{\infty}^{2}}{R_{d}^{2}}\right)\right)F_{Ga}^{\text{old}}\left(r,t\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Interestingly,
+ the bracket is equal to 1 when 
+\begin_inset Formula $R_{d}\to0$
+\end_inset
+
+ and equal to 1 when 
+\begin_inset Formula $R_{d}\to R_{\infty}$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
